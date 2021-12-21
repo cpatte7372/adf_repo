@@ -1,0 +1,22 @@
+{
+	"name": "DestinationDataset_lne",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_PRIVATE_DYN",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "testcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

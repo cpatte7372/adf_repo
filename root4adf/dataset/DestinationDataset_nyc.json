@@ -1,0 +1,19 @@
+{
+	"name": "DestinationDataset_nyc",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_PRIVATE_DYN",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "testcontainer"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

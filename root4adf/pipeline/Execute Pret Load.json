@@ -1,0 +1,116 @@
+{
+	"name": "Execute Pret Load",
+	"properties": {
+		"activities": [
+			{
+				"name": "Initiate Pret Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[InitiateLoad]",
+					"storedProcedureParameters": {
+						"Area": {
+							"value": {
+								"value": "@pipeline().parameters.Area",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Domain": {
+							"value": {
+								"value": "@pipeline().parameters.Domain",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Months": {
+							"value": null,
+							"type": "Int32"
+						},
+						"SliceDate": {
+							"value": {
+								"value": "@formatDateTime(utcnow(),'yyyy/MM/dd')",
+								"type": "Expression"
+							},
+							"type": "Datetime"
+						},
+						"Stage": {
+							"value": "Raw",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Trigger Master Control",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Initiate Pret Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Master Control",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"SliceDate": {
+							"value": "@pipeline().parameters.SliceDate",
+							"type": "Expression"
+						},
+						"Area": {
+							"value": "@pipeline().parameters.Area",
+							"type": "Expression"
+						},
+						"Domain": {
+							"value": "@pipeline().parameters.Domain",
+							"type": "Expression"
+						},
+						"Region": {
+							"value": "@pipeline().parameters.Region",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"SliceDate": {
+				"type": "string"
+			},
+			"Area": {
+				"type": "string",
+				"defaultValue": "F1Area"
+			},
+			"Domain": {
+				"type": "string",
+				"defaultValue": "F1Domain"
+			},
+			"Region": {
+				"type": "string",
+				"defaultValue": "-1"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-12-13T18:10:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

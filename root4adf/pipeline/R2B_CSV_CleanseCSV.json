@@ -1,0 +1,486 @@
+{
+	"name": "R2B_CSV_CleanseCSV",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[StartProcess]",
+					"storedProcedureParameters": {
+						"ADFExecution": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							}
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run Cleanse CSV",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Start Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": {
+						"value": "/Hydr8 Framework/Validation/@{pipeline().parameters.ProcessSubType}",
+						"type": "Expression"
+					},
+					"baseParameters": {
+						"processId": {
+							"value": "@string(pipeline().parameters.ProcessID)",
+							"type": "Expression"
+						},
+						"entityStageId": {
+							"value": "@string(pipeline().parameters.EntityStageID)",
+							"type": "Expression"
+						},
+						"stageName": {
+							"value": "@pipeline().parameters.Zone",
+							"type": "Expression"
+						},
+						"entityName": {
+							"value": "@pipeline().parameters.TableName",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LB_DBX_EngineeringSml",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finalise Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Cleanse CSV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[FinaliseProcess]",
+					"storedProcedureParameters": {
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Fail Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Cleanse CSV",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[FailProcess]",
+					"storedProcedureParameters": {
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Process Throughput - Good",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[LogThroughput]",
+					"storedProcedureParameters": {
+						"CountName": {
+							"value": "goodRows",
+							"type": "String"
+						},
+						"CountValue": {
+							"value": {
+								"value": "@activity('Run Cleanse CSV').Output.runOutput.goodRows",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Add Dependencies to Queue",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[InitiateDependency]",
+					"storedProcedureParameters": {
+						"EntityStageID": {
+							"value": {
+								"value": "@pipeline().parameters.EntityStageID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"SlicePath": {
+							"value": {
+								"value": "@concat('Year=',pipeline().parameters.Year,'/Month=',pipeline().parameters.Month,'/Day=',pipeline().parameters.Day)",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"MultiLine": {
+							"value": "0"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Process Throughput - Reject",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[LogThroughput]",
+					"storedProcedureParameters": {
+						"CountName": {
+							"value": "rejectedRows",
+							"type": "String"
+						},
+						"CountValue": {
+							"value": {
+								"value": "@activity('Run Cleanse CSV').Output.runOutput.rejectedRows",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Process Throughput - Total",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[LogThroughput]",
+					"storedProcedureParameters": {
+						"CountName": {
+							"value": "totalRows",
+							"type": "String"
+						},
+						"CountValue": {
+							"value": {
+								"value": "@activity('Run Cleanse CSV').Output.runOutput.totalRows",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Process Throughput - DuplicateRows",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[LogThroughput]",
+					"storedProcedureParameters": {
+						"CountName": {
+							"value": "duplicateRows",
+							"type": "String"
+						},
+						"CountValue": {
+							"value": {
+								"value": "@activity('Run Cleanse CSV').Output.runOutput.duplicateRows",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Process Throughput - validRows",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[LogThroughput]",
+					"storedProcedureParameters": {
+						"CountName": {
+							"value": "validRows",
+							"type": "String"
+						},
+						"CountValue": {
+							"value": {
+								"value": "@activity('Run Cleanse CSV').Output.runOutput.validRows",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							}
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			},
+			"Zone": {
+				"type": "string"
+			},
+			"Year": {
+				"type": "string"
+			},
+			"Month": {
+				"type": "string"
+			},
+			"Day": {
+				"type": "string"
+			},
+			"Area": {
+				"type": "string"
+			},
+			"Domain": {
+				"type": "string"
+			},
+			"Classification": {
+				"type": "string"
+			},
+			"EntityStageID": {
+				"type": "int"
+			},
+			"ProcessID": {
+				"type": "int"
+			},
+			"Version": {
+				"type": "string"
+			},
+			"ProcessSubType": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "1 - RawToBase"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-09-20T14:12:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
