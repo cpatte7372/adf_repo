@@ -1,5 +1,5 @@
 {
-	"name": "EX_SourceToRaw_Parent",
+	"name": "SourceToRaw_Parent",
 	"properties": {
 		"activities": [
 			{
@@ -216,7 +216,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"pipeline": {
-														"referenceName": "EX_SourceToRaw_Single_CSV",
+														"referenceName": "SourceToRaw_Single_CSV",
 														"type": "PipelineReference"
 													},
 													"waitOnCompletion": true,
@@ -295,7 +295,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "EX_SourceToRaw_Single_CSV",
+												"referenceName": "SourceToRaw_Single_CSV",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,

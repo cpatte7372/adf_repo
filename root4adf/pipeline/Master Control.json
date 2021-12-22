@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "EX_SourceToRaw_Parent",
+						"referenceName": "SourceToRaw_Parent",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,

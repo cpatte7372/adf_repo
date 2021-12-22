@@ -265,7 +265,7 @@
 			}
 		},
 		"folder": {
-			"name": "3 - NewEnrichToCurated"
+			"name": "Test - EnrichToCurated"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-09-19T10:12:07Z"
