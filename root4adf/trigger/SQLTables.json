@@ -1,0 +1,17 @@
+{
+	"name": "SQLTables",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2021-12-13T10:54:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

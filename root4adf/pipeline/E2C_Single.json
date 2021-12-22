@@ -1,0 +1,274 @@
+{
+	"name": "E2C_Single",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[StartProcess]",
+					"storedProcedureParameters": {
+						"ADFExecution": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finalise Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Enrichment Notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[FinaliseProcess]",
+					"storedProcedureParameters": {
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Fail Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Enrichment Notebook",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[FailProcess]",
+					"storedProcedureParameters": {
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Process Throughput",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[LogThroughput]",
+					"storedProcedureParameters": {
+						"CountName": {
+							"value": "rowsUpserted",
+							"type": "String"
+						},
+						"CountValue": {
+							"value": {
+								"value": "@activity('Run Enrichment Notebook').Output.runOutput.rowCount",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run Enrichment Notebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Start Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": {
+						"value": "/Hydr8 Framework/Enrichment/@{pipeline().parameters.ProcessSubType}",
+						"type": "Expression"
+					},
+					"baseParameters": {
+						"entityStageId": {
+							"value": "@string(pipeline().parameters.EntityStageID)",
+							"type": "Expression"
+						},
+						"stageName": {
+							"value": "@pipeline().parameters.StageName",
+							"type": "Expression"
+						},
+						"processSubType": {
+							"value": "@pipeline().parameters.ProcessSubType",
+							"type": "Expression"
+						},
+						"processId": {
+							"value": "@string(pipeline().parameters.ProcessID)",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LB_DBX_EngineeringSml",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Add Dependencies to Queue",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[InitiateDependency]",
+					"storedProcedureParameters": {
+						"EntityStageID": {
+							"value": {
+								"value": "@pipeline().parameters.EntityStageID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"MultiLine": {
+							"value": "False",
+							"type": "Boolean"
+						},
+						"SlicePath": {
+							"value": "",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"StageName": {
+				"type": "string"
+			},
+			"EntityStageID": {
+				"type": "int"
+			},
+			"ProcessID": {
+				"type": "int"
+			},
+			"ProcessSubType": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "3 - NewEnrichToCurated"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-09-19T10:12:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

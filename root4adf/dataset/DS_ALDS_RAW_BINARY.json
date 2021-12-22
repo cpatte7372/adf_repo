@@ -1,0 +1,27 @@
+{
+	"name": "DS_ALDS_RAW_BINARY",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_PRIVATE_DYN",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Directory": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "/@{dataset().Directory}",
+					"type": "Expression"
+				},
+				"fileSystem": "root"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

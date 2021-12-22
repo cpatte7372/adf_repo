@@ -1,0 +1,9 @@
+{
+	"name": "keyloopDF",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d03739ac-d9d5-4924-9de5-151f9a472f02",
+		"tenantId": "8cbfa73c-cadd-4037-b5a1-758faef12fc6"
+	}
+}

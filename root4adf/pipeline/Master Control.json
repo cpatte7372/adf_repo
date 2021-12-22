@@ -1,0 +1,146 @@
+{
+	"name": "Master Control",
+	"properties": {
+		"activities": [
+			{
+				"name": "Source to Raw",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "EX_SourceToRaw_Parent",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"SliceDate": {
+							"value": "@pipeline().parameters.SliceDate",
+							"type": "Expression"
+						},
+						"Area": {
+							"value": "@pipeline().parameters.Area",
+							"type": "Expression"
+						},
+						"Domain": {
+							"value": "@pipeline().parameters.Domain",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Raw to Base",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Source to Raw",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "R2B_CSV_Parent",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Area": {
+							"value": "@pipeline().parameters.Area",
+							"type": "Expression"
+						},
+						"Domain": {
+							"value": "@pipeline().parameters.Domain",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Base to Enrich",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Raw to Base",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "B2E_Parent",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Area": {
+							"value": "@pipeline().parameters.Area",
+							"type": "Expression"
+						},
+						"Domain": {
+							"value": "@pipeline().parameters.Domain",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Enrich To Curate",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Base to Enrich",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "DYN_EnrToCurated_Parent",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Region": {
+							"value": "@pipeline().parameters.Region",
+							"type": "Expression"
+						},
+						"Area": {
+							"value": "@pipeline().parameters.Area",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"SliceDate": {
+				"type": "string"
+			},
+			"Area": {
+				"type": "string"
+			},
+			"Domain": {
+				"type": "string"
+			},
+			"Region": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"EnrichJobs": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-09-18T19:51:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

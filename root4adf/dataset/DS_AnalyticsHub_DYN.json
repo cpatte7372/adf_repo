@@ -1,0 +1,17 @@
+{
+	"name": "DS_AnalyticsHub_DYN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_AnalyticsHub",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Process",
+			"table": "ProcessStatus"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
