@@ -106,7 +106,7 @@
 			},
 			"Region": {
 				"type": "string",
-				"defaultValue": "24"
+				"defaultValue": "-1"
 			}
 		},
 		"annotations": [],
