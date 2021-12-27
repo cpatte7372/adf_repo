@@ -1,0 +1,131 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "keyloopDF"
+		},
+		"LB_DBX_EngineeringSml_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'LB_DBX_EngineeringSml'"
+		},
+		"LS_ADLS_PRIVATE_DYN_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PRIVATE_DYN'"
+		},
+		"LS_BLOB_PRIVATE_DYN_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BLOB_PRIVATE_DYN'"
+		},
+		"LS_Metadata_SQL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_Metadata_SQL'"
+		},
+		"LS_SQL_AnalyticsHub_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_SQL_AnalyticsHub'"
+		},
+		"LS_SQL_PretBIReference_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_SQL_PretBIReference'"
+		},
+		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlspretbiukadlsdev.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "keyloopDF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LB_DBX_EngineeringSml_accessToken": {
+						"value": "[parameters('LB_DBX_EngineeringSml_accessToken')]"
+					},
+					"LS_ADLS_PRIVATE_DYN_accountKey": {
+						"value": "[parameters('LS_ADLS_PRIVATE_DYN_accountKey')]"
+					},
+					"LS_BLOB_PRIVATE_DYN_connectionString": {
+						"value": "[parameters('LS_BLOB_PRIVATE_DYN_connectionString')]"
+					},
+					"LS_Metadata_SQL_connectionString": {
+						"value": "[parameters('LS_Metadata_SQL_connectionString')]"
+					},
+					"LS_SQL_AnalyticsHub_connectionString": {
+						"value": "[parameters('LS_SQL_AnalyticsHub_connectionString')]"
+					},
+					"LS_SQL_PretBIReference_connectionString": {
+						"value": "[parameters('LS_SQL_PretBIReference_connectionString')]"
+					},
+					"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_PRIVATE_DYN_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "keyloopDF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keyloopDF_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "keyloopDF_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keyloopDF_ArmTemplate_1')]"
+			]
+		}
+	]
+}

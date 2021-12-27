@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "keyloopDF"
+		},
+		"LB_DBX_EngineeringSml_accessToken": {
+			"value": ""
+		},
+		"LS_ADLS_PRIVATE_DYN_accountKey": {
+			"value": ""
+		},
+		"LS_BLOB_PRIVATE_DYN_connectionString": {
+			"value": ""
+		},
+		"LS_Metadata_SQL_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_AnalyticsHub_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_PretBIReference_connectionString": {
+			"value": ""
+		},
+		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
+			"value": "https://adlspretbiukadlsdev.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
