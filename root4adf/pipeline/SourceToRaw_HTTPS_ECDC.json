@@ -1,0 +1,496 @@
+{
+	"name": "SourceToRaw_HTTPS_ECDC",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[StartProcess]",
+					"storedProcedureParameters": {
+						"ADFExecution": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Set vSetFileMask",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Copy File to Archive BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "FilenameMask",
+					"value": {
+						"value": "@if(greater(indexof(string(pipeline().parameters.Config),'FilenameMask'),0),pipeline().parameters.Config.FilenameMask,'')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SetRecursiveFlag",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Copy File to Archive BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "RecursiveFlag",
+					"value": {
+						"value": "@if(greater(indexof(string(pipeline().parameters.Config),'RecursiveFlag'),0),pipeline().parameters.Config.RecursiveFlag,'')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Copy File to Archive BLOB",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_cases_deaths_raw_csv_http",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
+						"type": "DatasetReference",
+						"parameters": {
+							"Path": {
+								"value": "@concat(pipeline().parameters.Path,'/Archive')",
+								"type": "Expression"
+							},
+							"Container": {
+								"value": "@pipeline().parameters.PathRoute",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy File to Lake",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set vSetFileMask",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "SetRecursiveFlag",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": {
+								"value": "@if(equals(variables('RecursiveFlag'),'1'), 1, 0)",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "@if(empty(variables('FilenameMask')), concat('*.',pipeline().parameters.FileFormat), concat(variables('FilenameMask'),toLower(pipeline().parameters.FileFormat)))",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
+						"type": "DatasetReference",
+						"parameters": {
+							"Path": {
+								"value": "@pipeline().parameters.Path",
+								"type": "Expression"
+							},
+							"Container": {
+								"value": "@pipeline().parameters.PathRoute",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ALDS_RAW_BINARY",
+						"type": "DatasetReference",
+						"parameters": {
+							"Directory": {
+								"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Log Process Throughput",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy File to Lake",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[LogThroughput]",
+					"storedProcedureParameters": {
+						"CountName": {
+							"value": "rowsCopied",
+							"type": "String"
+						},
+						"CountValue": {
+							"value": {
+								"value": "@activity('Copy File to Lake').output.filesRead",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Fail Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy File to Lake",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[FailProcess]",
+					"storedProcedureParameters": {
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finalise Process",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Log Process Throughput",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[FinaliseProcess]",
+					"storedProcedureParameters": {
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Fail Process From Log Failure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Log Process Throughput",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[FailProcess]",
+					"storedProcedureParameters": {
+						"ProcessID": {
+							"value": {
+								"value": "@pipeline().parameters.ProcessID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Add Dependencies to Queue",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Finalise Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Process].[InitiateDependency]",
+					"storedProcedureParameters": {
+						"EntityStageID": {
+							"value": {
+								"value": "@pipeline().parameters.EntityStageID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"SlicePath": {
+							"value": {
+								"value": "@concat('Year=',pipeline().parameters.Year,'/Month=',pipeline().parameters.Month,'/Day=',pipeline().parameters.Day,'/Time=',pipeline().parameters.Time)",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"MultiLine": {
+							"value": "0"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AnalyticsHub",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			},
+			"Zone": {
+				"type": "string"
+			},
+			"Year": {
+				"type": "string"
+			},
+			"Month": {
+				"type": "string"
+			},
+			"Day": {
+				"type": "string"
+			},
+			"Area": {
+				"type": "string"
+			},
+			"Domain": {
+				"type": "string"
+			},
+			"Classification": {
+				"type": "string"
+			},
+			"EntityStageID": {
+				"type": "int"
+			},
+			"ProcessID": {
+				"type": "int"
+			},
+			"Version": {
+				"type": "string"
+			},
+			"SlicePath": {
+				"type": "string"
+			},
+			"Time": {
+				"type": "string"
+			},
+			"FileFormat": {
+				"type": "string"
+			},
+			"Path": {
+				"type": "string"
+			},
+			"Config": {
+				"type": "object"
+			},
+			"PathRoute": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"FilenameMask": {
+				"type": "String"
+			},
+			"RecursiveFlag": {
+				"type": "String"
+			},
+			"UnzipFlag": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "0 - Source2Raw/Pret"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-08-22T20:59:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

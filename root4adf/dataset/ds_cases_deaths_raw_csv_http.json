@@ -5,6 +5,14 @@
 			"referenceName": "ls_http_opendata_europa_eu",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Path": {
+				"type": "string"
+			},
+			"Container": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
