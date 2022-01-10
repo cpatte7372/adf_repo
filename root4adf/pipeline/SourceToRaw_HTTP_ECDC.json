@@ -197,7 +197,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Path": {
-								"value": "@pipeline().parameters.Path",
+								"value": "@concat(pipeline().parameters.Path,'/cloudboxacademy/covid19/raw/main/ecdc_data/')",
 								"type": "Expression"
 							},
 							"Container": {
