@@ -216,7 +216,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"pipeline": {
-														"referenceName": "SourceToRaw_Single_CSV",
+														"referenceName": "SourceToRaw_HTTP_ECDC",
 														"type": "PipelineReference"
 													},
 													"waitOnCompletion": true,
@@ -375,7 +375,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "SourceToRaw_Single_CSV",
+												"referenceName": "SourceToRaw_HTTP_ECDC",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,
