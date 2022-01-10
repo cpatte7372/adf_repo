@@ -285,6 +285,24 @@
 												}
 											}
 										]
+									},
+									{
+										"value": "HTTP",
+										"activities": [
+											{
+												"name": "SourceToRaw_HTTP_ECDC",
+												"type": "ExecutePipeline",
+												"dependsOn": [],
+												"userProperties": [],
+												"typeProperties": {
+													"pipeline": {
+														"referenceName": "SourceToRaw_HTTP_ECDC",
+														"type": "PipelineReference"
+													},
+													"waitOnCompletion": true
+												}
+											}
+										]
 									}
 								],
 								"defaultActivities": [
