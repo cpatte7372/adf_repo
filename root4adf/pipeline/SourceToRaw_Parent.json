@@ -299,7 +299,10 @@
 														"referenceName": "SourceToRaw_HTTP_ECDC",
 														"type": "PipelineReference"
 													},
-													"waitOnCompletion": true
+													"waitOnCompletion": true,
+													"parameters": {
+														"TableName": "@item().EntityName"
+													}
 												}
 											}
 										]
