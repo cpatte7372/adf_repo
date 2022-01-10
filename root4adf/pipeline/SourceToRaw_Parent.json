@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": null
+								"value": "51"
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -287,10 +287,10 @@
 										]
 									},
 									{
-										"value": "HTTP",
+										"value": "http",
 										"activities": [
 											{
-												"name": "SourceToRaw_HTTP_ECDC",
+												"name": "Name_SourceToRaw_HTTP",
 												"type": "ExecutePipeline",
 												"dependsOn": [],
 												"userProperties": [],
@@ -301,7 +301,66 @@
 													},
 													"waitOnCompletion": true,
 													"parameters": {
-														"TableName": "@item().EntityName"
+														"TableName": {
+															"value": "@item().EntityName",
+															"type": "Expression"
+														},
+														"Zone": {
+															"value": "@item().StageName",
+															"type": "Expression"
+														},
+														"Year": {
+															"value": "@item().Year",
+															"type": "Expression"
+														},
+														"Month": {
+															"value": "@item().Month",
+															"type": "Expression"
+														},
+														"Day": {
+															"value": "@item().Day",
+															"type": "Expression"
+														},
+														"Area": {
+															"value": "@item().Area",
+															"type": "Expression"
+														},
+														"Domain": {
+															"value": "@item().Domain",
+															"type": "Expression"
+														},
+														"Classification": {
+															"value": "@item().Classification",
+															"type": "Expression"
+														},
+														"EntityStageID": {
+															"value": "@item().EntityStageID",
+															"type": "Expression"
+														},
+														"ProcessID": {
+															"value": "@item().ProcessID",
+															"type": "Expression"
+														},
+														"Version": {
+															"value": "@item().Version",
+															"type": "Expression"
+														},
+														"SlicePath": {
+															"value": "@item().SlicePath",
+															"type": "Expression"
+														},
+														"Time": {
+															"value": "@item().Time",
+															"type": "Expression"
+														},
+														"FileFormat": {
+															"value": "@item().FileFormat",
+															"type": "Expression"
+														},
+														"Path": {
+															"value": "@item().Path",
+															"type": "Expression"
+														}
 													}
 												}
 											}
@@ -476,10 +535,12 @@
 				"type": "string"
 			},
 			"Area": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "F1Area"
 			},
 			"Domain": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "F1Domain"
 			}
 		},
 		"folder": {
