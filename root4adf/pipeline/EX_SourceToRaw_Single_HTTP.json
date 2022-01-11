@@ -43,7 +43,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Start Process",
+						"activity": "Copy File to Source",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -63,7 +63,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Start Process",
+						"activity": "Copy File to Source",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -79,17 +79,11 @@
 				}
 			},
 			{
-				"name": "Copy File to Archive BLOB",
+				"name": "Copy File to Source",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Set vSetFileMask",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "SetRecursiveFlag",
+						"activity": "Start Process",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -161,11 +155,17 @@
 				]
 			},
 			{
-				"name": "Copy File to Lake",
+				"name": "Copy File to RAW",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Copy File to Archive BLOB",
+						"activity": "Set vSetFileMask",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "SetRecursiveFlag",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -240,7 +240,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy File to Lake",
+						"activity": "Copy File to RAW",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -287,7 +287,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy File to Lake",
+						"activity": "Copy File to RAW",
 						"dependencyConditions": [
 							"Failed"
 						]
