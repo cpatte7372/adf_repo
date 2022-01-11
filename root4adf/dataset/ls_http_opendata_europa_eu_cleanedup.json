@@ -1,0 +1,17 @@
+{
+	"name": "ls_http_opendata_europa_eu_cleanedup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_http_opendata_europa_eu_cleanedup",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "cloudboxacademy/covid19/raw/main/ecdc_data/cases_deaths.csv"
+			}
+		}
+	}
+}
