@@ -101,13 +101,8 @@
 					"source": {
 						"type": "BinarySource",
 						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"wildcardFileName": {
-								"value": "@if(empty(variables('FilenameMask')),\nconcat('*.',pipeline().parameters.FileFormat),\nconcat(variables('FilenameMask'),toLower(pipeline().parameters.FileFormat)))",
-								"type": "Expression"
-							},
-							"deleteFilesAfterCompletion": false
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
 						},
 						"formatSettings": {
 							"type": "BinaryReadSettings"
@@ -123,6 +118,12 @@
 				},
 				"inputs": [
 					{
+						"referenceName": "ds_cases_deaths_raw_csv_http_cleanedUP",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
 						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
 						"type": "DatasetReference",
 						"parameters": {
@@ -136,26 +137,10 @@
 							}
 						}
 					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
-						"type": "DatasetReference",
-						"parameters": {
-							"Path": {
-								"value": "@concat(pipeline().parameters.Path,'/Archive')",
-								"type": "Expression"
-							},
-							"Container": {
-								"value": "@pipeline().parameters.PathRoute",
-								"type": "Expression"
-							}
-						}
-					}
 				]
 			},
 			{
-				"name": "Copy File to RAW",
+				"name": "Copy File to Lake",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -212,7 +197,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Path": {
-								"value": "@pipeline().parameters.Path",
+								"value": "@concat(pipeline().parameters.Path,'/cloudboxacademy/covid19/raw/main/ecdc_data/')",
 								"type": "Expression"
 							},
 							"Container": {
@@ -240,7 +225,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy File to RAW",
+						"activity": "Copy File to Lake",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -287,7 +272,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy File to RAW",
+						"activity": "Copy File to Lake",
 						"dependencyConditions": [
 							"Failed"
 						]
