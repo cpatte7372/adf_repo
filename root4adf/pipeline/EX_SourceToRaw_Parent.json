@@ -216,7 +216,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"pipeline": {
-														"referenceName": "EX_SourceToRaw_Single_Table",
+														"referenceName": "EX_SourceToRaw_Single_HTTP",
 														"type": "PipelineReference"
 													},
 													"waitOnCompletion": true,
@@ -239,6 +239,10 @@
 														},
 														"Day": {
 															"value": "@item().Day",
+															"type": "Expression"
+														},
+														"Area": {
+															"value": "@item().Area",
 															"type": "Expression"
 														},
 														"Domain": {
@@ -273,8 +277,8 @@
 															"value": "@item().FileFormat",
 															"type": "Expression"
 														},
-														"Area": {
-															"value": "@item().Area",
+														"Path": {
+															"value": "@item().Path",
 															"type": "Expression"
 														}
 													}
@@ -285,13 +289,14 @@
 								],
 								"defaultActivities": [
 									{
-										"name": "Run Copy Pipeline File",
+										"name": "Run Copy Pipeline Table_copy1",
+										"description": "This has been moved to invoke the Zip PipeLine because it keeps on kicking of Databricaks. Otherwise, all is working well invoking EX_SourceToRaw_Single_Table - which is the pipeline it would kick of under normal circumstances",
 										"type": "ExecutePipeline",
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "EX_SourceToRaw_Single_CSV2",
+												"referenceName": "EX_SourceToRaw_Single_Table",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,
@@ -314,10 +319,6 @@
 												},
 												"Day": {
 													"value": "@item().Day",
-													"type": "Expression"
-												},
-												"Area": {
-													"value": "@item().Area",
 													"type": "Expression"
 												},
 												"Domain": {
@@ -352,16 +353,8 @@
 													"value": "@item().FileFormat",
 													"type": "Expression"
 												},
-												"Path": {
-													"value": "@item().Path",
-													"type": "Expression"
-												},
-												"Config": {
-													"value": "@json(item().Config)",
-													"type": "Expression"
-												},
-												"PathRoute": {
-													"value": "@item().PathRoute",
+												"Area": {
+													"value": "@item().Area",
 													"type": "Expression"
 												}
 											}
