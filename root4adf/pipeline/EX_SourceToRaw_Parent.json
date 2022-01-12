@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": "51"
+								"value": "54"
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -370,7 +370,7 @@
 													"type": "Expression"
 												},
 												"Config": {
-													"value": "@json(item()).Config",
+													"value": "@json(item().Config)\n",
 													"type": "Expression"
 												},
 												"PathRoute": {
