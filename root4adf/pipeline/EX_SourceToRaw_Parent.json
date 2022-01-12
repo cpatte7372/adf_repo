@@ -296,7 +296,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "EX_SourceToRaw_Single_HTTP",
+												"referenceName": "EX_SourceToRaw_Single_Table",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,
@@ -319,10 +319,6 @@
 												},
 												"Day": {
 													"value": "@item().Day",
-													"type": "Expression"
-												},
-												"Area": {
-													"value": "@item().Area",
 													"type": "Expression"
 												},
 												"Domain": {
@@ -357,8 +353,8 @@
 													"value": "@item().FileFormat",
 													"type": "Expression"
 												},
-												"Path": {
-													"value": "@item().Path",
+												"Area": {
+													"value": "@item().Area",
 													"type": "Expression"
 												}
 											}
