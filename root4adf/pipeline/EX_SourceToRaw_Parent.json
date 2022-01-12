@@ -364,6 +364,18 @@
 												"FileFormat": {
 													"value": "@item().FileFormat",
 													"type": "Expression"
+												},
+												"Path": {
+													"value": "@item().Path",
+													"type": "Expression"
+												},
+												"Config": {
+													"value": "@json(item()).Config",
+													"type": "Expression"
+												},
+												"PathRoute": {
+													"value": "@item().PathRoute",
+													"type": "Expression"
 												}
 											}
 										}
