@@ -140,7 +140,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"pipeline": {
-														"referenceName": "EX_SourceToRaw_Single_Table",
+														"referenceName": "EX_SourceToRaw_Single_Oracle",
 														"type": "PipelineReference"
 													},
 													"waitOnCompletion": true,
@@ -465,11 +465,11 @@
 			},
 			"Area": {
 				"type": "string",
-				"defaultValue": "F1Area"
+				"defaultValue": "sqlArea"
 			},
 			"Domain": {
 				"type": "string",
-				"defaultValue": "F1Domain"
+				"defaultValue": "ORDDATA"
 			}
 		},
 		"folder": {
