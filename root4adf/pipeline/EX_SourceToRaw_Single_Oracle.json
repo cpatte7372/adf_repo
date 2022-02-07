@@ -59,13 +59,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
 							"value": "@concat('SELECT * FROM ',pipeline().parameters.Domain,'.',pipeline().parameters.TableName)",
 							"type": "Expression"
 						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -90,7 +90,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_SQL_DYN",
+						"referenceName": "OracleTables",
 						"type": "DatasetReference"
 					}
 				],
