@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": "65"
+								"value": "54"
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -469,7 +469,7 @@
 			},
 			"Domain": {
 				"type": "string",
-				"defaultValue": "ORDDATA"
+				"defaultValue": "reference"
 			}
 		},
 		"folder": {
