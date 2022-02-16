@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": "62"
+								"value": "65"
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -140,7 +140,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"pipeline": {
-														"referenceName": "EX_SourceToRaw_Single_Oracle",
+														"referenceName": "EX_SourceToRaw_Single_Table",
 														"type": "PipelineReference"
 													},
 													"waitOnCompletion": true,
