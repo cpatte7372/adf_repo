@@ -38,10 +38,6 @@
 		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlspretbiukadlsdev.dfs.core.windows.net"
-		},
-		"EventTrigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5fa2700d-738a-444e-a643-28241a29d08d/resourceGroups/PretReourceGRP/providers/Microsoft.Storage/storageAccounts/adlspretbiukadlsdev"
 		}
 	},
 	"variables": {
@@ -204,26 +200,6 @@
 						"startTime": "2021-12-13T10:54:00Z",
 						"timeZone": "UTC"
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/EventTrigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/new_14.json",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('EventTrigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
 				}
 			},
 			"dependsOn": []
@@ -2511,6 +2487,37 @@
 					"quoteChar": "\""
 				},
 				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_PRIVATE_DYN')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ALDS_RAW_BINARY')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_PRIVATE_DYN",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "/@{dataset().Directory}",
+							"type": "Expression"
+						},
+						"fileSystem": "root"
+					}
+				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_PRIVATE_DYN')]"

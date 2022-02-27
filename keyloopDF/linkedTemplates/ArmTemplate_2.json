@@ -6,297 +6,32 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "keyloopDF"
+		},
+		"EventTrigger_properties_Execute Pret Load_parameters_SliceDate": {
+			"type": "string",
+			"defaultValue": "YYYYMMdd"
+		},
+		"EventTrigger_properties_Execute Pret Load_parameters_Area": {
+			"type": "string",
+			"defaultValue": "sqlArea"
+		},
+		"EventTrigger_properties_Execute Pret Load_parameters_Domain": {
+			"type": "string",
+			"defaultValue": "reference"
+		},
+		"EventTrigger_properties_Execute Pret Load_parameters_Region": {
+			"type": "string",
+			"defaultValue": "-1"
+		},
+		"EventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/5fa2700d-738a-444e-a643-28241a29d08d/resourceGroups/PretReourceGRP/providers/Microsoft.Storage/storageAccounts/adlspretbiukadlsdev"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/R2B_CSV_Parent')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Initiate Parent Process",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[Process].[InitiateParentLoad]",
-								"storedProcedureParameters": {
-									"ADFExecution": {
-										"type": "String",
-										"value": {
-											"value": "@pipeline().RunId",
-											"type": "Expression"
-										}
-									},
-									"Area": {
-										"type": "String",
-										"value": {
-											"value": "@pipeline().parameters.Area",
-											"type": "Expression"
-										}
-									},
-									"EntityStageID": {
-										"type": "Int32",
-										"value": null
-									},
-									"ParentProcessID": {
-										"type": "Int32",
-										"value": null
-									},
-									"ProcessFilter": {
-										"type": "String",
-										"value": "%"
-									},
-									"Stage": {
-										"type": "String",
-										"value": "Base"
-									}
-								},
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "DS_AnalyticsHub_DYN",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Get Jobs to Run",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Initiate Parent Process",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[Process].[GetChildProcesses]",
-								"storedProcedureParameters": {
-									"ParentProcessID": {
-										"type": "Int32",
-										"value": {
-											"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
-											"type": "Expression"
-										}
-									}
-								},
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "DS_AnalyticsHub_DYN",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "Run Child Processes",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Get Jobs to Run",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Get Jobs to Run').output.value",
-								"type": "Expression"
-							},
-							"isSequential": false,
-							"activities": [
-								{
-									"name": "Run Copy Pipeline",
-									"type": "ExecutePipeline",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"pipeline": {
-											"referenceName": "R2B_CSV_CleanseCSV",
-											"type": "PipelineReference"
-										},
-										"waitOnCompletion": true,
-										"parameters": {
-											"TableName": {
-												"value": "@item().EntityName",
-												"type": "Expression"
-											},
-											"Zone": {
-												"value": "@item().StageName",
-												"type": "Expression"
-											},
-											"Year": {
-												"value": "@item().Year",
-												"type": "Expression"
-											},
-											"Month": {
-												"value": "@item().Month",
-												"type": "Expression"
-											},
-											"Day": {
-												"value": "@item().Day",
-												"type": "Expression"
-											},
-											"Area": {
-												"value": "@item().Area",
-												"type": "Expression"
-											},
-											"Domain": {
-												"value": "@item().Domain",
-												"type": "Expression"
-											},
-											"Classification": {
-												"value": "@item().Classification",
-												"type": "Expression"
-											},
-											"EntityStageID": {
-												"value": "@item().EntityStageID",
-												"type": "Expression"
-											},
-											"ProcessID": {
-												"value": "@item().ProcessID",
-												"type": "Expression"
-											},
-											"Version": {
-												"value": "@item().Version",
-												"type": "Expression"
-											},
-											"ProcessSubType": {
-												"value": "@item().ProcessSubType",
-												"type": "Expression"
-											}
-										}
-									}
-								}
-							]
-						}
-					},
-					{
-						"name": "Finalise Parent Process",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Run Child Processes",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[Process].[FinaliseProcess]",
-							"storedProcedureParameters": {
-								"ProcessID": {
-									"value": {
-										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
-										"type": "Expression"
-									},
-									"type": "Int32"
-								}
-							}
-						},
-						"linkedServiceName": {
-							"referenceName": "LS_SQL_AnalyticsHub",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Fail Parent Process",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Run Child Processes",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[Process].[FailProcess]",
-							"storedProcedureParameters": {
-								"ProcessID": {
-									"value": {
-										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
-										"type": "Expression"
-									},
-									"type": "Int32"
-								}
-							}
-						},
-						"linkedServiceName": {
-							"referenceName": "LS_SQL_AnalyticsHub",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"parameters": {
-					"Area": {
-						"type": "string"
-					},
-					"Domain": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "1 - RawToBase"
-				},
-				"annotations": [],
-				"lastPublishTime": "2021-12-07T16:15:42Z"
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/EX_SourceToRaw_Parent')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -927,8 +662,7 @@
 				"lastPublishTime": "2021-09-18T19:51:35Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Parent')]",
-				"[concat(variables('factoryId'), '/pipelines/R2B_CSV_Parent')]"
+				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Parent')]"
 			]
 		},
 		{
@@ -1105,8 +839,7 @@
 				"lastPublishTime": "2021-09-14T10:52:00Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Parent')]",
-				"[concat(variables('factoryId'), '/pipelines/R2B_CSV_Parent')]"
+				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Parent')]"
 			]
 		},
 		{
@@ -1231,6 +964,41 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Master Control')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/EventTrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Execute Pret Load",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SliceDate": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_SliceDate')]",
+							"Area": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Area')]",
+							"Domain": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Domain')]",
+							"Region": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Region')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/new_14.json",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('EventTrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/Execute Pret Load')]"
 			]
 		}
 	]

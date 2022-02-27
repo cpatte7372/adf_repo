@@ -39,6 +39,22 @@
 			"type": "string",
 			"defaultValue": "https://adlspretbiukadlsdev.dfs.core.windows.net"
 		},
+		"EventTrigger_properties_Execute Pret Load_parameters_SliceDate": {
+			"type": "string",
+			"defaultValue": "YYYYMMdd"
+		},
+		"EventTrigger_properties_Execute Pret Load_parameters_Area": {
+			"type": "string",
+			"defaultValue": "sqlArea"
+		},
+		"EventTrigger_properties_Execute Pret Load_parameters_Domain": {
+			"type": "string",
+			"defaultValue": "reference"
+		},
+		"EventTrigger_properties_Execute Pret Load_parameters_Region": {
+			"type": "string",
+			"defaultValue": "-1"
+		},
 		"EventTrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/5fa2700d-738a-444e-a643-28241a29d08d/resourceGroups/PretReourceGRP/providers/Microsoft.Storage/storageAccounts/adlspretbiukadlsdev"
@@ -93,9 +109,6 @@
 					},
 					"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLS_PRIVATE_DYN_properties_typeProperties_url')]"
-					},
-					"EventTrigger_properties_typeProperties_scope": {
-						"value": "[parameters('EventTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
@@ -134,6 +147,21 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"EventTrigger_properties_Execute Pret Load_parameters_SliceDate": {
+						"value": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_SliceDate')]"
+					},
+					"EventTrigger_properties_Execute Pret Load_parameters_Area": {
+						"value": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Area')]"
+					},
+					"EventTrigger_properties_Execute Pret Load_parameters_Domain": {
+						"value": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Domain')]"
+					},
+					"EventTrigger_properties_Execute Pret Load_parameters_Region": {
+						"value": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Region')]"
+					},
+					"EventTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('EventTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
