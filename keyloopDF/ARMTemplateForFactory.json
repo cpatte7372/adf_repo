@@ -6980,6 +6980,42 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/EventTrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Execute Pret Load",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SliceDate": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_SliceDate')]",
+							"Area": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Area')]",
+							"Domain": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Domain')]",
+							"Region": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Region')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/",
+					"blobPathEndsWith": "*.json",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('EventTrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/Execute Pret Load')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Formula1')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -7038,41 +7074,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/EventTrigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "Execute Pret Load",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"SliceDate": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_SliceDate')]",
-							"Area": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Area')]",
-							"Domain": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Domain')]",
-							"Region": "[parameters('EventTrigger_properties_Execute Pret Load_parameters_Region')]"
-						}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/new_14.json",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('EventTrigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Execute Pret Load')]"
-			]
 		}
 	]
 }

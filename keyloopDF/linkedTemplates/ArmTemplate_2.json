@@ -989,7 +989,8 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/new_14.json",
+					"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/",
+					"blobPathEndsWith": "*.json",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('EventTrigger_properties_typeProperties_scope')]",
 					"events": [
