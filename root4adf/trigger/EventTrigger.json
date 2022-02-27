@@ -19,7 +19,8 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/root/blobs/new_14.json",
+			"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/",
+			"blobPathEndsWith": "*.json",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/5fa2700d-738a-444e-a643-28241a29d08d/resourceGroups/PretReourceGRP/providers/Microsoft.Storage/storageAccounts/adlspretbiukadlsdev",
 			"events": [
