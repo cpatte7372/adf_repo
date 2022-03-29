@@ -1,7 +1,49 @@
 {
-	"name": "PE_Parent_original",
+	"name": "PE_Parent",
 	"properties": {
 		"activities": [
+			{
+				"name": "Get Jobs to Run",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Initiate Parent Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[Process].[GetChildProcesses]",
+						"storedProcedureParameters": {
+							"ParentProcessID": {
+								"type": "Int32",
+								"value": {
+									"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+									"type": "Expression"
+								}
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_AnalyticsHub_DYN",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
 			{
 				"name": "Initiate Parent Process",
 				"type": "Lookup",
@@ -36,50 +78,20 @@
 							"EntityStageID": {
 								"type": "Int32",
 								"value": "-1"
-							}
-						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"dataset": {
-						"referenceName": "DS_AnalyticsHub_DYN",
-						"type": "DatasetReference"
-					}
-				}
-			},
-			{
-				"name": "Get Jobs to Run",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Initiate Parent Process",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[Process].[GetChildProcesses]",
-						"storedProcedureParameters": {
+							},
 							"ParentProcessID": {
 								"type": "Int32",
-								"value": {
-									"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
-									"type": "Expression"
-								}
+								"value": "-1"
+							},
+							"ProcessFilter": {
+								"type": "String",
+								"value": "%"
+							},
+							"Stage": {
+								"type": "String",
+								"value": "POST"
 							}
 						},
-						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
@@ -223,8 +235,6 @@
 		"folder": {
 			"name": "4 - PostExecution"
 		},
-		"annotations": [],
-		"lastPublishTime": "2021-09-14T10:52:00Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }

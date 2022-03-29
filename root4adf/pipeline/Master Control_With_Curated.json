@@ -133,7 +133,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "PE_Parent",
+						"referenceName": "PE_Parent_original",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
