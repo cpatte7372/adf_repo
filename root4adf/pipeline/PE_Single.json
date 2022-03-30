@@ -148,6 +148,10 @@
 							"type": "Expression"
 						}
 					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LB_DBX_EngineeringSml",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
