@@ -1,0 +1,16 @@
+{
+	"name": "test_source_4_stream",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_PRIVATE_DYN",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			}
+		}
+	}
+}

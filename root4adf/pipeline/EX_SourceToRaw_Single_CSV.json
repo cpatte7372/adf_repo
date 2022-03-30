@@ -62,14 +62,12 @@
 						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": {
-								"value": "@if(equals(variables('RecursiveFlag'),'1'), 1, 0)",
-								"type": "Expression"
-							},
+							"recursive": true,
 							"wildcardFileName": {
 								"value": "@if(empty(variables('FilenameMask')), concat('*.',pipeline().parameters.FileFormat), concat(variables('FilenameMask'),toLower(pipeline().parameters.FileFormat)))",
 								"type": "Expression"
-							}
+							},
+							"deleteFilesAfterCompletion": false
 						},
 						"formatSettings": {
 							"type": "BinaryReadSettings"
@@ -78,37 +76,21 @@
 					"sink": {
 						"type": "BinarySink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "AzureBlobStorageWriteSettings"
 						}
 					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_ALDS_RAW_BINARY",
-						"type": "DatasetReference",
-						"parameters": {
-							"Path": {
-								"value": "@pipeline().parameters.Path",
-								"type": "Expression"
-							},
-							"Container": {
-								"value": "@pipeline().parameters.PathRoute",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "test_source_4_stream",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ALDS_RAW_BINARY",
-						"type": "DatasetReference",
-						"parameters": {
-							"Directory": {
-								"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
+						"type": "DatasetReference"
 					}
 				]
 			},
