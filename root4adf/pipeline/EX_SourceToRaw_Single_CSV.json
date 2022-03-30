@@ -76,7 +76,7 @@
 					"sink": {
 						"type": "BinarySink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobFSWriteSettings"
 						}
 					},
 					"enableStaging": false
@@ -84,13 +84,29 @@
 				"inputs": [
 					{
 						"referenceName": "test_source_4_stream",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Path": {
+								"value": "@pipeline().parameters.Path",
+								"type": "Expression"
+							},
+							"Container": {
+								"value": "@pipeline().parameters.PathRoute",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
-						"type": "DatasetReference"
+						"referenceName": "test_sink_4_stream",
+						"type": "DatasetReference",
+						"parameters": {
+							"Directory": {
+								"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
