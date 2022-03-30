@@ -59,52 +59,36 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM ',pipeline().parameters.Domain,'.',pipeline().parameters.TableName)",
-							"type": "Expression"
-						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySource",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".csv"
+							"type": "BinaryReadSettings"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
 						}
-					}
+					},
+					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_SQL_DYN",
+						"referenceName": "DS_ALDS_RAW_BINARY",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ADLS_RAW1",
+						"referenceName": "DS_ALDS_RAW_BINARY",
 						"type": "DatasetReference",
 						"parameters": {
 							"Directory": {
 								"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
-								"type": "Expression"
-							},
-							"Entity": {
-								"value": "@pipeline().parameters.TableName",
 								"type": "Expression"
 							}
 						}
@@ -355,6 +339,15 @@
 				"type": "string"
 			},
 			"Area": {
+				"type": "string"
+			},
+			"Path": {
+				"type": "string"
+			},
+			"Config": {
+				"type": "object"
+			},
+			"Pathroute": {
 				"type": "string"
 			}
 		},
