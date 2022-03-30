@@ -8,6 +8,12 @@
 		"parameters": {
 			"Directory": {
 				"type": "string"
+			},
+			"Path": {
+				"type": "string"
+			},
+			"Container": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
