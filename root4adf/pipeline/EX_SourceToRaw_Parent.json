@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": null
+								"value": "99"
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -455,10 +455,12 @@
 				"type": "string"
 			},
 			"Area": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "StreamArea"
 			},
 			"Domain": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "StreamDomain"
 			}
 		},
 		"folder": {
