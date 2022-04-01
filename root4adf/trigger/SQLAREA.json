@@ -1,0 +1,28 @@
+{
+	"name": "SQLAREA",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Execute Pret Load",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Area": "sqlArea",
+					"Domain": "reference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2022-04-01T14:44:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
