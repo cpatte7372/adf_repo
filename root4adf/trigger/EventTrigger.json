@@ -3,20 +3,7 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "Execute Pret Load",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"SliceDate": "YYYYMMdd",
-					"Area": "sqlArea",
-					"Domain": "reference",
-					"Region": "-1"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/root/blobs/RAW/FormulaClassification/F1Area/",
