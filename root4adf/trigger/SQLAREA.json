@@ -3,18 +3,7 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Stopped",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "Execute Pret Load",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"Area": "sqlArea",
-					"Domain": "reference"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
