@@ -1,0 +1,9 @@
+{
+	"name": "testfactoryv2",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c2e29bef-7921-4508-9bb5-719c6297e5c0",
+		"tenantId": "8cbfa73c-cadd-4037-b5a1-758faef12fc6"
+	}
+}
