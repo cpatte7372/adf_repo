@@ -7,9 +7,6 @@
 		},
 		"annotations": [],
 		"type": "DynamicsEntity",
-		"schema": [],
-		"typeProperties": {
-			"entityName": "contact"
-		}
+		"schema": []
 	}
 }
