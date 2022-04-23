@@ -90,7 +90,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_SQL_DYN",
+						"referenceName": "DS_CRM",
 						"type": "DatasetReference"
 					}
 				],
