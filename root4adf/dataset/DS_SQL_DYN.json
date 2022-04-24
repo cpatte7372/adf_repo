@@ -2,7 +2,7 @@
 	"name": "DS_SQL_DYN",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_SQL_CRM2013",
+			"referenceName": "LS_SQL_PretBIReference",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
