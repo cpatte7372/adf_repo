@@ -18,14 +18,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": {
-					"value": "@dataset().Path",
-					"type": "Expression"
-				},
-				"container": {
-					"value": "@dataset().Container",
-					"type": "Expression"
-				}
+				"fileName": "prequin.csv",
+				"folderPath": "source/import/prequin",
+				"container": "orgination"
 			}
 		}
 	},
