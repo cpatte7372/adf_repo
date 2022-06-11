@@ -1,0 +1,9 @@
+{
+	"name": "monadfprodv1",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fc447761-0127-4b0f-b177-db343bef2ec4",
+		"tenantId": "fca5641e-2829-432a-8b58-6259654f2a0e"
+	}
+}
