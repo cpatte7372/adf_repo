@@ -1,5 +1,5 @@
 {
-	"name": "Execute Pret Load",
+	"name": "Execute Origination Load",
 	"properties": {
 		"activities": [
 			{
