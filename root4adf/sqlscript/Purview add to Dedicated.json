@@ -1,0 +1,17 @@
+{
+	"name": "Purview add to Dedicated",
+	"properties": {
+		"content": {
+			"query": "CREATE USER [MontaguPurview] FROM EXTERNAL PROVIDER\nGO\n\nEXEC sp_addrolemember 'db_datareader', [MontaguPurview]\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dataverse_montagu_org5a2bcccf",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

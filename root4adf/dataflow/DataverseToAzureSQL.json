@@ -1,0 +1,39 @@
+{
+	"name": "DataverseToAzureSQL",
+	"properties": {
+		"description": "Writes Dataverse data in Azure Data Lake Storage Gen2 to Azure SQL Database.",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "ADLS"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "SQL"
+				},
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [],
+			"script": "parameters{\n\tContainerName as string (\"Dataverse Container Name\"),\n\tTableName as string (\"Dataverse Table Name\")\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tstore: 'synapse',\n\tdatabaseType: 'spark',\n\tformat: 'table',\n\tdatabase: 'dataverse_montagu_org5a2bcccf',\n\ttableName: 'ts_originationopportunity',\n\tmanifestType: 'model') ~> ADLS\nADLS sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmanifestType: 'manifest',\n\tpreCommands: [],\n\tpostCommands: []) ~> SQL\nADLS sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink1\nADLS sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink2"
+		}
+	}
+}

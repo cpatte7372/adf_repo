@@ -1,0 +1,44 @@
+{
+	"name": "ReportsSL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ReportsSLLinkedSVC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "EntityName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OptionSetName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Option",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsUserLocalizedLabel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LocalizedLabelLanguageCode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LocalizedLabel",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dt_origination"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

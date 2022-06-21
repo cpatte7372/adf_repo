@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-sqlOnDemand--prod-synapse-uks-001",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Synapse/workspaces/prod-synapse-uks-001",
+		"groupId": "sqlOnDemand",
+		"fqdns": [
+			"prod-synapse-uks-001-ondemand.e52c8ab6-b121-4230-90fb-786ac6c216cb.sql.azuresynapse.net"
+		]
+	}
+}

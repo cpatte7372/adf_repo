@@ -1,0 +1,17 @@
+{
+	"name": "ReportsDataset1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ReportsAnalytics",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "reports",
+			"table": "Reports"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

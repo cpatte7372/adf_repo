@@ -1,0 +1,170 @@
+{
+	"name": "InputDataflow_CDM",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "AccountIn"
+				},
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "OriginationOpportunityIn"
+				},
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "MeetingsAppointmentsIn"
+				},
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "ContactsIn"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "AccountStage"
+				},
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "MeetingStageClean"
+				},
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "ContactsStageClean"
+				},
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "OriginationSINK"
+				},
+				{
+					"dataset": {
+						"referenceName": "ReportsDataset1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'account',",
+				"     format: 'cdm',",
+				"     manifestType: 'model',",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> AccountIn",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'ts_originationopportunity',",
+				"     format: 'cdm',",
+				"     manifestType: 'model',",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> OriginationOpportunityIn",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'appointment',",
+				"     format: 'cdm',",
+				"     manifestType: 'model',",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> MeetingsAppointmentsIn",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'contact',",
+				"     format: 'cdm',",
+				"     manifestType: 'model',",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> ContactsIn",
+				"AccountIn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> AccountStage",
+				"MeetingsAppointmentsIn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> MeetingStageClean",
+				"ContactsIn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> ContactsStageClean",
+				"OriginationOpportunityIn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> OriginationSINK",
+				"AccountIn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}

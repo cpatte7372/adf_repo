@@ -1,0 +1,95 @@
+{
+	"name": "DueDil",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "APIPULL1",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "InsightsAzureSynapseAnalytics",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink2"
+				},
+				{
+					"name": "sink3"
+				}
+			],
+			"transformations": [
+				{
+					"name": "MapDrifted1",
+					"description": "Creates an explicit mapping for each drifted column"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'json',",
+				"     fileSystem: 'insights',",
+				"     folderPath: 'duedil',",
+				"     fileName: 'response_1652290300695.json',",
+				"     documentForm: 'singleDocument') ~> source1",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     httpMethod: 'GET',",
+				"     timeout: 30,",
+				"     requestInterval: 0,",
+				"     paginationRules: ['supportRFC5988' -> 'true'],",
+				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> source2",
+				"source1 derive(charitableIdentitiesCount = toString(byName('charitableIdentitiesCount')),",
+				"          companyId = toString(byName('companyId')),",
+				"          countryCode = toString(byName('countryCode')),",
+				"          incorporationCountry = toString(byName('incorporationCountry')),",
+				"          incorporationDate = toString(byName('incorporationDate')),",
+				"          legalEntityIdentifier = toString(byName('legalEntityIdentifier')),",
+				"          name = toString(byName('name')),",
+				"          numberOfEmployees = toString(byName('numberOfEmployees')),",
+				"          officialStatus = toString(byName('officialStatus')),",
+				"          primaryWebsite = toString(byName('primaryWebsite')),",
+				"          simplifiedStatus = toString(byName('simplifiedStatus')),",
+				"          type = toString(byName('type'))) ~> MapDrifted1",
+				"source2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table',",
+				"     store: 'synapseanalytics',",
+				"     schemaName: 'dbo',",
+				"     tableName: 'DueDillAPI',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     recreate: true,",
+				"     allowCopyCommand: true,",
+				"     staged: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink2",
+				"MapDrifted1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1) ~> sink3"
+			]
+		}
+	}
+}

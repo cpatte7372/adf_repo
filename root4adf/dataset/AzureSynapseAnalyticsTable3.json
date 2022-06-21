@@ -1,0 +1,17 @@
+{
+	"name": "AzureSynapseAnalyticsTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ServerLessSQL2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ts_lender"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 39",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Id]\n,[SinkCreatedOn]\n,[SinkModifiedOn]\n,[statecode]\n,[statuscode]\n,[modifiedonbehalfby]\n,[modifiedonbehalfby_entitytype]\n,[createdby]\n,[createdby_entitytype]\n,[organizationid]\n,[organizationid_entitytype]\n,[modifiedby]\n,[modifiedby_entitytype]\n,[createdonbehalfby]\n,[createdonbehalfby_entitytype]\n,[createdbyyominame]\n,[gap_imageurl]\n,[organizationidname]\n,[modifiedbyname]\n,[createdonbehalfbyyominame]\n,[modifiedonbehalfbyyominame]\n,[modifiedbyyominame]\n,[gap_entityschemaname]\n,[createdbyname]\n,[versionnumber]\n,[timezoneruleversionnumber]\n,[gap_powerbioptionsetrefid]\n,[importsequencenumber]\n,[modifiedonbehalfbyname]\n,[gap_optionsetschemaname]\n,[gap_entityname]\n,[gap_language]\n,[gap_value]\n,[modifiedon]\n,[overriddencreatedon]\n,[utcconversiontimezonecode]\n,[createdonbehalfbyname]\n,[createdon]\n,[gap_label]\n FROM [dataverse_montagu_org5a2bcccf].[dbo].[gap_powerbioptionsetref]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dataverse_montagu_org5a2bcccf",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

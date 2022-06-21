@@ -1,0 +1,17 @@
+{
+	"name": "AzureSynapseAnalyticsTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "prod-synapse-uks-001-WorkspaceDefaultSqlServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "enrichedtables"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

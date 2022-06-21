@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 22",
+	"properties": {
+		"content": {
+			"query": "Select * from OriginationOpportunities\n\n\n\nSelect Id, [3dd01a2e-b203-e911-a983-00224800cdc2], [0cc815fa-8759-ea11-a811-000d3a86d68d]\n\n\n\nfrom\n\n\n\n(Select Id as sId, ts_actionstatus, ts_producttype\n\n\n\nfrom OriginationOpportunities as Source_Table)\n\n\n\nPIVOT\n\n\n\n(Max(Id)\n\n\n\nFor\n\n\n\nsId in ([Id], [3dd01a2e-b203-e911-a983-00224800cdc2], [0cc815fa-8759-ea11-a811-000d3a86d68d])\n\n\n\nas Pivot_table",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dataverse_montagu_org5a2bcccf",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

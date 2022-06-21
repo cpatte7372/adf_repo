@@ -1,0 +1,62 @@
+{
+	"name": "Join Choices",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "ServerLessSQL2",
+						"type": "LinkedServiceReference"
+					},
+					"name": "RawSource"
+				},
+				{
+					"linkedService": {
+						"referenceName": "ChoiceDB DataverseEnriched",
+						"type": "LinkedServiceReference"
+					},
+					"name": "ChoiceAnswer"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsTable2",
+						"type": "DatasetReference"
+					},
+					"name": "FullEnriched"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'query',",
+				"     store: 'synapseanalytics',",
+				"     query: 'SELECT \\n    *\\nFROM dataverse_montagu_org5a2bcccf',",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     staged: true) ~> RawSource",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'query',",
+				"     store: 'synapseanalytics',",
+				"     query: 'SELECT DISTINCT TABLE_NAME \\n    FROM INFORMATION_SCHEMA.COLUMNS\\n\\n     TABLE_SCHEMA= \\'DataverseEnriched\\';',",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     staged: true) ~> ChoiceAnswer",
+				"RawSource sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> FullEnriched"
+			]
+		}
+	}
+}

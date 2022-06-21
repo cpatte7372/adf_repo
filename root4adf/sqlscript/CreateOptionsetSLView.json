@@ -1,0 +1,17 @@
+{
+	"name": "CreateOptionsetSLView",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW [dbo].[optionview]\nAS SELECT [EntityName], [OptionSetName], [Option], [IsUserLocalizedLabel], [LocalizedLabelLanguageCode], [LocalizedLabel]\n    FROM OPENROWSET (\n        BULK 'https://prodlakeaccuks01.dfs.core.windows.net/dataverse-montagu-org5a2bcccf/Microsoft.Athena.TrickleFeedService/*-EntityMetadata.json', \n        FORMAT = 'csv',\n        FIELDTERMINATOR ='0x0b',\n        FIELDQUOTE = '0x0b',\n        ROWTERMINATOR = '0x0b'\n    ) WITH (doc nvarchar(max)) AS rows\n    CROSS APPLY OPENJSON(doc, '$.OptionSetMetadata')\n    WITH (\n            [EntityName] nvarchar(4000) '$.EntityName',\n            [OptionSetName] nvarchar(4000) '$.OptionSetName',\n            [Option] int '$.Option',\n            [IsUserLocalizedLabel] nvarchar(4000) '$.IsUserLocalizedLabel',\n            [LocalizedLabelLanguageCode] int '$.LocalizedLabelLanguageCode',\n            [LocalizedLabel] nvarchar(4000) '$.LocalizedLabel'\n    )\n\n\n    ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ReportsSL",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

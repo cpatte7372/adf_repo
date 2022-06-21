@@ -1,0 +1,17 @@
+{
+	"name": "Createview",
+	"properties": {
+		"content": {
+			"query": "\n--CREATE OR ALTER VIEW report_account AS\nSELECT\n[accountid]\n,[parentaccountid]\n,[primarycontactid]\n,[ts_currentauditor]\n,[ts_headofficeid]\n,[ts_originationlead1]\n,[ts_originationlead2]\n,[ts_recommendedby]\n,[ts_validatedby]\n\n\n\n FROM [dataverse_montagu_org5a2bcccf].[dbo].[account]\n\nWHERE statecode = 0\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ReportsSL",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"name": "Notebook 1",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "prodsparksyn",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "98cee8dc-0756-4f18-9269-a6b8359c6b36"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Synapse/workspaces/prod-synapse-uks-001/bigDataPools/prodsparksyn",
+				"name": "prodsparksyn",
+				"type": "Spark",
+				"endpoint": "https://prod-synapse-uks-001.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/prodsparksyn",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 10,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"%%pyspark\n",
+					"spark.sql(\"DROP DATABASE IF EXISTS default CASCADE\")"
+				],
+				"attachments": null,
+				"execution_count": 1
+			}
+		]
+	}
+}

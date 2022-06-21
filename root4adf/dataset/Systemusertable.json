@@ -1,0 +1,17 @@
+{
+	"name": "Systemusertable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ReportsAnalytics",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "systemuser"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 38",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [OptionSetName]\n,[Option]\n,[IsUserLocalizedLabel]\n,[LocalizedLabelLanguageCode]\n,[LocalizedLabel]\n,[GlobalOptionSetName]\n,[EntityName]\n FROM [dataverse_montagu_org5a2bcccf].[dbo].[GlobalOptionsetMetadata]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dataverse_montagu_org5a2bcccf",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

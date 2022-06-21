@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Storage/storageAccounts/prodlakeaccuks01",
+		"groupId": "dfs",
+		"fqdns": [
+			"prodlakeaccuks01.dfs.core.windows.net"
+		]
+	}
+}

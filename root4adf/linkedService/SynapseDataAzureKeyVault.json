@@ -1,0 +1,11 @@
+{
+	"name": "SynapseDataAzureKeyVault",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://MontaguKeyVault.vault.azure.net/"
+		}
+	}
+}

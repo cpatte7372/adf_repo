@@ -1,0 +1,17 @@
+{
+	"name": "Join",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW joined_AddressView AS\n\nSELECT\nid\nFROM dbo.testAccountView v1\nINNER JOIN dbo.tests_AddressView v2\nON v1.id = v2.ts_addressid\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ServerlessP1",
+				"poolName": "Built-in"
+			},
+			"resultLimit": -1
+		},
+		"type": "SqlQuery"
+	}
+}

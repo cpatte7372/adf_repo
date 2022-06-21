@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 31",
+	"properties": {
+		"content": {
+			"query": "SELECT [EntityName]\n,[OptionSetName]\n,[Option]\n,[IsUserLocalizedLabel]\n,[LocalizedLabelLanguageCode]\n,[LocalizedLabel]\n FROM [dbo].[optionview]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ReportsSL",
+				"poolName": "Built-in"
+			},
+			"resultLimit": -1
+		},
+		"type": "SqlQuery"
+	}
+}

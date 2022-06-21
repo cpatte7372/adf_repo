@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 21",
+	"properties": {
+		"content": {
+			"query": "select OptionSetName, OptionId, IsUserLocalizedLabel, LocalizedLabelLanguageCode, LocalizedLabel\nfrom openrowset(bulk 'https://prodlakeaccuks01.dfs.core.windows.net/dataverse_montagu_org5a2bcccf/Microsoft.Athena.TrickleFeedService/*-EntityMetadata.json', \n       FORMAT = 'csv',\n        fieldterminator ='0x0b',\n        fieldquote = '0x0b',\n        rowterminator = '0x0b'\n    ) with (doc nvarchar(max)) AS rows\n    cross apply openjson(doc, '$.OptionSetMetadata')\n    with (\n            OptionSetName nvarchar(4000) '$.OptionSetName',\n            OptionId int '$.Option',\n            IsUserLocalizedLabel nvarchar(4000) '$.IsUserLocalizedLabel',\n            LocalizedLabelLanguageCode int '$.LocalizedLabelLanguageCode',\n            LocalizedLabel nvarchar(4000) '$.LocalizedLabel'\n    )",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dataverse_montagu_org5a2bcccf",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

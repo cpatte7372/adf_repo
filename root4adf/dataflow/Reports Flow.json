@@ -1,0 +1,107 @@
+{
+	"name": "Reports Flow",
+	"properties": {
+		"type": "Flowlet",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "CDMImportAccount"
+				},
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "CDMContact"
+				},
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "CMDImportMeetings"
+				},
+				{
+					"linkedService": {
+						"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "CMDImportOpportunities"
+				},
+				{
+					"name": "CDMSystemUsers"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "DataOut"
+				},
+				{
+					"name": "ContactOutput"
+				},
+				{
+					"name": "Meeting"
+				},
+				{
+					"name": "Opportunities"
+				},
+				{
+					"name": "SystemUser"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'contact',",
+				"     format: 'cdm',",
+				"     manifestType: 'model',",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> CDMImportAccount",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'Contact',",
+				"     format: 'cdm',",
+				"     manifestType: 'manifest',",
+				"     manifestName: 'model.json',",
+				"     local: true,",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> CDMContact",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'appointment',",
+				"     format: 'cdm',",
+				"     manifestType: 'model',",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> CMDImportMeetings",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     entity: 'ts_originationopportunity',",
+				"     format: 'cdm',",
+				"     manifestType: 'model',",
+				"     folderPath: '',",
+				"     fileSystem: 'dataverse-montagu-org5a2bcccf') ~> CMDImportOpportunities",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'synapse',",
+				"     databaseType: 'spark',",
+				"     format: 'table',",
+				"     database: 'dataverse_montagu_org5a2bcccf',",
+				"     tableName: 'systemuser') ~> CDMSystemUsers",
+				"CDMImportAccount output() ~> DataOut",
+				"CDMContact output() ~> ContactOutput",
+				"CMDImportMeetings output() ~> Meeting",
+				"CMDImportOpportunities output() ~> Opportunities",
+				"CDMSystemUsers output() ~> SystemUser"
+			]
+		}
+	}
+}

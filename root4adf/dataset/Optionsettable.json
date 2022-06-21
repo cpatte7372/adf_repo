@@ -1,0 +1,17 @@
+{
+	"name": "Optionsettable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ReportsAnalytics",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "optionset"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "add Purview to Serverless",
+	"properties": {
+		"content": {
+			"query": "CREATE LOGIN [MontaguPurview] FROM EXTERNAL PROVIDER;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "default",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
