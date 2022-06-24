@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "test-ws-synapse-uks-01"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"LB_DBX_EngineeringSml_accessToken": {
+			"value": ""
+		},
+		"LS_ADLS_PRIVATE_DYN_accountKey": {
+			"value": ""
+		},
+		"LS_FIVERR_SQL_AnalyticsHub_connectionString": {
+			"value": ""
+		},
+		"LS_Metadata_SQL_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_AnalyticsHub_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_PretBIReference_connectionString": {
+			"value": ""
+		},
+		"test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://testdatalakeuks01.dfs.core.windows.net"
+		},
+		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net/"
+		},
+		"LS_BLOB_PRIVATE_DYN_sasUri": {
+			"value": ""
+		},
+		"test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://testdatalakeuks01.dfs.core.windows.net"
+		}
+	}
+}
