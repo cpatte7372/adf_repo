@@ -6560,12 +6560,12 @@
 						"folderPath": {
 							"value": "/@{dataset().Directory}",
 							"type": "Expression"
-						},
-						"fileSystem": "root"
+						}
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
+					"nullValue": "techadmin",
 					"quoteChar": "\""
 				},
 				"schema": []
