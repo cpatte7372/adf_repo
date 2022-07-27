@@ -1,0 +1,10 @@
+{
+	"name": "Purviewendpointstest_queue",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/managed-rg-MontaguPurview/providers/Microsoft.Storage/storageAccounts/scanuksouthrpqzvxo",
+		"groupId": "queue",
+		"fqdns": [
+			"scanuksouthrpqzvxo.queue.core.windows.net"
+		]
+	}
+}

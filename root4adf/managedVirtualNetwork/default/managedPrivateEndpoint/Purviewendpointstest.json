@@ -1,0 +1,10 @@
+{
+	"name": "Purviewendpointstest",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/Montagu/providers/Microsoft.Purview/accounts/MontaguPurview",
+		"groupId": "account",
+		"fqdns": [
+			"montagupurview.purview.azure.com"
+		]
+	}
+}

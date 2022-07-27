@@ -1,0 +1,10 @@
+{
+	"name": "Purviewendpointstest_namespace",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/managed-rg-MontaguPurview/providers/Microsoft.EventHub/namespaces/Atlas-d26807bb-c695-4d5e-a987-2852e4651aee",
+		"groupId": "namespace",
+		"fqdns": [
+			"Atlas-d26807bb-c695-4d5e-a987-2852e4651aee.servicebus.windows.net"
+		]
+	}
+}

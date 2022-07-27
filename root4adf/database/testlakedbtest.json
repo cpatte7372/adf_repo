@@ -1,0 +1,27 @@
+{
+	"name": "testlakedbtest",
+	"properties": {
+		"Name": "testlakedbtest",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true,
+			"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"Banking\",\"Version\":\"0.1.0\"}}}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "test-ws-synapse-uks-01-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 2,
+		"ObjectId": "bced27bd-7a78-43e8-870e-7b6c91c7d47b"
+	},
+	"type": "DATABASE"
+}

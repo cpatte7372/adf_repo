@@ -20,8 +20,14 @@
 						"referenceName": "DataverseToParquet",
 						"type": "DataFlowReference",
 						"parameters": {
-							"ContainerName": "\"dataverse-montagu-org5a2bcccf\"",
-							"TableName": "\"ts_country\""
+							"ContainerName": "\"dataverse-testb-unqd627dc8d885044ee87837a5345b30\"",
+							"TableName": "\"ts_fund\""
+						},
+						"datasetParameters": {
+							"Parquet": {
+								"ContainerName": "dataverse-testb-unqd627dc8d885044ee87837a5345b30",
+								"TableName": "ts_fund"
+							}
 						}
 					},
 					"compute": {
@@ -33,7 +39,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2022-03-15T12:56:11Z"
+		"lastPublishTime": "2022-03-14T12:11:56Z"
 	},
 	"type": "Microsoft.Synapse/workspaces/pipelines"
 }

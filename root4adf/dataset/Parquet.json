@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Transforms Dataverse data CSV files to Parquet format in lands the new files in the  Table/Snapshot directory.",
 		"linkedServiceName": {
-			"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+			"referenceName": "test-ws-synapse-uks-01-WorkspaceDefaultStorage",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {

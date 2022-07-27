@@ -1,0 +1,137 @@
+{
+	"name": "AccountStatus",
+	"properties": {
+		"Name": "AccountStatus",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "testlakedbtest",
+			"DatabaseId": null
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "AccountStatusId",
+					"Description": "The unique identifier of an Account Status.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "AccountStatus.cdm.json/AccountStatus",
+						"Name": "AccountStatusId"
+					}
+				},
+				{
+					"Name": "AccountStatusName",
+					"Description": "The name of an Account Status.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "AccountStatus.cdm.json/AccountStatus",
+						"Name": "AccountStatusName"
+					}
+				},
+				{
+					"Name": "AccountStatusDescription",
+					"Description": "The description of an Account Status.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "AccountStatus.cdm.json/AccountStatus",
+						"Name": "AccountStatusDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "9390e2c6-afab-4217-b66d-c04da75b1fe2",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest/AccountStatus",
+					"delimiter": ",",
+					"firstRowAsHeader": "false",
+					"multiLine": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest/AccountStatus",
+				"Properties": {
+					"LinkedServiceName": "test-ws-synapse-uks-01-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"AccountStatusId\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusId\"},\"AccountStatusName\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusName\"},\"AccountStatusDescription\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"AccountStatus\",\"path\":\"AccountStatus.cdm.json/AccountStatus\"},\"description\":\"The status of the associated account.\\n\\nEx:\\n- Current\\n- Past due\\n- 30 days past due\\n- 60 days past due\\n- 90 days past due\\n- In collection\\n- Delinquent\\n- Expired\\n- Over The Limit\\n- In Default\",\"primaryKey\":[\"AccountStatusId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Account Status.\",\"isNullable\":false,\"name\":\"AccountStatusId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusName\"},\"dataType\":\"string\",\"dataTypeLength\":128,\"description\":\"The name of an Account Status.\",\"isNullable\":true,\"name\":\"AccountStatusName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512,\"description\":\"The description of an Account Status.\",\"isNullable\":true,\"name\":\"AccountStatusDescription\"}]}}}",
+			"Description": "The status of the associated account.\n\nEx:\n- Current\n- Past due\n- 30 days past due\n- 60 days past due\n- 90 days past due\n- In collection\n- Delinquent\n- Expired\n- Over The Limit\n- In Default",
+			"DisplayFolderInfo": "{\"name\":\"Customer Credit & Collections\",\"colorCode\":\"#022F22\"}",
+			"PrimaryKeys": "AccountStatusId",
+			"spark.sql.sources.provider": "csv",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"AccountStatusId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"AccountStatusName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"AccountStatusDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}"
+		},
+		"ObjectVersion": 1,
+		"ObjectId": "ea8b3f8e-6f21-4c1d-8727-f311c4d46413",
+		"Description": "The status of the associated account.\n\nEx:\n- Current\n- Past due\n- 30 days past due\n- 60 days past due\n- 90 days past due\n- In collection\n- Delinquent\n- Expired\n- Over The Limit\n- In Default"
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/test-rg-synapse-uks-01/providers/Microsoft.Storage/storageAccounts/testdatalakeuks01",
+		"groupId": "dfs",
+		"fqdns": [
+			"testdatalakeuks01.dfs.core.windows.net"
+		]
+	}
+}
