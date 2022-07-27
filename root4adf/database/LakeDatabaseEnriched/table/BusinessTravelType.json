@@ -1,0 +1,137 @@
+{
+	"name": "BusinessTravelType",
+	"properties": {
+		"Name": "BusinessTravelType",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "LakeDatabaseEnriched",
+			"DatabaseId": null
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "BusinessTravelTypeId",
+					"Description": "The identifier of the business travel type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "BusinessTravelType.cdm.json/BusinessTravelType",
+						"Name": "BusinessTravelTypeId"
+					}
+				},
+				{
+					"Name": "BusinessTravelTypeName",
+					"Description": "The name of the business travel type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "BusinessTravelType.cdm.json/BusinessTravelType",
+						"Name": "BusinessTravelTypeName"
+					}
+				},
+				{
+					"Name": "BusinessTravelTypeDescription",
+					"Description": "The description of the business travel type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "BusinessTravelType.cdm.json/BusinessTravelType",
+						"Name": "BusinessTravelTypeDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "9ab15509-fc16-4c4f-bd4c-49000271a7f8",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://users@prodlakeaccuks01.dfs.core.windows.net/LakeDatabaseEnriched/BusinessTravelType",
+					"delimiter": ",",
+					"firstRowAsHeader": "false",
+					"multiLine": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://users@prodlakeaccuks01.dfs.core.windows.net/LakeDatabaseEnriched/BusinessTravelType",
+				"Properties": {
+					"LinkedServiceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"BusinessTravelTypeId\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeId\"},\"BusinessTravelTypeName\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeName\"},\"BusinessTravelTypeDescription\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"BusinessTravelType\",\"path\":\"BusinessTravelType.cdm.json/BusinessTravelType\"},\"description\":\"The type of business travel.\\n\\nEx:\\n\\n- Air travel\\n-  Rail travel\\n- Bus travel\\n- Automobile trave \\n- Other modes of travel.\",\"primaryKey\":[\"BusinessTravelTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeId\"},\"dataType\":\"integer\",\"description\":\"The identifier of the business travel type.\",\"isNullable\":false,\"name\":\"BusinessTravelTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":128,\"description\":\"The name of the business travel type.\",\"isNullable\":true,\"name\":\"BusinessTravelTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512,\"description\":\"The description of the business travel type.\",\"isNullable\":true,\"name\":\"BusinessTravelTypeDescription\"}]}}}",
+			"Description": "The type of business travel.\n\nEx:\n\n- Air travel\n-  Rail travel\n- Bus travel\n- Automobile trave \n- Other modes of travel.",
+			"DisplayFolderInfo": "{\"name\":\"Emissions\",\"colorCode\":\"#0064C1\"}",
+			"PrimaryKeys": "BusinessTravelTypeId",
+			"spark.sql.sources.provider": "csv",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"BusinessTravelTypeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"BusinessTravelTypeName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"BusinessTravelTypeDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}"
+		},
+		"ObjectVersion": 1,
+		"ObjectId": "f0e85d62-bd0b-417f-a49e-caef16a32366",
+		"Description": "The type of business travel.\n\nEx:\n\n- Air travel\n-  Rail travel\n- Bus travel\n- Automobile trave \n- Other modes of travel."
+	},
+	"type": "TABLE"
+}

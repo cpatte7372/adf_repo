@@ -1,5 +1,5 @@
 {
-	"name": "Create Dataset_Seperatetables",
+	"name": "PH 1 Enrich Data for RAW",
 	"properties": {
 		"activities": [
 			{
@@ -16,26 +16,26 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "PH Full InputDataflow_Split Table",
+						"referenceName": "PH 1 FullEnrich Only",
 						"type": "DataFlowReference"
 					},
 					"staging": {
 						"linkedService": {
-							"referenceName": "ADLSLinkedService",
+							"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
 							"type": "LinkedServiceReference"
 						},
 						"folderPath": "users/stage"
 					},
 					"compute": {
 						"coreCount": 8,
-						"computeType": "General"
+						"computeType": "MemoryOptimized"
 					},
 					"traceLevel": "Fine"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2022-07-04T18:39:33Z"
+		"lastPublishTime": "2022-07-05T11:43:26Z"
 	},
 	"type": "Microsoft.Synapse/workspaces/pipelines"
 }

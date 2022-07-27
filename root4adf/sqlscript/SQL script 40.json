@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 40",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Id]\n,[ts_primarysecondaryfocus]\n,[xpd_relationshipstatus]\n,[ts_introducertype]\n,[xpd_remindermonths]\n,[ts_portfoliocompanystatus]\n,[ts_companytype]\n,[ts_vendorsummary]\n,[xpd_publictoprivatetracker]\n,[xpd_setreminder]\n,[ts_trackcompany]\n,[parentaccountid]\n,[xpd_reminderto]\n,[ts_headofficeid]\n,[ts_originationlead1]\n,[ts_originationlead2]\n,[ts_currentauditor]\n,[ts_othernotes]\n,[xpd_relationshipcomments]\n,[ts_formername]\n,[ts_mpeapproachstrategy]\n,[ts_lastdatestatuschanged]\n,[xpd_relationshipstatuschangeddate]\n,[ts_companylegalname]\n,[ts_companynumber]\n,[ts_monthlyreviewmeetingname]\n,[ts_originationcomments]\n,[ts_capitaliqlink]\n,[xpd_datereminderwasset]\n,[ts_reminderdatesetto]\n,[ts_alias]\n,[xpd_reasonaction]\n,[ts_relevantsituations]\n,[ts_dealstageofmostrecentopportunity]\n,[stateAZLabel]\n,[statusAZLabel]\n,[customertypeAZLabel]\n,[address1_addresstypeAZLabel]\n,[accountclassificationAZLabel]\n,[preferredappointmenttimeAZLabel]\n,[address2_freighttermsAZLabel]\n,[accountcategoryAZLabel]\n,[paymenttermsAZLabel]\n,[preferredappointmentdayAZLabel]\n,[businesstypeAZLabel]\n,[industryAZLabel]\n,[address1_shippingmethodAZLabel]\n,[customersizeAZLabel]\n,[preferredcontactmethodAZLabel]\n,[accountratingAZlabel]\n,[address2_addresstypeAZlabel]\n,[address2_shippingmethodAZlabel]\n,[ownershipAZlabel]\n,[territoryAZlabel]\n,[shippingmethodAZlabel]\n,[address1_freighttermsAZlabel]\n,[AZlabel]\n FROM [dbo].[account]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ReportsDW",
+				"poolName": "ReportsDW"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "LakeDatabaseEnriched",
+	"properties": {
+		"Name": "LakeDatabaseEnriched",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true,
+			"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"Banking\",\"Version\":\"0.1.0\"}}}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://users@prodlakeaccuks01.dfs.core.windows.net/LakeDatabaseEnriched",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "prod-synapse-uks-001-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 2,
+		"ObjectId": "60c5229e-a098-4c61-9de1-615b33e45cfb"
+	},
+	"type": "DATABASE"
+}

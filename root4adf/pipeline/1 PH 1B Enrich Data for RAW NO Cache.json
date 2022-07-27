@@ -1,9 +1,9 @@
 {
-	"name": "Create Dataset_Seperatetables",
+	"name": "1 PH 1B Enrich Data for RAW NO Cache",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "Data flow No Cache",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,26 +16,26 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "PH Full InputDataflow_Split Table",
+						"referenceName": "PH 1 FullEnrich No Cache",
 						"type": "DataFlowReference"
 					},
 					"staging": {
 						"linkedService": {
-							"referenceName": "ADLSLinkedService",
+							"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
 							"type": "LinkedServiceReference"
 						},
 						"folderPath": "users/stage"
 					},
 					"compute": {
 						"coreCount": 8,
-						"computeType": "General"
+						"computeType": "MemoryOptimized"
 					},
 					"traceLevel": "Fine"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2022-07-04T18:39:33Z"
+		"lastPublishTime": "2022-07-08T08:54:57Z"
 	},
 	"type": "Microsoft.Synapse/workspaces/pipelines"
 }

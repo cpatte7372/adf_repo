@@ -1,5 +1,5 @@
 {
-	"name": "Create Dataset_Seperatetables",
+	"name": "2 PH 2 BA Joins",
 	"properties": {
 		"activities": [
 			{
@@ -16,12 +16,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "PH Full InputDataflow_Split Table",
+						"referenceName": "PH 4 BA Activity DatasetReports",
 						"type": "DataFlowReference"
 					},
 					"staging": {
 						"linkedService": {
-							"referenceName": "ADLSLinkedService",
+							"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
 							"type": "LinkedServiceReference"
 						},
 						"folderPath": "users/stage"
@@ -35,7 +35,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2022-07-04T18:39:33Z"
+		"lastPublishTime": "2022-07-05T15:31:12Z"
 	},
 	"type": "Microsoft.Synapse/workspaces/pipelines"
 }

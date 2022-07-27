@@ -1,9 +1,9 @@
 {
-	"name": "Create Dataset_Seperatetables",
+	"name": "1 PH 1A Enriched Dataset Seperate Tables",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "PrimaryEnrichment",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -27,15 +27,15 @@
 						"folderPath": "users/stage"
 					},
 					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
+						"coreCount": 16,
+						"computeType": "MemoryOptimized"
 					},
-					"traceLevel": "Fine"
+					"traceLevel": "Coarse"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2022-07-04T18:39:33Z"
+		"lastPublishTime": "2022-07-05T11:40:17Z"
 	},
 	"type": "Microsoft.Synapse/workspaces/pipelines"
 }

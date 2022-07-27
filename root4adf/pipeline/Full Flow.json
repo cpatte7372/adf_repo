@@ -1,0 +1,208 @@
+{
+	"name": "Full Flow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Raw Staging",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Serverless Join Read",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "PH 1 FullEnrich No Cache",
+						"type": "DataFlowReference"
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "users/stage"
+					},
+					"compute": {
+						"coreCount": 16,
+						"computeType": "MemoryOptimized"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Curated",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Raw Staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "PH 4 BA Activity DatasetReports",
+						"type": "DataFlowReference"
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "users/stage"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine",
+					"sourceStagingConcurrency": 1
+				}
+			},
+			{
+				"name": "Serverless Join Read",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "prod-synapse-uks-001-WorkspaceDefaultSqlServer",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DBName": "dataverse_montagu_org5a2bcccf"
+					}
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "NonQuery",
+							"text": "\r\nUSE [dataverse_montagu_org5a2bcccf] --Specify the name of the database corresponding to your Synapse Link for Dataverse\r\n\r\n--=================================================================================================\r\n--PROVIDE INPUT PARAMETERS:\r\n--=================================================================================================\r\nDECLARE\r\n\t@EnrichedViewDatabase sysname, --Specify the name of the database in which views with enriched entities will be created\r\n\t@EnrichedViewSchema sysname, --Specify the name of the database schema in which views with enriched entities will be created\r\n\t@EnrichedColumnSuffix varchar(50), \t--Specify the suffix for columns enriched with human-readable descriptions. For example, the suffix of \"label\" will change a statecode column in the base table to a statelabel column in the enriched view.\r\n\t@LanguageCode varchar(10), --Specify the language code for localized labels. For example, English - United States is 1033 (https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a)\r\n\t@BaseTableSuffix varchar(50), --If applicable, specify the suffix in the names of the base tables or views (e.g., '_partitiond'). The default is an empty string.\r\n\t@PreviewOnly bit --Indicate whether to preview the SQL Script (without creating the views) = 1 ; Create views = 0;\r\n\r\nSET @EnrichedViewDatabase = 'DataverseEnriched'\r\nSET @EnrichedViewSchema = 'dbo'\r\nSET @EnrichedColumnSuffix = ''\r\nSET @LanguageCode = 1033\r\nSET @BaseTableSuffix = ''\r\nSET @PreviewOnly = 0\r\n\r\n--=================================================================================================\r\n-- Do not edit the script below this point\r\n--=================================================================================================\r\n\r\n--Get column metadata from the Lake Database managed by Synapse Link for Dataverse\r\n--The column metadata will be stored as a JSON document in a scalar variable\r\n--This is needed as a workaround for the limitation of not allowing system objects to be used in distributed queries\r\nDECLARE @ColumnMetadata nvarchar(MAX), @ColumnMetadataSQL nvarchar(MAX)\r\n\r\n--Define the SQL statement to retrieve column metadata from the Lake Database managed by Synapse Link for Dataverse\r\n--Results will be stored as a JSON document in a variable\r\nSET @ColumnMetadataSQL = 'SET @ColumnMetadataOUT = (\r\nSELECT TABLE_SCHEMA, \r\n\tTABLE_NAME, \r\n\tCOLUMN_NAME, \r\n\tORDINAL_POSITION, \r\n\tDATA_TYPE\r\nFROM INFORMATION_SCHEMA.COLUMNS \r\nWHERE TABLE_SCHEMA = ''dbo''\r\n\tAND TABLE_NAME NOT IN (''OptionsetMetadata'', ''GlobalOptionsetMetadata'',''StateMetadata'',''StatusMetadata'', ''TargetMetadata'')\r\n\tAND TABLE_NAME LIKE ''%' + @BaseTableSuffix + '''\r\nFOR JSON AUTO)'\r\nDECLARE @ParmDefinition NVARCHAR(MAX);  \r\nSET @ParmDefinition = N'@ColumnMetadataOUT NVARCHAR(MAX) OUTPUT';  \r\nEXECUTE sp_executesql @ColumnMetadataSQL, @ParmDefinition, @ColumnMetadataOUT=@ColumnMetadata OUTPUT;  \r\n\r\n--Declare a variable to store a SQL statement for creating enriched views\r\nDECLARE @SQL nvarchar(MAX) = ''\r\n\r\n; WITH CM AS (\r\n--Parse column metadata variable and construct a table based on its content\r\nSELECT JSON_VALUE(CM.value, '$.TABLE_SCHEMA') AS TableSchema,\r\n\t JSON_VALUE(CM.value, '$.TABLE_NAME') AS TableName,\r\n\t LEFT(JSON_VALUE(CM.value, '$.TABLE_NAME'), LEN(JSON_VALUE(CM.value, '$.TABLE_NAME'))-LEN(@BaseTableSuffix)) AS EntityName,\r\n\t JSON_VALUE(CM.value, '$.COLUMN_NAME') AS ColumnName,\r\n\t CAST(JSON_VALUE(CM.value, '$.ORDINAL_POSITION') AS INT) AS OrdinalPosition,\r\n\t JSON_VALUE(CM.value, '$.DATA_TYPE') AS DataType\r\nFROM OPENJSON (@ColumnMetadata) AS CM\r\n)\r\n\r\n, OSM AS (\r\n--Get Option Set Metadata\r\nSELECT DISTINCT \r\n\tEntityName, \r\n\tOptionSetName, \r\n\tQUOTENAME(EntityName + '_' + OptionSetName) AS Alias\r\nFROM dbo.[OptionsetMetadata]\r\nWHERE LocalizedLabelLanguageCode = @LanguageCode\r\n)\r\n\r\n, GOSM AS (\r\n--Get Global Option Set Metadata\r\nSELECT DISTINCT \r\n\tOptionSetName, \r\n\tQUOTENAME('Global_' + OptionSetName) AS Alias\r\nFROM dbo.[GlobalOptionsetMetadata]\r\nWHERE LocalizedLabelLanguageCode = @LanguageCode\r\n)\r\n\r\n, StateM AS (\r\n--Get State Metadata\r\nSELECT DISTINCT \r\n\tEntityName, \r\n\tQUOTENAME(EntityName + '_State') AS Alias\r\nFROM dbo.[StateMetadata]\r\nWHERE LocalizedLabelLanguageCode = @LanguageCode\r\n)\r\n\r\n, StatusM AS (\r\n--Get Status Metadata\r\nSELECT DISTINCT \r\n\tEntityName,\r\n\tQUOTENAME(EntityName + '_Status') AS Alias\r\nFROM dbo.[StatusMetadata]\r\nWHERE LocalizedLabelLanguageCode = @LanguageCode\r\n)\r\n\r\n, SQLStatement AS (\r\n--Enumerate all lines in the source table and replace codes with labels where applicable\r\nSELECT CM.EntityName,\r\n\t--Before the first column of each table, construct a CREATE OR ALTER VIEW statement\r\n\tCASE WHEN CM.OrdinalPosition = 1\r\n\t\tTHEN 'CREATE OR ALTER VIEW ' + QUOTENAME(@EnrichedViewSchema) + '.' + CM.EntityName + '\r\n\t\tAS\r\n\t\tSELECT '\r\n\t\tELSE '\t,'\r\n\t\tEND\r\n\t--For each column, check if it needs to be replaced with a suitable localized label\r\n\t+ CASE \r\n\t\tWHEN OSM.OptionSetName IS NOT NULL THEN OSM.Alias + '.[LocalizedLabel] AS ' + REPLACE(QUOTENAME(CM.ColumnName), 'code]', @EnrichedColumnSuffix + ']')\r\n\t\tWHEN GOSM.OptionSetName IS NOT NULL THEN GOSM.Alias + '.[LocalizedLabel] AS ' + REPLACE(QUOTENAME(CM.ColumnName), 'code]', @EnrichedColumnSuffix + ']')\r\n\t\tWHEN StateM.EntityName IS NOT NULL THEN StateM.Alias + '.[LocalizedLabel] AS ' + REPLACE(QUOTENAME(CM.ColumnName), 'code]', @EnrichedColumnSuffix + ']')\r\n\t\tWHEN StatusM.EntityName IS NOT NULL THEN StatusM.Alias + '.[LocalizedLabel] AS ' + REPLACE(QUOTENAME(CM.ColumnName), 'code]', @EnrichedColumnSuffix + ']')\r\n\t\tELSE '[Base].' + QUOTENAME(CM.ColumnName)\r\n\t\tEND AS [SQLLine],\r\n\tCM.OrdinalPosition\r\nFROM CM \r\n\tLEFT JOIN OSM\r\n\t\tON CM.EntityName = OSM.EntityName\r\n\t\tAND CM.ColumnName = OSM.OptionSetName\r\n\t\tAND CM.DataType LIKE '%int' --Only include columns with integer data type\r\n\tLEFT JOIN GOSM\r\n\t\tON CM.ColumnName = GOSM.OptionSetName\r\n\t\tAND CM.DataType LIKE '%int' --Only include columns with integer data type\r\n\tLEFT JOIN StateM\r\n\t\tON CM.EntityName = StateM.EntityName\r\n\t\tAND CM.ColumnName = 'statecode'\r\n\t\tAND CM.DataType LIKE '%int' --Only include columns with integer data type\r\n\tLEFT JOIN StatusM\r\n\t\tON CM.EntityName = StatusM.EntityName\r\n\t\tAND CM.ColumnName = 'statuscode'\r\n\t\tAND CM.DataType LIKE '%int' --Only include columns with integer data type\r\n\r\nUNION ALL\r\n--Construct the first line of the FROM clause, referencing external tables created by Synapse Link for Dataverse\r\nSELECT DISTINCT\r\nCM.EntityName,\r\n'FROM ' + QUOTENAME(DB_NAME()) + '.' + QUOTENAME(CM.TableSchema) + '.' + QUOTENAME(CM.TableName) + ' AS Base' AS SQLLine,\r\n10000 AS OrdinalPosition\r\nFROM CM\r\n\r\nUNION ALL \r\n--Construct LEFT JOIN statements for each relevant OptionSetMetadata field\r\nSELECT DISTINCT OSM.EntityName AS EntityName,\r\n'\tLEFT JOIN ' + QUOTENAME(DB_NAME()) + '.[dbo].[OptionSetMetadata] AS ' + OSM.Alias + ' \r\n\t\tON ' + OSM.Alias + '.EntityName = ''' + OSM.EntityName + ''' \r\n\t\tAND ' + OSM.Alias + '.OptionSetName = ''' +  OSM.OptionSetName + '''\r\n\t\tAND [Base].' + QUOTENAME(OSM.OptionSetName) + ' = ' + OSM.Alias + '.[Option]\r\n\t\tAND ' + OSM.Alias + '.LocalizedLabelLanguageCode = ' + @LanguageCode + '' AS SQLLine,\r\n20000 AS OrdinalPosition\r\nFROM OSM\r\n\tJOIN CM\r\n\t\tON CM.EntityName = OSM.EntityName\r\n\t\tAND CM.ColumnName = OSM.OptionSetName\r\nWHERE CM.DataType LIKE '%int' --Only capture columns with Integer Data Types\r\n\r\nUNION ALL \r\n--Construct LEFT JOIN statements for each relevant GlobalOptionSetMetadata field\r\nSELECT DISTINCT CM.EntityName AS EntityName,\r\n'\tLEFT JOIN ' + QUOTENAME(DB_NAME()) + '.[dbo].[GlobalOptionSetMetadata] AS ' + Alias + ' \r\n\t\tON ' + Alias + '.OptionSetName = ''' +  OptionSetName + '''\r\n\t\tAND [Base].' + QUOTENAME(OptionSetName) + ' = ' + Alias + '.[Option]\r\n\t\tAND ' + Alias + '.LocalizedLabelLanguageCode = ' + @LanguageCode + '' AS SQLLine,\r\n30000 AS OrdinalPosition\r\nFROM GOSM\r\n\tJOIN CM\r\n\t\tON CM.ColumnName = GOSM.OptionSetName\r\nWHERE CM.DataType LIKE '%int' --Only capture columns with Integer Data Types\r\n\r\nUNION ALL \r\n--Construct LEFT JOIN statements for each relevant State Metadata field\r\nSELECT DISTINCT CM.EntityName AS EntityName,\r\n'\tLEFT JOIN ' + QUOTENAME(DB_NAME()) + '.[dbo].[StateMetadata] AS ' + StateM.Alias + ' \r\n\t\tON ' + StateM.Alias + '.EntityName = ''' + StateM.EntityName + ''' \r\n\t\tAND [Base].statecode' + ' = ' + StateM.Alias + '.[State]\r\n\t\tAND ' + StateM.Alias + '.LocalizedLabelLanguageCode = ' + @LanguageCode + '' AS SQLLine,\r\n40000 AS OrdinalPosition\r\nFROM StateM\r\n\tJOIN CM\r\n\t\tON CM.EntityName = StateM.EntityName\r\n\t\tAND CM.ColumnName = 'statecode'\r\nWHERE CM.DataType LIKE '%int' --Only capture columns with Integer Data Types\r\n\r\nUNION ALL\r\n--Construct LEFT JOIN statements for each relevant Status Metadata field\r\nSELECT DISTINCT CM.EntityName AS EntityName,\r\n'\tLEFT JOIN ' + QUOTENAME(DB_NAME()) + '.[dbo].[StatusMetadata] AS ' + StatusM.Alias + ' \r\n\t\tON ' + StatusM.Alias + '.EntityName = ''' + StatusM.EntityName + ''' \r\n\t\tAND [Base].statuscode' + ' = ' + StatusM.Alias + '.[Status]\r\n\t\tAND ' + StatusM.Alias + '.LocalizedLabelLanguageCode = ' + @LanguageCode + '' AS SQLLine,\r\n40000 AS OrdinalPosition\r\nFROM StatusM\r\n\tJOIN CM\r\n\t\tON CM.EntityName = StatusM.EntityName\r\n\t\tAND CM.ColumnName = 'statuscode'\r\nWHERE CM.DataType LIKE '%int' --Only capture columns with Integer Data Types\r\n\r\nUNION ALL\r\n--Add statement terminator\r\nSELECT DISTINCT\r\nEntityName,\r\n'; ' + CHAR(10) AS SQLLine,\r\n100000 AS OrdinalPosition\r\nFROM CM\r\n)\r\n\r\n--Construct individual statements to create views (1 view per row)\r\n--Since CREATE VIEW statement must be the first statement in a batch, assign each view definition to a variable \r\n--and use the EXEC(@variable) command to create view as part of its own, separate batch.\r\n, ViewDefinitions AS (\r\nSELECT 'DECLARE @' + EntityName + ' NVARCHAR(MAX) = ''\r\n\t' + REPLACE(STRING_AGG(CAST(SQLLine as varchar(MAX)), CHAR(10)) WITHIN GROUP (ORDER BY EntityName, OrdinalPosition, SQLLine), '''', '''''') + ''' ' + CHAR(10) + 'EXEC [' + @EnrichedViewDatabase + '].dbo.sp_executesql @' + EntityName + CHAR(10) AS ViewDefinition\r\nFROM SQLStatement\r\nGROUP BY EntityName\r\n)\r\n\r\n--Construct a comprehensive SQL statement to create all views\r\nSELECT @SQL = STRING_AGG(ViewDefinition, ';' + CHAR(10) + CHAR(10))\r\nFROM ViewDefinitions\r\n\r\n--Return a preview of the SQL Script to be generated or go ahead and create the views.\r\nIF @PreviewOnly = 1\r\nBEGIN\r\n\t--Return the final SQL statement\r\n\tSELECT '--================================================================================================='+ CHAR(10) +' ' + CHAR(10) AS [--SQL Statement]\r\n\tUNION ALL \r\n\tSELECT '-- A preview of the script to generate enriched views is provided below.'  AS [--SQL Statement]\r\n\tUNION ALL \r\n\tSELECT '-- No database objects have been created.' AS [--SQL Statement]\r\n\tUNION ALL \r\n\tSELECT '-- Re-run this script with the @PreviewOnly parameter set to 0 to actually create the views.' AS [--SQL Statement]\r\n\tUNION ALL \r\n\tSELECT '--================================================================================================='+ CHAR(10) +' ' + CHAR(10) AS [--SQL Statement]\r\n\tUNION ALL \r\n\tSELECT VALUE AS [--SQL Statement] FROM STRING_SPLIT(@SQL, CHAR(10))\r\nEND\r\nELSE\r\nBEGIN\r\n\t--Execute the SQL statement\r\n\tPRINT 'Beginning view creation'\r\n\tEXEC sp_executesql @SQL\r\n\tPRINT 'Completed view creation'\r\nEND"
+						}
+					]
+				}
+			},
+			{
+				"name": "Data Set A",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Curated",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "test",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Potential Filter Based on Office",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Curated",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "test",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Data Set B",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Curated",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "test",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-07-12T14:14:47Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

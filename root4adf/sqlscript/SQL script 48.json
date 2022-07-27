@@ -1,13 +1,13 @@
 {
-	"name": "SQL script 36",
+	"name": "SQL script 48",
 	"properties": {
 		"content": {
-			"query": "select count(*) from systemuser",
+			"query": "",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "dataverse_montagu_org5a2bcccf",
+				"databaseName": "LakeDatabaseEnriched",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 42",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Id]\n,[ts_actionstatus]\n,[ts_producttype]\n,[ts_internalintermediarysource]\n,[ts_currentactivity]\n,[ts_opportunitystatus]\n,[ts_montaguprimaryoffice]\n,[ts_opportunitytype]\n,[ts_posthumstatus]\n,[ts_choppedreason]\n,[ts_duplicateopportunityfordiscussion]\n,[mpe_smalltarget]\n,[xpd_includeonallpapers]\n,[ts_sold]\n,[xpd_sharepointlocationcreated]\n,[ts_buyer]\n,[mpe_productid]\n,[ts_targetbusiness]\n,[ts_firstreferralcompany]\n,[ts_montaguowner]\n,[ts_firstreferralcontact]\n,[transactioncurrencyid]\n,[ts_managerwedback]\n,[ts_country]\n,[ownerid]\n,[ts_estebitda]\n,[ts_estebit]\n,[ts_estdealsize]\n,[ts_estturnover]\n,[ts_nextsteps]\n,[ts_buyerpaidxltmebitda]\n,[ts_opportunitystage]\n,[ts_choppedcomments]\n,[ts_datedealannounced]\n,[ts_name]\n,[ts_weofferedxltmebitda]\n,[ts_companyid]\n,[ts_choppeddate]\n,[mpe_carveout]\n,[mpe_targetbusiness_parentid]\n,[stateAZlabel]\n,[statusAZlabel]\n FROM [dbo].[OriginationOpportunities]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ReportsDW",
+				"poolName": "ReportsDW"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

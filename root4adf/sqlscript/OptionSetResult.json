@@ -1,0 +1,17 @@
+{
+	"name": "OptionSetResult",
+	"properties": {
+		"content": {
+			"query": "SELECT\n   ts_primarysecondaryfocus\n  ,ts_easeofworking\n  ,ts_ukrow,donotphone\n  ,businesstypecode\n  ,industrycode\n  ,preferredappointmenttimecode\n  ,address2_freighttermscode\n  ,ts_introducertype\n  ,accountcategorycode\n  ,paymenttermscode\n  ,preferredappointmentdaycode\n  ,donotemail\n  ,ts_primarysecondaryfocus\n  ,customertypecode\n  ,address1_addresstypecode\n  ,accountclassificationcode\n  ,ts_ukrow\nFROM dbo.account\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ServerlessP1",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

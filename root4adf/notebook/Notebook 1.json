@@ -4,7 +4,7 @@
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"bigDataPool": {
-			"referenceName": "testsynapsespk",
+			"referenceName": "prodsparksyn",
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
@@ -12,13 +12,13 @@
 			"driverCores": 4,
 			"executorMemory": "28g",
 			"executorCores": 4,
-			"numExecutors": 2,
+			"numExecutors": 1,
 			"runAsWorkspaceSystemIdentity": false,
 			"conf": {
-				"spark.dynamicAllocation.enabled": "false",
-				"spark.dynamicAllocation.minExecutors": "2",
-				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "adb7a244-582c-41d5-b4dd-cdc0916753c3"
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "98cee8dc-0756-4f18-9269-a6b8359c6b36"
 			}
 		},
 		"metadata": {
@@ -35,10 +35,10 @@
 				"name": "python"
 			},
 			"a365ComputeOptions": {
-				"id": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/test-rg-synapse-uks-01/providers/Microsoft.Synapse/workspaces/test-ws-synapse-uks-01/bigDataPools/testsynapsespk",
-				"name": "testsynapsespk",
+				"id": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Synapse/workspaces/prod-synapse-uks-001/bigDataPools/prodsparksyn",
+				"name": "prodsparksyn",
 				"type": "Spark",
-				"endpoint": "https://test-ws-synapse-uks-01.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/testsynapsespk",
+				"endpoint": "https://prod-synapse-uks-001.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/prodsparksyn",
 				"auth": {
 					"type": "AAD",
 					"authResource": "https://dev.azuresynapse.net",
@@ -47,7 +47,8 @@
 				"sparkVersion": "3.1",
 				"nodeCount": 10,
 				"cores": 4,
-				"memory": 28
+				"memory": 28,
+				"extraHeader": null
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -55,17 +56,11 @@
 			{
 				"cell_type": "code",
 				"source": [
-					"cdsstorageaccountname = \"https://testdatalakeuks01.dfs.core.windows.net/\"\r\n",
-					"cdscontainer = \"dataverse-testb-unqd627dc8d885044ee87837a5345b30\"\r\n",
-					"\r\n",
-					"accountDF = spark.read.format(\"com.microsoft.cdm\") \\\r\n",
-					".option(\"storage\", cdsstorageaccountname) \\\r\n",
-					".option(\"manifestPath\", cdsContainer + \"/model.json\") \\\r\n",
-					".option(\"entity\", \"account\") \\\r\n",
-					".load()"
+					"%%pyspark\n",
+					"spark.sql(\"DROP DATABASE IF EXISTS default CASCADE\")"
 				],
 				"attachments": null,
-				"execution_count": 28
+				"execution_count": 1
 			}
 		]
 	}

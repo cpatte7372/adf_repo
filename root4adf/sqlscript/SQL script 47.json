@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 47",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Id_YouHaveChanged]\n,[ts_primarysecondaryfocus_No_you_have]\n,[xpd_relationshipstatus]\n,[ts_introducertype]\n,[xpd_remindermonths]\n,[ts_portfoliocompanystatus]\n,[ts_companytype]\n,[ts_vendorsummary]\n,[xpd_publictoprivatetracker]\n,[xpd_setreminder]\n,[ts_trackcompany]\n,[parentaccountid]\n,[xpd_reminderto]\n,[ts_headofficeid]\n,[ts_originationlead1]\n,[ts_originationlead2]\n,[ts_currentauditor]\n,[ts_othernotes]\n,[xpd_relationshipcomments]\n,[ts_formername]\n,[ts_mpeapproachstrategy]\n,[ts_lastdatestatuschanged]\n,[xpd_relationshipstatuschangeddate]\n,[ts_companylegalname]\n,[ts_companynumber]\n,[ts_monthlyreviewmeetingname]\n,[ts_originationcomments]\n,[ts_capitaliqlink]\n,[xpd_datereminderwasset]\n,[ts_reminderdatesetto]\n,[ts_alias]\n,[xpd_reasonaction]\n,[ts_relevantsituations]\n,[ts_dealstageofmostrecentopportunity]\n FROM [dbo].[accountENRICHEDFinal]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "DedicatedSQLPool",
+				"poolName": "DedicatedSQLPool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
