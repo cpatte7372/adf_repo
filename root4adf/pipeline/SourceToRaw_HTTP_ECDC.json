@@ -111,7 +111,7 @@
 					"sink": {
 						"type": "BinarySink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobFSWriteSettings"
 						}
 					},
 					"enableStaging": false
@@ -124,15 +124,11 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
+						"referenceName": "DS_ALDS_RAW_BINARY",
 						"type": "DatasetReference",
 						"parameters": {
-							"Path": {
-								"value": "@pipeline().parameters.Path",
-								"type": "Expression"
-							},
-							"Container": {
-								"value": "@pipeline().parameters.PathRoute",
+							"Directory": {
+								"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
 								"type": "Expression"
 							}
 						}
