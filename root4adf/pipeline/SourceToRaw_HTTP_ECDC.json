@@ -1,5 +1,5 @@
 {
-	"name": "SourceToRaw_HTTP_ECDC_PUTBACK",
+	"name": "SourceToRaw_HTTP_ECDC",
 	"properties": {
 		"activities": [
 			{

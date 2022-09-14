@@ -215,10 +215,6 @@
 												"dependsOn": [],
 												"userProperties": [],
 												"typeProperties": {
-													"pipeline": {
-														"referenceName": "SourceToRaw_HTTP_ECDC",
-														"type": "PipelineReference"
-													},
 													"waitOnCompletion": true,
 													"parameters": {
 														"TableName": {
@@ -295,10 +291,6 @@
 												"dependsOn": [],
 												"userProperties": [],
 												"typeProperties": {
-													"pipeline": {
-														"referenceName": "SourceToRaw_HTTP_ECDC",
-														"type": "PipelineReference"
-													},
 													"waitOnCompletion": true,
 													"parameters": {
 														"TableName": {
@@ -374,10 +366,6 @@
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
-											"pipeline": {
-												"referenceName": "SourceToRaw_HTTP_ECDC",
-												"type": "PipelineReference"
-											},
 											"waitOnCompletion": true,
 											"parameters": {
 												"TableName": {
