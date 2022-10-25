@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": "51"
+								"value": "19"
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -536,11 +536,11 @@
 			},
 			"Area": {
 				"type": "string",
-				"defaultValue": "F1Area"
+				"defaultValue": "sqlArea"
 			},
 			"Domain": {
 				"type": "string",
-				"defaultValue": "F1Domain"
+				"defaultValue": "reference"
 			}
 		},
 		"folder": {
