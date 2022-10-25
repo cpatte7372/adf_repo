@@ -200,6 +200,10 @@
 														"Area": {
 															"value": "@item().Area",
 															"type": "Expression"
+														},
+														"BusinessDomain": {
+															"value": "@item().BusinessDomain",
+															"type": "Expression"
 														}
 													}
 												}
@@ -539,8 +543,11 @@
 				"defaultValue": "sqlArea"
 			},
 			"Domain": {
+				"type": "string"
+			},
+			"BusinessDomain": {
 				"type": "string",
-				"defaultValue": "reference"
+				"defaultValue": "StarKis"
 			}
 		},
 		"folder": {
