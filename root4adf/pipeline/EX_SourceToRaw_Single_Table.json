@@ -356,6 +356,9 @@
 			},
 			"Area": {
 				"type": "string"
+			},
+			"BusinessDomain": {
+				"type": "string"
 			}
 		},
 		"folder": {
