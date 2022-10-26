@@ -537,7 +537,7 @@
 			},
 			"Area": {
 				"type": "string",
-				"defaultValue": "sqlArea"
+				"defaultValue": "F1Area"
 			},
 			"Domain": {
 				"type": "string"
