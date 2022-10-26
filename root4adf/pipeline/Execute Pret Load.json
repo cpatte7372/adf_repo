@@ -45,6 +45,12 @@
 						"Stage": {
 							"value": "Raw",
 							"type": "String"
+						},
+						"BusinessDomain": {
+							"value": {
+								"value": "@pipeline().parameters.BusinessDomain",
+								"type": "Expression"
+							}
 						}
 					}
 				},
@@ -98,15 +104,18 @@
 			},
 			"Area": {
 				"type": "string",
-				"defaultValue": "F1Area"
+				"defaultValue": "sqlArea2"
 			},
 			"Domain": {
-				"type": "string",
-				"defaultValue": "F1Domain"
+				"type": "string"
 			},
 			"Region": {
 				"type": "string",
 				"defaultValue": "-2"
+			},
+			"BusinessDomain": {
+				"type": "string",
+				"defaultValue": "StarKis"
 			}
 		},
 		"annotations": [],
