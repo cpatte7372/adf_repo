@@ -200,6 +200,10 @@
 														"Area": {
 															"value": "@item().Area",
 															"type": "Expression"
+														},
+														"BusinessDomain": {
+															"value": "@item().BusinessDomain",
+															"type": "Expression"
 														}
 													}
 												}
