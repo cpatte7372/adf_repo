@@ -98,18 +98,15 @@
 			},
 			"Area": {
 				"type": "string",
-				"defaultValue": "sqlArea2"
+				"defaultValue": "F1Area"
 			},
 			"Domain": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "F1Domain"
 			},
 			"Region": {
 				"type": "string",
 				"defaultValue": "-2"
-			},
-			"BusinessDomain": {
-				"type": "string",
-				"defaultValue": "StarKis"
 			}
 		},
 		"annotations": [],
