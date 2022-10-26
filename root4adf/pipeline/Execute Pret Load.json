@@ -24,6 +24,13 @@
 							},
 							"type": "String"
 						},
+						"Domain": {
+							"value": {
+								"value": "@pipeline().parameters.Domain",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
 						"Months": {
 							"value": null,
 							"type": "Int32"
@@ -42,13 +49,6 @@
 						"BusinessDomain": {
 							"value": {
 								"value": "@pipeline().parameters.BusinessDomain",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"Domain": {
-							"value": {
-								"value": "@pipeline().parameters.Domain",
 								"type": "Expression"
 							},
 							"type": "String"
