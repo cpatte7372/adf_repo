@@ -45,6 +45,13 @@
 								"type": "Expression"
 							},
 							"type": "String"
+						},
+						"Domain": {
+							"value": {
+								"value": "@pipeline().parameters.Domain",
+								"type": "Expression"
+							},
+							"type": "String"
 						}
 					}
 				},
@@ -87,6 +94,10 @@
 						"Region": {
 							"value": "@pipeline().parameters.Region",
 							"type": "Expression"
+						},
+						"BusinessDomain": {
+							"value": "@pipeline().parameters.BusinessDomain",
+							"type": "Expression"
 						}
 					}
 				}
@@ -107,6 +118,9 @@
 			"BusinessDomain": {
 				"type": "string",
 				"defaultValue": "StarKis"
+			},
+			"Domain": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
