@@ -24,13 +24,6 @@
 							},
 							"type": "String"
 						},
-						"Domain": {
-							"value": {
-								"value": "@pipeline().parameters.Domain",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
 						"Months": {
 							"value": null,
 							"type": "Int32"
@@ -106,9 +99,6 @@
 			"Area": {
 				"type": "string",
 				"defaultValue": "sqlArea2"
-			},
-			"Domain": {
-				"type": "string"
 			},
 			"Region": {
 				"type": "string",
