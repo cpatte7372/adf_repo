@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": "10"
+								"value": "54"
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -533,11 +533,11 @@
 			},
 			"Area": {
 				"type": "string",
-				"defaultValue": "CRM"
+				"defaultValue": "sqlArea"
 			},
 			"Domain": {
 				"type": "string",
-				"defaultValue": "dbo"
+				"defaultValue": "reference"
 			}
 		},
 		"folder": {
