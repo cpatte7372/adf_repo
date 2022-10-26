@@ -61,7 +61,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM ',pipeline().parameters.Domain,'.',pipeline().parameters.TableName)",
+							"value": "@concat('SELECT * FROM ',pipeline().parameters.BusinessDomain,'.',pipeline().parameters.TableName)",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
