@@ -130,33 +130,13 @@
 				"inputs": [
 					{
 						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
-						"type": "DatasetReference",
-						"parameters": {
-							"Path": {
-								"value": "@pipeline().parameters.Path",
-								"type": "Expression"
-							},
-							"Container": {
-								"value": "@pipeline().parameters.PathRoute",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
-						"type": "DatasetReference",
-						"parameters": {
-							"Path": {
-								"value": "@concat(pipeline().parameters.Path,'/Archive')",
-								"type": "Expression"
-							},
-							"Container": {
-								"value": "@pipeline().parameters.PathRoute",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			},
@@ -209,29 +189,13 @@
 				"inputs": [
 					{
 						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
-						"type": "DatasetReference",
-						"parameters": {
-							"Path": {
-								"value": "@pipeline().parameters.Path",
-								"type": "Expression"
-							},
-							"Container": {
-								"value": "@pipeline().parameters.PathRoute",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "DS_ALDS_RAW_BINARY",
-						"type": "DatasetReference",
-						"parameters": {
-							"Directory": {
-								"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			},
