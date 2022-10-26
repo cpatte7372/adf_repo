@@ -111,16 +111,16 @@
 				"type": "string",
 				"defaultValue": "sqlArea2"
 			},
+			"Domain": {
+				"type": "string"
+			},
 			"Region": {
 				"type": "string",
-				"defaultValue": "-2"
+				"defaultValue": "-1"
 			},
 			"BusinessDomain": {
 				"type": "string",
 				"defaultValue": "StarKis"
-			},
-			"Domain": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
