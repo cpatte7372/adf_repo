@@ -25,6 +25,10 @@
 						"Domain": {
 							"value": "@pipeline().parameters.Domain",
 							"type": "Expression"
+						},
+						"BusinessDomain": {
+							"value": "@pipeline().parameters.BusinessDomain",
+							"type": "Expression"
 						}
 					}
 				}
