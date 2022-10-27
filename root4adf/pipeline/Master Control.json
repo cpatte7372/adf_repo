@@ -132,9 +132,6 @@
 			},
 			"Region": {
 				"type": "string"
-			},
-			"BusinessDomain": {
-				"type": "string"
 			}
 		},
 		"variables": {
