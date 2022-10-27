@@ -94,10 +94,6 @@
 						"Region": {
 							"value": "@pipeline().parameters.Region",
 							"type": "Expression"
-						},
-						"BusinessDomain": {
-							"value": "@pipeline().parameters.BusinessDomain",
-							"type": "Expression"
 						}
 					}
 				}
@@ -117,10 +113,6 @@
 			"Region": {
 				"type": "string",
 				"defaultValue": "-1"
-			},
-			"BusinessDomain": {
-				"type": "string",
-				"defaultValue": "StarKis"
 			}
 		},
 		"annotations": [],
