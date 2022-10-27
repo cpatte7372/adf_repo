@@ -45,6 +45,13 @@
 								"type": "Expression"
 							},
 							"type": "String"
+						},
+						"Domain": {
+							"value": {
+								"value": "@pipeline().parameters.Domain",
+								"type": "Expression"
+							},
+							"type": "String"
 						}
 					}
 				},
@@ -80,10 +87,6 @@
 							"value": "@pipeline().parameters.Area",
 							"type": "Expression"
 						},
-						"Domain": {
-							"value": "@pipeline().parameters.Domain",
-							"type": "Expression"
-						},
 						"Region": {
 							"value": "@pipeline().parameters.Region",
 							"type": "Expression"
@@ -105,6 +108,9 @@
 				"defaultValue": "-1"
 			},
 			"BusinessDomain": {
+				"type": "string"
+			},
+			"Domain": {
 				"type": "string"
 			}
 		},
