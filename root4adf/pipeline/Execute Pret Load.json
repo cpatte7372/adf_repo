@@ -94,6 +94,10 @@
 						"Region": {
 							"value": "@pipeline().parameters.Region",
 							"type": "Expression"
+						},
+						"BusinessDomain": {
+							"value": "@pipeline().parameters.BusinessDomain",
+							"type": "Expression"
 						}
 					}
 				}
