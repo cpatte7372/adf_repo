@@ -87,6 +87,10 @@
 							"value": "@pipeline().parameters.Area",
 							"type": "Expression"
 						},
+						"Domain": {
+							"value": "@pipeline().parameters.Domain",
+							"type": "Expression"
+						},
 						"Region": {
 							"value": "@pipeline().parameters.Region",
 							"type": "Expression"
