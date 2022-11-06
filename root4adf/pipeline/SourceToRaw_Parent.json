@@ -543,15 +543,13 @@
 				"type": "string"
 			},
 			"Area": {
-				"type": "string",
-				"defaultValue": "sqlArea2"
+				"type": "string"
 			},
 			"Domain": {
 				"type": "string"
 			},
 			"BusinessDomain": {
-				"type": "string",
-				"defaultValue": "StarKis"
+				"type": "string"
 			}
 		},
 		"folder": {
