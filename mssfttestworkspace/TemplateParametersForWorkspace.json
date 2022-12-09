@@ -1,0 +1,189 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "mssfttestworkspace"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureSQLEnrichedServerless_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synapseworksparcev4.sql.azuresynapse.net;Initial Catalog=testsadpool"
+		},
+		"ChoiceDB DataverseEnriched_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
+		},
+		"Dataverserondemand_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=test-ws-synapse-uks-01-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_testb_unqd627dc8d885044ee87837a5345b30"
+		},
+		"DedicatedPoolInsight_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=Insights"
+		},
+		"EnrichedDatabase_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
+		},
+		"EnrichmentDB_connectionString": {
+			"value": ""
+		},
+		"InsightsAzureSynapseAnalytics_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=DedicatedSQLPool"
+		},
+		"LB_DBX_EngineeringSml_accessToken": {
+			"value": ""
+		},
+		"LS_ADLS_PRIVATE_DYN_accountKey": {
+			"value": ""
+		},
+		"LS_BLOB_PRIVATE_DYN_connectionString": {
+			"value": ""
+		},
+		"LS_FIVERR_SQL_AnalyticsHub_connectionString": {
+			"value": ""
+		},
+		"LS_Metadata_SQL_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_AnalyticsHub_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_PretBIReference_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=test-ws-synapse-uks-01-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_testb_unqd627dc8d885044ee87837a5345b30"
+		},
+		"MyOrigination_connectionString": {
+			"value": ""
+		},
+		"ReportsAnalytics_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=DedicatedSQLPool"
+		},
+		"ReportsSLLinkedSVC_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=ReportsSL"
+		},
+		"ReportsSql_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=ReportsDW"
+		},
+		"ServerLessSQL2_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_montagu_org5a2bcccf"
+		},
+		"dataverseprod_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_montagu_org5a2bcccf"
+		},
+		"dynamoBlobLink_connectionString": {
+			"value": ""
+		},
+		"mssfttestworkspace-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:mssfttestworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"placeholder_accountKey": {
+			"value": ""
+		},
+		"prod-synapse-uks-001-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:prod-synapse-uks-001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"synapseworksparcev4-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapseworksparcev4.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test-ws-synapse-uks-01.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"ADLSLinkedService_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://testdatalakeuks01.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net"
+		},
+		"AzureKeyVaultClientsecretSynapse_properties_typeProperties_baseUrl": {
+			"value": "https://MontaguKeyVault.vault.azure.net/"
+		},
+		"CrunchRESTService_properties_typeProperties_url": {
+			"value": "https://api.crunchbase.com/"
+		},
+		"DueDil_properties_typeProperties_url": {
+			"value": "https://duedil.io/v4/company/gb/companyId"
+		},
+		"DuedilCompanies_properties_typeProperties_url": {
+			"value": "https://duedil.io/v4/company/gb/"
+		},
+		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net/"
+		},
+		"LinkedServiceCDM_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net"
+		},
+		"REST Companies API_properties_typeProperties_url": {
+			"value": "https://restcountries.com/v3.1/name/"
+		},
+		"SynapseDataAzureKeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://MontaguKeyVault.vault.azure.net/"
+		},
+		"crunchbasehttpsource_properties_typeProperties_url": {
+			"value": "https://api.crunchbase.com/bulk/v4/bulk_export.tar.gz?user_key=6314d4f23ebc30598895f49a15cdd1ef"
+		},
+		"duedilHTTPLinkService_properties_typeProperties_url": {
+			"value": "https://duedil.io/v4/search/companies.json"
+		},
+		"duedilRESTLink_properties_typeProperties_url": {
+			"value": "https://duedil.io/v4/company/gb/"
+		},
+		"dynamoDirectRESTLINK_properties_typeProperties_url": {
+			"value": "https://pm2.preqinsolutions.com/apiCore/api/"
+		},
+		"dynamoMetricLINK_properties_typeProperties_url": {
+			"value": "https://pm2.preqinsolutions.com/apiCore/api/Metrics/"
+		},
+		"dynamoMetricLinkV4_properties_typeProperties_url": {
+			"value": "https://pm2.preqinsolutions.com/apiCore/"
+		},
+		"dynamoMetricValueLink_properties_typeProperties_url": {
+			"value": "https://pm2.preqinsolutions.com/"
+		},
+		"dynamoPMVHttpLink_properties_typeProperties_url": {
+			"value": "https://pm2.preqinsolutions.com"
+		},
+		"dynamoREST_properties_typeProperties_url": {
+			"value": "https://pm2.preqinsolutions.com/apiCore/api/countries"
+		},
+		"mssfttestworkspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://testdatalakeuks01.dfs.core.windows.net"
+		},
+		"placeholder_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net/"
+		},
+		"prod-synapse-uks-001-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net"
+		},
+		"synapseworksparcev4-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://synapsworkspacev2.dfs.core.windows.net"
+		},
+		"test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://testdatalakeuks01.dfs.core.windows.net"
+		},
+		"Duedil_RelationshipReview_properties_EX_SourceToRaw_Parent_parameters_Area": {
+			"value": "crmreport"
+		},
+		"Duedil_RelationshipReview_properties_EX_SourceToRaw_Parent_parameters_Domain": {
+			"value": "dbo"
+		},
+		"Pause_Server_ReportsDW_properties_PauseSQL_parameters_ResourceGroup": {
+			"value": "MontaguData"
+		},
+		"Pause_Server_ReportsDW_properties_PauseSQL_parameters_SubscriptionID": {
+			"value": "5c1bc415-b561-4700-9cbe-71f1079bb536"
+		},
+		"Pause_Server_ReportsDW_properties_PauseSQL_parameters_WorkspaceName": {
+			"value": "prod-synapse-uks-001"
+		},
+		"Pause_Server_ReportsDW_properties_PauseSQL_parameters_PauseorResume": {
+			"value": "Pause"
+		}
+	}
+}
