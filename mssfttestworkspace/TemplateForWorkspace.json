@@ -240,6 +240,18 @@
 			"type": "string",
 			"defaultValue": "https://testdatalakeuks01.dfs.core.windows.net"
 		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Area": {
+			"type": "string",
+			"defaultValue": "origination"
+		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Domain": {
+			"type": "string",
+			"defaultValue": "dbo"
+		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Region": {
+			"type": "string",
+			"defaultValue": "-1"
+		},
 		"Duedil_RelationshipReview_properties_EX_SourceToRaw_Parent_parameters_Area": {
 			"type": "string",
 			"defaultValue": "crmreport"
@@ -2657,63 +2669,6 @@
 				"[concat(variables('workspaceId'), '/datasets/DS_AnalyticsHub_DYN')]",
 				"[concat(variables('workspaceId'), '/linkedServices/LS_SQL_AnalyticsHub')]",
 				"[concat(variables('workspaceId'), '/pipelines/DBX_EnrichToCurated_Single')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/DueDill')]",
-			"type": "Microsoft.Synapse/workspaces/pipelines",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"activities": [
-					{
-						"name": "Data flow1",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "1.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "DueDil",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"source1": {},
-									"source2": {},
-									"sink2": {},
-									"sink3": {}
-								}
-							},
-							"staging": {
-								"linkedService": {
-									"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
-									"type": "LinkedServiceReference"
-								},
-								"folderPath": "users/stage"
-							},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2022-05-17T19:33:45Z"
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/dataflows/DueDil')]",
-				"[concat(variables('workspaceId'), '/linkedServices/prod-synapse-uks-001-WorkspaceDefaultStorage')]"
 			]
 		},
 		{
@@ -8303,6 +8258,7 @@
 				"activities": [
 					{
 						"name": "Initiate Montagu Load",
+						"description": "",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -11672,7 +11628,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2022-12-09T15:20:40Z"
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/datasets/organisationcopysource')]",
@@ -11690,7 +11647,14 @@
 					{
 						"name": "Copy Essentials2Enrichment",
 						"type": "Copy",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "Merge Essential",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"policy": {
 							"timeout": "0.12:00:00",
 							"retry": 0,
@@ -12042,6 +12006,59 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Merge Essential",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*.json",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "MergeFiles"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings",
+									"filePattern": "setOfObjects"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "JsonMergeVitals",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Json1Merge4Vitals",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -12052,11 +12069,13 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/datasets/Json1Vitals2SQLDB')]",
-				"[concat(variables('workspaceId'), '/datasets/AzureSqlVitals')]"
+				"[concat(variables('workspaceId'), '/datasets/AzureSqlVitals')]",
+				"[concat(variables('workspaceId'), '/datasets/JsonMergeVitals')]",
+				"[concat(variables('workspaceId'), '/datasets/Json1Merge4Vitals')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/duedulRESTful')]",
+			"name": "[concat(parameters('workspaceName'), '/duedulRESTful_Financials')]",
 			"type": "Microsoft.Synapse/workspaces/pipelines",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
@@ -12551,7 +12570,6 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
-									"modifiedDatetimeEnd": "2022-12-07T00:00:00.700Z",
 									"wildcardFileName": "*.json",
 									"enablePartitionDiscovery": false
 								},
@@ -21797,6 +21815,7 @@
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
+				"description": "Move",
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -21805,9 +21824,15 @@
 						"type": "SecureString",
 						"value": "[parameters('LS_ADLS_PRIVATE_DYN_accountKey')]"
 					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/LS_BLOB_PRIVATE_DYN')]",
@@ -21860,6 +21885,7 @@
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
+				"description": "Description",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
@@ -22488,6 +22514,70 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/CRM Daily Extract')]",
+			"type": "Microsoft.Synapse/workspaces/triggers",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Execute Montagu Load",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"Area": "[parameters('CRM Daily Extract_properties_Execute Montagu Load_parameters_Area')]",
+							"Domain": "[parameters('CRM Daily Extract_properties_Execute Montagu Load_parameters_Domain')]",
+							"Region": "[parameters('CRM Daily Extract_properties_Execute Montagu Load_parameters_Region')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Hour",
+						"interval": 3,
+						"startTime": "2022-12-12T07:00:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/pipelines/Execute Montagu Load')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/Crunchbase Daily Extract')]",
+			"type": "Microsoft.Synapse/workspaces/triggers",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "crunchbasebkup",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2022-12-12T14:00:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/pipelines/crunchbasebkup')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/Duedil_RelationshipReview')]",
 			"type": "Microsoft.Synapse/workspaces/triggers",
 			"apiVersion": "2019-06-01-preview",
@@ -22509,13 +22599,13 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Month",
+						"frequency": "Week",
 						"interval": 1,
 						"startTime": "2022-11-01T00:16:00Z",
 						"timeZone": "UTC",
 						"schedule": {
-							"monthDays": [
-								1
+							"weekDays": [
+								"Friday"
 							]
 						}
 					}
@@ -22580,76 +22670,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQLAREA')]",
-			"type": "Microsoft.Synapse/workspaces/triggers",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2022-04-01T14:44:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQLTables')]",
-			"type": "Microsoft.Synapse/workspaces/triggers",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2021-12-13T10:54:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/Trigger 4')]",
-			"type": "Microsoft.Synapse/workspaces/triggers",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "crunchbasebkup",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 5,
-						"startTime": "2022-12-09T10:12:00",
-						"timeZone": "GMT Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/pipelines/crunchbasebkup')]"
-			]
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/AutoResolveIntegrationRuntime')]",
