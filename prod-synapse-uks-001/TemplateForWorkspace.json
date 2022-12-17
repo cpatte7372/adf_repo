@@ -495,70 +495,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/2 PH 2 BA Joins')]",
-			"type": "Microsoft.Synapse/workspaces/pipelines",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"activities": [
-					{
-						"name": "Data flow1",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "1.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "PH 4 BA Activity DatasetReports",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"AccountIn": {},
-									"OriginationOpportunityIn": {},
-									"MeetingsAppointmentsIn": {},
-									"ContactsIn": {},
-									"SystemuserSource": {},
-									"AccountCleanSink": {},
-									"MeetingStageCleanSink": {},
-									"ContactsStageCleanSink": {},
-									"OriginationCleanSink": {},
-									"SystemUserCleanSink": {}
-								}
-							},
-							"staging": {
-								"linkedService": {
-									"referenceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
-									"type": "LinkedServiceReference"
-								},
-								"folderPath": "users/stage"
-							},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine",
-							"sourceStagingConcurrency": 1
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2022-07-05T15:31:12Z"
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/dataflows/PH 4 BA Activity DatasetReports')]",
-				"[concat(variables('workspaceId'), '/linkedServices/prod-synapse-uks-001-WorkspaceDefaultStorage')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('workspaceName'), '/B2E_Parent')]",
 			"type": "Microsoft.Synapse/workspaces/pipelines",
 			"apiVersion": "2019-06-01-preview",
@@ -11561,7 +11497,7 @@
 					},
 					{
 						"name": "GET Crunchbase Bulk Import",
-						"description": "Hello Part2 Part 4",
+						"description": "Hello Part2 Part 5",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
