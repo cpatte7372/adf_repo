@@ -219,7 +219,69 @@
 														"referenceName": "EX_SourceToRaw_Single_CSV",
 														"type": "PipelineReference"
 													},
-													"waitOnCompletion": true
+													"waitOnCompletion": true,
+													"parameters": {
+														"TableName": {
+															"value": "@item().EntityName",
+															"type": "Expression"
+														},
+														"Zone": {
+															"value": "@item().StageName",
+															"type": "Expression"
+														},
+														"Year": {
+															"value": "@item().Year",
+															"type": "Expression"
+														},
+														"Month": {
+															"value": "@item().Month",
+															"type": "Expression"
+														},
+														"Day": {
+															"value": "@item().Day",
+															"type": "Expression"
+														},
+														"Area": {
+															"value": "@item().Area",
+															"type": "Expression"
+														},
+														"Domain": {
+															"value": "@item().Domain",
+															"type": "Expression"
+														},
+														"Classification": {
+															"value": "@item().Classification",
+															"type": "Expression"
+														},
+														"EntityStageID": {
+															"value": "@item().EntityStageID",
+															"type": "Expression"
+														},
+														"ProcessID": {
+															"value": "@item().ProcessID",
+															"type": "Expression"
+														},
+														"Version": {
+															"value": "@item().Version",
+															"type": "Expression"
+														},
+														"SlicePath": {
+															"value": "@item().SlicePath",
+															"type": "Expression"
+														},
+														"Time": {
+															"value": "@item().Time",
+															"type": "Expression"
+														},
+														"FileFormat": {
+															"value": "@item().FileFormat",
+															"type": "Expression"
+														},
+														"Path": {
+															"value": "@item().Path",
+															"type": "Expression"
+														}
+													}
 												}
 											}
 										]
@@ -233,10 +295,80 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "EX_SourceToRaw_Single_Table",
+												"referenceName": "EX_SourceToRaw_Single_CSV",
 												"type": "PipelineReference"
 											},
-											"waitOnCompletion": true
+											"waitOnCompletion": true,
+											"parameters": {
+												"TableName": {
+													"value": "@item().EntityName",
+													"type": "Expression"
+												},
+												"Zone": {
+													"value": "@item().StageName",
+													"type": "Expression"
+												},
+												"Year": {
+													"value": "@item().Year",
+													"type": "Expression"
+												},
+												"Month": {
+													"value": "@item().Month",
+													"type": "Expression"
+												},
+												"Day": {
+													"value": "@item().Day",
+													"type": "Expression"
+												},
+												"Area": {
+													"value": "@item().Area",
+													"type": "Expression"
+												},
+												"Domain": {
+													"value": "@item().Domain",
+													"type": "Expression"
+												},
+												"Classification": {
+													"value": "@item().Classification",
+													"type": "Expression"
+												},
+												"EntityStageID": {
+													"value": "@item().EntityStageID",
+													"type": "Expression"
+												},
+												"ProcessID": {
+													"value": "@item().ProcessID",
+													"type": "Expression"
+												},
+												"Version": {
+													"value": "@item().Version",
+													"type": "Expression"
+												},
+												"SlicePath": {
+													"value": "@item().SlicePath",
+													"type": "Expression"
+												},
+												"Time": {
+													"value": "@item().Time",
+													"type": "Expression"
+												},
+												"FileFormat": {
+													"value": "@item().FileFormat",
+													"type": "Expression"
+												},
+												"Path": {
+													"value": "@item().Path",
+													"type": "Expression"
+												},
+												"Config": {
+													"value": "@json(item().Config)",
+													"type": "Expression"
+												},
+												"PathRoute": {
+													"value": "@item().PathRoute",
+													"type": "Expression"
+												}
+											}
 										}
 									}
 								]
