@@ -114,8 +114,7 @@
 				"defaultValue": "-1"
 			},
 			"BusinessDomain": {
-				"type": "string",
-				"defaultValue": "StarKis"
+				"type": "string"
 			}
 		},
 		"annotations": [],
