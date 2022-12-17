@@ -45,6 +45,12 @@
 						"Stage": {
 							"value": "Raw",
 							"type": "String"
+						},
+						"BusinessDomain": {
+							"value": {
+								"value": "@pipeline().parameters.BusinessDomain",
+								"type": "Expression"
+							}
 						}
 					}
 				},
