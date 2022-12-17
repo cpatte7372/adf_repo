@@ -240,6 +240,18 @@
 			"type": "string",
 			"defaultValue": "https://testdatalakeuks01.dfs.core.windows.net"
 		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Area": {
+			"type": "string",
+			"defaultValue": "origination"
+		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Domain": {
+			"type": "string",
+			"defaultValue": "dbo"
+		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Region": {
+			"type": "string",
+			"defaultValue": "-1"
+		},
 		"Duedil_RelationshipReview_properties_EX_SourceToRaw_Parent_parameters_Area": {
 			"type": "string",
 			"defaultValue": "crmreport"
@@ -3602,6 +3614,7 @@
 				"activities": [
 					{
 						"name": "Initiate Parent Process",
+						"description": "description Monday",
 						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {
@@ -4341,6 +4354,7 @@
 				"activities": [
 					{
 						"name": "Start Process",
+						"description": "test",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -6136,7 +6150,7 @@
 					"name": "0 - Source2Raw/Montagu"
 				},
 				"annotations": [],
-				"lastPublishTime": "2021-04-24T21:43:36Z"
+				"lastPublishTime": "2022-12-12T18:26:06Z"
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/linkedServices/LS_SQL_AnalyticsHub')]"
@@ -7264,6 +7278,7 @@
 					},
 					{
 						"name": "Start Process",
+						"description": "Hello Today",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -8303,6 +8318,7 @@
 				"activities": [
 					{
 						"name": "Initiate Montagu Load",
+						"description": "",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -10106,7 +10122,7 @@
 					}
 				},
 				"annotations": [],
-				"lastPublishTime": "2022-04-20T11:59:26Z"
+				"lastPublishTime": "2022-12-12T18:26:10Z"
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
@@ -11255,7 +11271,7 @@
 					}
 				},
 				"annotations": [],
-				"lastPublishTime": "2022-04-20T12:02:17Z"
+				"lastPublishTime": "2022-12-12T18:26:14Z"
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
@@ -11672,7 +11688,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2022-12-09T15:44:57Z"
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/datasets/organisationcopysource')]",
@@ -12108,7 +12125,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2022-12-10T10:00:41Z"
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/datasets/Json1Vitals2SQLDB')]",
@@ -12118,7 +12136,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/duedulRESTful')]",
+			"name": "[concat(parameters('workspaceName'), '/duedulRESTful_Financials')]",
 			"type": "Microsoft.Synapse/workspaces/pipelines",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
@@ -13016,7 +13034,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2022-12-10T10:00:59Z"
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/datasets/CompanyConfigCSV')]",
@@ -14870,7 +14889,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"folderPath": "testfolder",
+						"folderPath": "testfolder1",
 						"container": "testcontainer"
 					}
 				}
@@ -14957,7 +14976,7 @@
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
-					"firstRowAsHeader": true,
+					"firstRowAsHeader": false,
 					"quoteChar": "\""
 				},
 				"schema": [
@@ -18785,7 +18804,7 @@
 						"type": "AzureBlobFSLocation",
 						"fileName": "vitalsmerged.json",
 						"folderPath": "RAW/Internal/insights/duedil/vitals/vitalsmerged",
-						"fileSystem": "root"
+						"fileSystem": "root1"
 					}
 				},
 				"schema": {}
@@ -20381,7 +20400,7 @@
 						"type": "AzureBlobFSLocation",
 						"fileName": "vitalsmerged.json",
 						"folderPath": "RAW/Internal/insights/duedil/vitals/vitalsmerged",
-						"fileSystem": "root"
+						"fileSystem": "root1"
 					}
 				},
 				"schema": {}
@@ -20429,7 +20448,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": "RAW/Internal/insights/duedil/vitals",
-						"fileSystem": "root"
+						"fileSystem": "root1"
 					}
 				},
 				"schema": {
@@ -21913,13 +21932,20 @@
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
+				"description": "make change",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('LS_Metadata_SQL_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/LS_SQL_AnalyticsHub')]",
@@ -22554,6 +22580,70 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/CRM Daily Extract')]",
+			"type": "Microsoft.Synapse/workspaces/triggers",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Execute Montagu Load",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"Area": "[parameters('CRM Daily Extract_properties_Execute Montagu Load_parameters_Area')]",
+							"Domain": "[parameters('CRM Daily Extract_properties_Execute Montagu Load_parameters_Domain')]",
+							"Region": "[parameters('CRM Daily Extract_properties_Execute Montagu Load_parameters_Region')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Hour",
+						"interval": 3,
+						"startTime": "2022-12-12T07:00:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/pipelines/Execute Montagu Load')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/Crunchbase Daily Extract')]",
+			"type": "Microsoft.Synapse/workspaces/triggers",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "crunchbasebkup",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2022-12-12T14:00:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/pipelines/crunchbasebkup')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/Duedil_RelationshipReview')]",
 			"type": "Microsoft.Synapse/workspaces/triggers",
 			"apiVersion": "2019-06-01-preview",
@@ -22575,13 +22665,13 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Month",
+						"frequency": "Week",
 						"interval": 1,
 						"startTime": "2022-11-01T00:16:00Z",
 						"timeZone": "UTC",
 						"schedule": {
-							"monthDays": [
-								1
+							"weekDays": [
+								"Friday"
 							]
 						}
 					}
@@ -22646,76 +22736,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQLAREA')]",
-			"type": "Microsoft.Synapse/workspaces/triggers",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2022-04-01T14:44:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQLTables')]",
-			"type": "Microsoft.Synapse/workspaces/triggers",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2021-12-13T10:54:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/Trigger 4')]",
-			"type": "Microsoft.Synapse/workspaces/triggers",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "crunchbasebkup",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 5,
-						"startTime": "2022-12-09T10:12:00",
-						"timeZone": "GMT Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/pipelines/crunchbasebkup')]"
-			]
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/AutoResolveIntegrationRuntime')]",
@@ -44849,622 +44869,6 @@
 							"spark.sql(\"CREATE TABLE IF NOT EXISTS dataverse_montagu_org5a2bcccf.YourTableName USING Parquet LOCATION 'YourFilePath'\")"
 						],
 						"outputs": []
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/LakeDatabaseEnriched')]",
-			"type": "Microsoft.Synapse/workspaces/databases",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"Ddls": [
-					{
-						"ActionType": "CREATE",
-						"OldEntity": null,
-						"NewEntity": {
-							"Name": "LakeDatabaseEnriched",
-							"EntityType": "DATABASE",
-							"Origin": {
-								"Type": "SPARK"
-							},
-							"Properties": {
-								"IsSyMSCDMDatabase": true,
-								"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"Banking\",\"Version\":\"0.1.0\"}}}",
-								"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
-							},
-							"Source": {
-								"Provider": "ADLS",
-								"Location": "abfss://users@prodlakeaccuks01.dfs.core.windows.net/LakeDatabaseEnriched",
-								"Properties": {
-									"FormatType": "csv",
-									"LinkedServiceName": "prod-synapse-uks-001-WorkspaceDefaultStorage"
-								}
-							},
-							"PublishStatus": "PUBLISHED",
-							"ObjectVersion": 2,
-							"ObjectId": "60c5229e-a098-4c61-9de1-615b33e45cfb"
-						},
-						"Source": {
-							"Type": "SPARK"
-						}
-					},
-					{
-						"ActionType": "CREATE",
-						"OldEntity": null,
-						"NewEntity": {
-							"Name": "BusinessTravelType",
-							"EntityType": "TABLE",
-							"TableType": "EXTERNAL",
-							"Namespace": {
-								"SchemaName": null,
-								"DatabaseName": "LakeDatabaseEnriched",
-								"DatabaseId": null
-							},
-							"StorageDescriptor": {
-								"Distribution": null,
-								"Columns": [
-									{
-										"Name": "BusinessTravelTypeId",
-										"Description": "The identifier of the business travel type.",
-										"OriginDataTypeName": {
-											"TypeName": "integer",
-											"IsComplexType": false,
-											"IsNullable": false,
-											"Length": 0,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "integer"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "BusinessTravelType.cdm.json/BusinessTravelType",
-											"Name": "BusinessTravelTypeId"
-										}
-									},
-									{
-										"Name": "BusinessTravelTypeName",
-										"Description": "The name of the business travel type.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 128,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "BusinessTravelType.cdm.json/BusinessTravelType",
-											"Name": "BusinessTravelTypeName"
-										}
-									},
-									{
-										"Name": "BusinessTravelTypeDescription",
-										"Description": "The description of the business travel type.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 512,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "BusinessTravelType.cdm.json/BusinessTravelType",
-											"Name": "BusinessTravelTypeDescription"
-										}
-									}
-								],
-								"ColumnSetEntityName": "9ab15509-fc16-4c4f-bd4c-49000271a7f8",
-								"Format": {
-									"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
-									"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
-									"FormatType": "csv",
-									"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
-									"Properties": {
-										"path": "abfss://users@prodlakeaccuks01.dfs.core.windows.net/LakeDatabaseEnriched/BusinessTravelType",
-										"delimiter": ",",
-										"firstRowAsHeader": "false",
-										"multiLine": "false",
-										"serialization.format": "1",
-										"escape": "\\",
-										"quote": "\"",
-										"FormatTypeSetToDatabaseDefault": true,
-										"header": "false"
-									}
-								},
-								"Source": {
-									"Provider": "ADLS",
-									"Location": "abfss://users@prodlakeaccuks01.dfs.core.windows.net/LakeDatabaseEnriched/BusinessTravelType",
-									"Properties": {
-										"LinkedServiceName": "prod-synapse-uks-001-WorkspaceDefaultStorage",
-										"LocationSetToDatabaseDefault": true
-									}
-								},
-								"Properties": {
-									"textinputformat.record.delimiter": ",",
-									"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
-									"derivedModelAttributeInfo": "{\"attributeReferences\":{\"BusinessTravelTypeId\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeId\"},\"BusinessTravelTypeName\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeName\"},\"BusinessTravelTypeDescription\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeDescription\"}}}"
-								},
-								"Compressed": false,
-								"SerDeInfo": null,
-								"IsStoredAsSubdirectories": false
-							},
-							"Owner": null,
-							"CreateTime": 0,
-							"LastAccessTime": 0,
-							"Retention": 0,
-							"Temporary": false,
-							"IsRewriteEnabled": false,
-							"ViewOriginalText": null,
-							"ViewExpandedText": null,
-							"Origin": {
-								"Type": "SPARK"
-							},
-							"OriginObjectId": null,
-							"IsSharedEntity": false,
-							"PublishStatus": "PUBLISHED",
-							"Properties": {
-								"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"BusinessTravelType\",\"path\":\"BusinessTravelType.cdm.json/BusinessTravelType\"},\"description\":\"The type of business travel.\\n\\nEx:\\n\\n- Air travel\\n-  Rail travel\\n- Bus travel\\n- Automobile trave \\n- Other modes of travel.\",\"primaryKey\":[\"BusinessTravelTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeId\"},\"dataType\":\"integer\",\"description\":\"The identifier of the business travel type.\",\"isNullable\":false,\"name\":\"BusinessTravelTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":128,\"description\":\"The name of the business travel type.\",\"isNullable\":true,\"name\":\"BusinessTravelTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BusinessTravelType.cdm.json/BusinessTravelType\",\"name\":\"BusinessTravelTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512,\"description\":\"The description of the business travel type.\",\"isNullable\":true,\"name\":\"BusinessTravelTypeDescription\"}]}}}",
-								"Description": "The type of business travel.\n\nEx:\n\n- Air travel\n-  Rail travel\n- Bus travel\n- Automobile trave \n- Other modes of travel.",
-								"DisplayFolderInfo": "{\"name\":\"Emissions\",\"colorCode\":\"#0064C1\"}",
-								"PrimaryKeys": "BusinessTravelTypeId",
-								"spark.sql.sources.provider": "csv",
-								"x-ms-usageinfo": "AzureSynapseDatabaseTemplate",
-								"spark.sql.sources.schema.numParts": "1",
-								"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"BusinessTravelTypeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"BusinessTravelTypeName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"BusinessTravelTypeDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}"
-							},
-							"ObjectVersion": 1,
-							"ObjectId": "f0e85d62-bd0b-417f-a49e-caef16a32366",
-							"Description": "The type of business travel.\n\nEx:\n\n- Air travel\n-  Rail travel\n- Bus travel\n- Automobile trave \n- Other modes of travel."
-						},
-						"Source": {
-							"Type": "SPARK"
-						}
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/testlakedbtest')]",
-			"type": "Microsoft.Synapse/workspaces/databases",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"Ddls": [
-					{
-						"ActionType": "CREATE",
-						"OldEntity": null,
-						"NewEntity": {
-							"Name": "testlakedbtest",
-							"EntityType": "DATABASE",
-							"Origin": {
-								"Type": "SPARK"
-							},
-							"Properties": {
-								"IsSyMSCDMDatabase": true,
-								"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"Banking\",\"Version\":\"0.1.0\"}}}",
-								"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
-							},
-							"Source": {
-								"Provider": "ADLS",
-								"Location": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest",
-								"Properties": {
-									"FormatType": "csv",
-									"LinkedServiceName": "test-ws-synapse-uks-01-WorkspaceDefaultStorage"
-								}
-							},
-							"PublishStatus": "PUBLISHED",
-							"ObjectVersion": 2,
-							"ObjectId": "bced27bd-7a78-43e8-870e-7b6c91c7d47b"
-						},
-						"Source": {
-							"Type": "SPARK"
-						}
-					},
-					{
-						"ActionType": "CREATE",
-						"OldEntity": null,
-						"NewEntity": {
-							"Name": "AccountStatus",
-							"EntityType": "TABLE",
-							"TableType": "EXTERNAL",
-							"Namespace": {
-								"SchemaName": null,
-								"DatabaseName": "testlakedbtest",
-								"DatabaseId": null
-							},
-							"StorageDescriptor": {
-								"Distribution": null,
-								"Columns": [
-									{
-										"Name": "AccountStatusId",
-										"Description": "The unique identifier of an Account Status.",
-										"OriginDataTypeName": {
-											"TypeName": "integer",
-											"IsComplexType": false,
-											"IsNullable": false,
-											"Length": 0,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "integer"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AccountStatus.cdm.json/AccountStatus",
-											"Name": "AccountStatusId"
-										}
-									},
-									{
-										"Name": "AccountStatusName",
-										"Description": "The name of an Account Status.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 128,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AccountStatus.cdm.json/AccountStatus",
-											"Name": "AccountStatusName"
-										}
-									},
-									{
-										"Name": "AccountStatusDescription",
-										"Description": "The description of an Account Status.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 512,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AccountStatus.cdm.json/AccountStatus",
-											"Name": "AccountStatusDescription"
-										}
-									}
-								],
-								"ColumnSetEntityName": "9390e2c6-afab-4217-b66d-c04da75b1fe2",
-								"Format": {
-									"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
-									"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
-									"FormatType": "csv",
-									"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
-									"Properties": {
-										"path": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest/AccountStatus",
-										"delimiter": ",",
-										"firstRowAsHeader": "false",
-										"multiLine": "false",
-										"serialization.format": "1",
-										"escape": "\\",
-										"quote": "\"",
-										"FormatTypeSetToDatabaseDefault": true,
-										"header": "false"
-									}
-								},
-								"Source": {
-									"Provider": "ADLS",
-									"Location": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest/AccountStatus",
-									"Properties": {
-										"LinkedServiceName": "test-ws-synapse-uks-01-WorkspaceDefaultStorage",
-										"LocationSetToDatabaseDefault": true
-									}
-								},
-								"Properties": {
-									"textinputformat.record.delimiter": ",",
-									"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
-									"derivedModelAttributeInfo": "{\"attributeReferences\":{\"AccountStatusId\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusId\"},\"AccountStatusName\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusName\"},\"AccountStatusDescription\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusDescription\"}}}"
-								},
-								"Compressed": false,
-								"SerDeInfo": null,
-								"IsStoredAsSubdirectories": false
-							},
-							"Owner": null,
-							"CreateTime": 0,
-							"LastAccessTime": 0,
-							"Retention": 0,
-							"Temporary": false,
-							"IsRewriteEnabled": false,
-							"ViewOriginalText": null,
-							"ViewExpandedText": null,
-							"Origin": {
-								"Type": "SPARK"
-							},
-							"OriginObjectId": null,
-							"IsSharedEntity": false,
-							"PublishStatus": "PUBLISHED",
-							"Properties": {
-								"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"AccountStatus\",\"path\":\"AccountStatus.cdm.json/AccountStatus\"},\"description\":\"The status of the associated account.\\n\\nEx:\\n- Current\\n- Past due\\n- 30 days past due\\n- 60 days past due\\n- 90 days past due\\n- In collection\\n- Delinquent\\n- Expired\\n- Over The Limit\\n- In Default\",\"primaryKey\":[\"AccountStatusId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Account Status.\",\"isNullable\":false,\"name\":\"AccountStatusId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusName\"},\"dataType\":\"string\",\"dataTypeLength\":128,\"description\":\"The name of an Account Status.\",\"isNullable\":true,\"name\":\"AccountStatusName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AccountStatus.cdm.json/AccountStatus\",\"name\":\"AccountStatusDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512,\"description\":\"The description of an Account Status.\",\"isNullable\":true,\"name\":\"AccountStatusDescription\"}]}}}",
-								"Description": "The status of the associated account.\n\nEx:\n- Current\n- Past due\n- 30 days past due\n- 60 days past due\n- 90 days past due\n- In collection\n- Delinquent\n- Expired\n- Over The Limit\n- In Default",
-								"DisplayFolderInfo": "{\"name\":\"Customer Credit & Collections\",\"colorCode\":\"#022F22\"}",
-								"PrimaryKeys": "AccountStatusId",
-								"spark.sql.sources.provider": "csv",
-								"x-ms-usageinfo": "AzureSynapseDatabaseTemplate",
-								"spark.sql.sources.schema.numParts": "1",
-								"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"AccountStatusId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"AccountStatusName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"AccountStatusDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}"
-							},
-							"ObjectVersion": 1,
-							"ObjectId": "ea8b3f8e-6f21-4c1d-8727-f311c4d46413",
-							"Description": "The status of the associated account.\n\nEx:\n- Current\n- Past due\n- 30 days past due\n- 60 days past due\n- 90 days past due\n- In collection\n- Delinquent\n- Expired\n- Over The Limit\n- In Default"
-						},
-						"Source": {
-							"Type": "SPARK"
-						}
-					},
-					{
-						"ActionType": "CREATE",
-						"OldEntity": null,
-						"NewEntity": {
-							"Name": "AlternateCompanyNameAndDba",
-							"EntityType": "TABLE",
-							"TableType": "EXTERNAL",
-							"Namespace": {
-								"SchemaName": null,
-								"DatabaseName": "testlakedbtest",
-								"DatabaseId": null
-							},
-							"StorageDescriptor": {
-								"Distribution": null,
-								"Columns": [
-									{
-										"Name": "EfxId",
-										"Description": "The EFX ID� is a unique and persistent nine-digit number that identifies and tracks the business unit with which you have the credit relationship;",
-										"OriginDataTypeName": {
-											"TypeName": "integer",
-											"IsComplexType": false,
-											"IsNullable": false,
-											"Length": 0,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "integer"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "EfxId"
-										}
-									},
-									{
-										"Name": "ProfileTimestamp",
-										"Description": "Provides the timestamp when the inquiry was made as recorded by Equifax (Eastern Time).",
-										"OriginDataTypeName": {
-											"TypeName": "timestamp",
-											"IsComplexType": false,
-											"IsNullable": false,
-											"Length": 0,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
-												"HIVE_TYPE_STRING": "timestamp"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "ProfileTimestamp"
-										}
-									},
-									{
-										"Name": "AlternateName",
-										"Description": "The company alternate name.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": false,
-											"Length": 128,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "AlternateName"
-										}
-									},
-									{
-										"Name": "DateReported",
-										"Description": "The date that the name was reported.",
-										"OriginDataTypeName": {
-											"TypeName": "date",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 0,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"DateFormat": "YYYY-MM-DD",
-												"HIVE_TYPE_STRING": "date"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "DateReported"
-										}
-									},
-									{
-										"Name": "AlternateBusinessAddress",
-										"Description": "The 'street/po box' component of the alternate business address.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 512,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "AlternateBusinessAddress"
-										}
-									},
-									{
-										"Name": "AlternateBusinessCity",
-										"Description": "The 'city' component of the alternate business address.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 128,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "AlternateBusinessCity"
-										}
-									},
-									{
-										"Name": "AlternateBusinessState",
-										"Description": "The 'state' component of the alternate business address.",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 64,
-											"Precision": 0,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "AlternateBusinessState"
-										}
-									},
-									{
-										"Name": "AlternateBusinessZipCode",
-										"Description": "The 'zip code' component of the alternate business address.",
-										"OriginDataTypeName": {
-											"TypeName": "decimal",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 0,
-											"Precision": 11,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "decimal"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "AlternateBusinessZipCode"
-										}
-									},
-									{
-										"Name": "AlternateBusinessTelephoneNumber",
-										"Description": "The alternate business telephone number.",
-										"OriginDataTypeName": {
-											"TypeName": "decimal",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 0,
-											"Precision": 15,
-											"Scale": 0,
-											"Properties": {
-												"HIVE_TYPE_STRING": "decimal"
-											}
-										},
-										"BaseAttributeReference": {
-											"Entity": "AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba",
-											"Name": "AlternateBusinessTelephoneNumber"
-										}
-									}
-								],
-								"ColumnSetEntityName": "094a0785-cb68-4a8d-9fc0-adcd63dca11a",
-								"Format": {
-									"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
-									"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
-									"FormatType": "csv",
-									"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
-									"Properties": {
-										"path": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest/AlternateCompanyNameAndDba",
-										"delimiter": ",",
-										"firstRowAsHeader": "false",
-										"multiLine": "false",
-										"serialization.format": "1",
-										"escape": "\\",
-										"quote": "\"",
-										"FormatTypeSetToDatabaseDefault": true,
-										"header": "false"
-									}
-								},
-								"Source": {
-									"Provider": "ADLS",
-									"Location": "abfss://root@testdatalakeuks01.dfs.core.windows.net/testlakedbtest/AlternateCompanyNameAndDba",
-									"Properties": {
-										"LinkedServiceName": "test-ws-synapse-uks-01-WorkspaceDefaultStorage",
-										"LocationSetToDatabaseDefault": true
-									}
-								},
-								"Properties": {
-									"textinputformat.record.delimiter": ",",
-									"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
-									"derivedModelAttributeInfo": "{\"attributeReferences\":{\"EfxId\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"EfxId\"},\"ProfileTimestamp\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"ProfileTimestamp\"},\"AlternateName\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateName\"},\"DateReported\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"DateReported\"},\"AlternateBusinessAddress\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessAddress\"},\"AlternateBusinessCity\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessCity\"},\"AlternateBusinessState\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessState\"},\"AlternateBusinessZipCode\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessZipCode\"},\"AlternateBusinessTelephoneNumber\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessTelephoneNumber\"}}}"
-								},
-								"Compressed": false,
-								"SerDeInfo": null,
-								"IsStoredAsSubdirectories": false
-							},
-							"Owner": null,
-							"CreateTime": 0,
-							"LastAccessTime": 0,
-							"Retention": 0,
-							"Temporary": false,
-							"IsRewriteEnabled": false,
-							"ViewOriginalText": null,
-							"ViewExpandedText": null,
-							"Origin": {
-								"Type": "SPARK"
-							},
-							"OriginObjectId": null,
-							"IsSharedEntity": false,
-							"PublishStatus": "PUBLISHED",
-							"Properties": {
-								"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"AlternateCompanyNameAndDba\",\"path\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\"},\"description\":\"Alternate names reported for the company.\",\"primaryKey\":[\"EfxId\",\"ProfileTimestamp\",\"AlternateName\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"EfxId\"},\"dataType\":\"integer\",\"description\":\"The EFX ID� is a unique and persistent nine-digit number that identifies and tracks the business unit with which you have the credit relationship;\",\"isNullable\":false,\"name\":\"EfxId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"ProfileTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"Provides the timestamp when the inquiry was made as recorded by Equifax (Eastern Time).\",\"isNullable\":false,\"name\":\"ProfileTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateName\"},\"dataType\":\"string\",\"dataTypeLength\":128,\"description\":\"The company alternate name.\",\"isNullable\":false,\"name\":\"AlternateName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"DateReported\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the name was reported.\",\"isNullable\":true,\"name\":\"DateReported\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessAddress\"},\"dataType\":\"string\",\"dataTypeLength\":512,\"description\":\"The 'street/po box' component of the alternate business address.\",\"isNullable\":true,\"name\":\"AlternateBusinessAddress\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessCity\"},\"dataType\":\"string\",\"dataTypeLength\":128,\"description\":\"The 'city' component of the alternate business address.\",\"isNullable\":true,\"name\":\"AlternateBusinessCity\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessState\"},\"dataType\":\"string\",\"dataTypeLength\":64,\"description\":\"The 'state' component of the alternate business address.\",\"isNullable\":true,\"name\":\"AlternateBusinessState\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessZipCode\"},\"dataType\":\"decimal\",\"dataTypeLength\":11,\"description\":\"The 'zip code' component of the alternate business address.\",\"isNullable\":true,\"scale\":0,\"name\":\"AlternateBusinessZipCode\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AlternateCompanyNameAndDba.cdm.json/AlternateCompanyNameAndDba\",\"name\":\"AlternateBusinessTelephoneNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":15,\"description\":\"The alternate business telephone number.\",\"isNullable\":true,\"scale\":0,\"name\":\"AlternateBusinessTelephoneNumber\"}]}}}",
-								"Description": "Alternate names reported for the company.",
-								"DisplayFolderInfo": "{\"name\":\"Customer Credit & Collections\",\"colorCode\":\"#022F22\"}",
-								"PrimaryKeys": "EfxId,ProfileTimestamp,AlternateName",
-								"spark.sql.sources.provider": "csv",
-								"x-ms-usageinfo": "AzureSynapseDatabaseTemplate",
-								"spark.sql.sources.schema.numParts": "1",
-								"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"EfxId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"ProfileTimestamp\",\"type\":\"timestamp\",\"nullable\":false,\"metadata\":{}},{\"name\":\"AlternateName\",\"type\":\"string\",\"nullable\":false,\"metadata\":{}},{\"name\":\"DateReported\",\"type\":\"date\",\"nullable\":true,\"metadata\":{}},{\"name\":\"AlternateBusinessAddress\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"AlternateBusinessCity\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"AlternateBusinessState\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"AlternateBusinessZipCode\",\"type\":\"decimal(11,0)\",\"nullable\":true,\"metadata\":{}},{\"name\":\"AlternateBusinessTelephoneNumber\",\"type\":\"decimal(15,0)\",\"nullable\":true,\"metadata\":{}}]}"
-							},
-							"ObjectVersion": 1,
-							"ObjectId": "98bad04d-9cd8-47cc-af9e-fdd166a44b92",
-							"Description": "Alternate names reported for the company."
-						},
-						"Source": {
-							"Type": "SPARK"
-						}
 					}
 				]
 			},

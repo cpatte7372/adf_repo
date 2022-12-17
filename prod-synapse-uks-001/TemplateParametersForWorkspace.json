@@ -167,6 +167,15 @@
 		"test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://testdatalakeuks01.dfs.core.windows.net"
 		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Area": {
+			"value": "origination"
+		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Domain": {
+			"value": "dbo"
+		},
+		"CRM Daily Extract_properties_Execute Montagu Load_parameters_Region": {
+			"value": "-1"
+		},
 		"Duedil_RelationshipReview_properties_EX_SourceToRaw_Parent_parameters_Area": {
 			"value": "crmreport"
 		},
