@@ -467,6 +467,9 @@
 			},
 			"Domain": {
 				"type": "string"
+			},
+			"BusinessDomain": {
+				"type": "string"
 			}
 		},
 		"folder": {
