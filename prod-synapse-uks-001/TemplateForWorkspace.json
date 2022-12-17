@@ -354,79 +354,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/1 PH 1A Enriched Dataset Seperate Table')]",
-			"type": "Microsoft.Synapse/workspaces/pipelines",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"activities": [
-					{
-						"name": "PrimaryEnrichment",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "1.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "PH Full InputDataflow_Split Table",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"AccountIn": {},
-									"OriginationOpportunityIn": {},
-									"MeetingsAppointmentsIn": {},
-									"ContactsIn": {},
-									"SystemuserSource": {},
-									"EnrichedAccount": {},
-									"EnrichedOriginationOpportunities": {},
-									"EnrichedMeetingAppointments": {},
-									"EnrichedContacts": {},
-									"EnrichedSystemuser": {},
-									"AccountCleanSink": {},
-									"MeetingStageCleanSink": {},
-									"ContactsStageCleanSink": {},
-									"OriginationCleanSink": {},
-									"SystemUserCleanSink": {},
-									"SinkEnrichedOrigination": {},
-									"SinkEnrichedAccount": {},
-									"SinkEnrichedMeeting": {},
-									"SinkEnrichedContacts": {},
-									"SinkEnrichedSystemUser": {}
-								}
-							},
-							"staging": {
-								"linkedService": {
-									"referenceName": "ADLSLinkedService",
-									"type": "LinkedServiceReference"
-								},
-								"folderPath": "users/stage"
-							},
-							"compute": {
-								"coreCount": 16,
-								"computeType": "MemoryOptimized"
-							},
-							"traceLevel": "Coarse"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2022-07-05T11:43:11Z"
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/dataflows/PH Full InputDataflow_Split Table')]",
-				"[concat(variables('workspaceId'), '/linkedServices/ADLSLinkedService')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('workspaceName'), '/1 PH 1A Enriched Dataset Seperate Tables')]",
 			"type": "Microsoft.Synapse/workspaces/pipelines",
 			"apiVersion": "2019-06-01-preview",
@@ -11634,7 +11561,7 @@
 					},
 					{
 						"name": "GET Crunchbase Bulk Import",
-						"description": "Hello Part2 Part 3",
+						"description": "Hello Part2 Part 4",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
