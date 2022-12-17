@@ -488,6 +488,9 @@
 			},
 			"PathRoute": {
 				"type": "string"
+			},
+			"BusinessDomain": {
+				"type": "string"
 			}
 		},
 		"variables": {
