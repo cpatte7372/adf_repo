@@ -292,6 +292,10 @@
 														"PathRoute": {
 															"value": "@item().PathRoute",
 															"type": "Expression"
+														},
+														"BusinessDomain": {
+															"value": "@item().BusinessDomain",
+															"type": "Expression"
 														}
 													}
 												}
