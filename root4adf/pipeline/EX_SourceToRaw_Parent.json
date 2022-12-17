@@ -297,7 +297,7 @@
 								],
 								"defaultActivities": [
 									{
-										"name": "Run Copy Pipeline File",
+										"name": "Run Copy Pipeline Default",
 										"type": "ExecutePipeline",
 										"dependsOn": [],
 										"userProperties": [],
