@@ -12,7 +12,7 @@
 			"value": ""
 		},
 		"AzureSQLEnrichedServerless_connectionString": {
-			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnrichedv4"
 		},
 		"AzureSynapseAnalytics1_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synapseworksparcev4.sql.azuresynapse.net;Initial Catalog=testsadpool"
