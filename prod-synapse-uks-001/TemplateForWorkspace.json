@@ -275,6 +275,22 @@
 		"Pause_Server_ReportsDW_properties_PauseSQL_parameters_PauseorResume": {
 			"type": "string",
 			"defaultValue": "Pause"
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_SliceDate": {
+			"type": "string",
+			"defaultValue": " "
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_Area": {
+			"type": "string",
+			"defaultValue": "origination"
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_Domain": {
+			"type": "string",
+			"defaultValue": "dbo"
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_Region": {
+			"type": "string",
+			"defaultValue": "-2"
 		}
 	},
 	"variables": {
@@ -8283,7 +8299,7 @@
 					},
 					"Area": {
 						"type": "string",
-						"defaultValue": "origination"
+						"defaultValue": "testarea"
 					},
 					"Domain": {
 						"type": "string",
@@ -14858,7 +14874,7 @@
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
-					"firstRowAsHeader": false,
+					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
 				"schema": [
@@ -45229,6 +45245,41 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/OC Weeekly')]",
+			"type": "Microsoft.Synapse/workspaces/triggers",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Execute Montagu Load",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SliceDate": "[parameters('OC Weeekly_properties_Execute Montagu Load_parameters_SliceDate')]",
+							"Area": "[parameters('OC Weeekly_properties_Execute Montagu Load_parameters_Area')]",
+							"Domain": "[parameters('OC Weeekly_properties_Execute Montagu Load_parameters_Domain')]",
+							"Region": "[parameters('OC Weeekly_properties_Execute Montagu Load_parameters_Region')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Hour",
+						"interval": 1,
+						"startTime": "2023-01-11T05:00:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/pipelines/Execute Montagu Load')]"
 			]
 		}
 	]

@@ -193,6 +193,18 @@
 		},
 		"Pause_Server_ReportsDW_properties_PauseSQL_parameters_PauseorResume": {
 			"value": "Pause"
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_SliceDate": {
+			"value": " "
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_Area": {
+			"value": "origination"
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_Domain": {
+			"value": "dbo"
+		},
+		"OC Weeekly_properties_Execute Montagu Load_parameters_Region": {
+			"value": "-2"
 		}
 	}
 }
