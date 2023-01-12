@@ -18702,7 +18702,7 @@
 						"type": "AzureBlobFSLocation",
 						"fileName": "vitalsmerged.json",
 						"folderPath": "RAW/Internal/insights/duedil/vitals/vitalsmerged",
-						"fileSystem": "root1"
+						"fileSystem": "root"
 					}
 				},
 				"schema": {}
@@ -20298,7 +20298,7 @@
 						"type": "AzureBlobFSLocation",
 						"fileName": "vitalsmerged.json",
 						"folderPath": "RAW/Internal/insights/duedil/vitals/vitalsmerged",
-						"fileSystem": "root1"
+						"fileSystem": "root"
 					}
 				},
 				"schema": {}
@@ -20346,7 +20346,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": "RAW/Internal/insights/duedil/vitals",
-						"fileSystem": "root1"
+						"fileSystem": "root"
 					}
 				},
 				"schema": {
@@ -22620,7 +22620,7 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
