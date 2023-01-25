@@ -205,6 +205,18 @@
 		},
 		"Pause_Server_ReportsDW_properties_PauseSQL_parameters_PauseorResume": {
 			"value": "Pause"
+		},
+		"cabreport_properties_Execute Montagu Load_parameters_SliceDate": {
+			"value": "YYYYMMDD"
+		},
+		"cabreport_properties_Execute Montagu Load_parameters_Area": {
+			"value": "cabreport"
+		},
+		"cabreport_properties_Execute Montagu Load_parameters_Domain": {
+			"value": "dbo"
+		},
+		"cabreport_properties_Execute Montagu Load_parameters_Region": {
+			"value": "-2"
 		}
 	}
 }
