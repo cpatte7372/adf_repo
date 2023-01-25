@@ -22636,7 +22636,7 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -22740,6 +22740,41 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/cabreport')]",
+			"type": "Microsoft.Synapse/workspaces/triggers",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Execute Montagu Load",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SliceDate": "[parameters('cabreport_properties_Execute Montagu Load_parameters_SliceDate')]",
+							"Area": "[parameters('cabreport_properties_Execute Montagu Load_parameters_Area')]",
+							"Domain": "[parameters('cabreport_properties_Execute Montagu Load_parameters_Domain')]",
+							"Region": "[parameters('cabreport_properties_Execute Montagu Load_parameters_Region')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Hour",
+						"interval": 2,
+						"startTime": "2023-01-25T12:37:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/pipelines/Execute Montagu Load')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/AutoResolveIntegrationRuntime')]",
@@ -45316,41 +45351,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/managedVirtualNetworks/default')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/cabreport')]",
-			"type": "Microsoft.Synapse/workspaces/triggers",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "Execute Montagu Load",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"SliceDate": "[parameters('cabreport_properties_Execute Montagu Load_parameters_SliceDate')]",
-							"Area": "[parameters('cabreport_properties_Execute Montagu Load_parameters_Area')]",
-							"Domain": "[parameters('cabreport_properties_Execute Montagu Load_parameters_Domain')]",
-							"Region": "[parameters('cabreport_properties_Execute Montagu Load_parameters_Region')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Hour",
-						"interval": 2,
-						"startTime": "2023-01-25T12:37:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/pipelines/Execute Montagu Load')]"
 			]
 		}
 	]
