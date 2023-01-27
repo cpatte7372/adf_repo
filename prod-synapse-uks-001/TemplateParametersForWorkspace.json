@@ -71,6 +71,9 @@
 		"ServerLessSQL2_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_montagu_org5a2bcccf"
 		},
+		"SharePointOnlineList1_servicePrincipalKey": {
+			"value": ""
+		},
 		"dataverseprod_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_montagu_org5a2bcccf"
 		},
@@ -91,6 +94,9 @@
 		},
 		"test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test-ws-synapse-uks-01.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"SharePointSinkLS_accountKey": {
+			"value": ""
 		},
 		"ADLSLinkedService_properties_typeProperties_url": {
 			"value": "https://prodlakeaccuks01.dfs.core.windows.net"
@@ -121,6 +127,9 @@
 		},
 		"REST Companies API_properties_typeProperties_url": {
 			"value": "https://restcountries.com/v3.1/name/"
+		},
+		"SharePointOnlineList1_properties_typeProperties_servicePrincipalId": {
+			"value": "42fed13b-1d1c-429a-8e71-46f7cf889242"
 		},
 		"SynapseDataAzureKeyVault_properties_typeProperties_baseUrl": {
 			"value": "https://MontaguKeyVault.vault.azure.net/"
@@ -217,6 +226,9 @@
 		},
 		"cabreport_properties_Execute Montagu Load_parameters_Region": {
 			"value": "-2"
+		},
+		"SharePointSinkLS_properties_typeProperties_url": {
+			"value": "https://prodlakeaccuks01.dfs.core.windows.net/"
 		}
 	}
 }
