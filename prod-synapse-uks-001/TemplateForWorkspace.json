@@ -23236,10 +23236,33 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Minute",
-						"interval": 30,
+						"frequency": "Day",
+						"interval": 1,
 						"startTime": "2023-01-11T05:00:00Z",
-						"timeZone": "UTC"
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								0,
+								30
+							],
+							"hours": [
+								6,
+								7,
+								8,
+								9,
+								10,
+								11,
+								12,
+								13,
+								14,
+								15,
+								16,
+								17,
+								18,
+								19,
+								20
+							]
+						}
 					}
 				}
 			},
