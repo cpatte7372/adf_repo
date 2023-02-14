@@ -26,6 +26,9 @@
 		"DedicatedPoolInsight_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=Insights"
 		},
+		"Dynamics1_servicePrincipalCredential": {
+			"value": ""
+		},
 		"EnrichedDatabase_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
 		},
@@ -77,6 +80,9 @@
 		"SharePointSinkLS_accountKey": {
 			"value": ""
 		},
+		"TestLinkService_connectionString": {
+			"value": ""
+		},
 		"dataverseprod_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_montagu_org5a2bcccf"
 		},
@@ -98,6 +104,9 @@
 		"test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test-ws-synapse-uks-01.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"DynamicsLinkMontauequityh_servicePrincipalCredential": {
+			"value": ""
+		},
 		"ADLSLinkedService_properties_typeProperties_url": {
 			"value": "https://prodlakeaccuks01.dfs.core.windows.net"
 		},
@@ -118,6 +127,9 @@
 		},
 		"DuedilCompanies_properties_typeProperties_url": {
 			"value": "https://duedil.io/v4/company/gb/"
+		},
+		"Dynamics1_properties_typeProperties_servicePrincipalId": {
+			"value": "3b631464-34c1-44c1-80fa-28b7eb055ff2"
 		},
 		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
 			"value": "https://prodlakeaccuks01.dfs.core.windows.net/"
@@ -229,6 +241,9 @@
 		},
 		"cabreport_properties_Execute Montagu Load_parameters_Region": {
 			"value": "-2"
+		},
+		"DynamicsLinkMontauequityh_properties_typeProperties_servicePrincipalId": {
+			"value": "3b631464-34c1-44c1-80fa-28b7eb055ff2"
 		}
 	}
 }

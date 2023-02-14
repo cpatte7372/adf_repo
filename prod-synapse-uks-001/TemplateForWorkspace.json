@@ -40,6 +40,10 @@
 			"metadata": "Secure string for 'connectionString' of 'DedicatedPoolInsight'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=Insights"
 		},
+		"Dynamics1_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics1'"
+		},
 		"EnrichedDatabase_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'EnrichedDatabase'",
@@ -115,6 +119,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'SharePointSinkLS'"
 		},
+		"TestLinkService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'TestLinkService'"
+		},
 		"dataverseprod_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'dataverseprod'",
@@ -148,6 +156,10 @@
 			"metadata": "Secure string for 'connectionString' of 'test-ws-synapse-uks-01-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test-ws-synapse-uks-01.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"DynamicsLinkMontauequityh_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'DynamicsLinkMontauequityh'"
+		},
 		"ADLSLinkedService_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net"
@@ -175,6 +187,10 @@
 		"DuedilCompanies_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://duedil.io/v4/company/gb/"
+		},
+		"Dynamics1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "3b631464-34c1-44c1-80fa-28b7eb055ff2"
 		},
 		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
 			"type": "string",
@@ -323,6 +339,10 @@
 		"cabreport_properties_Execute Montagu Load_parameters_Region": {
 			"type": "string",
 			"defaultValue": "-2"
+		},
+		"DynamicsLinkMontauequityh_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "3b631464-34c1-44c1-80fa-28b7eb055ff2"
 		}
 	},
 	"variables": {
@@ -2581,6 +2601,69 @@
 				"[concat(variables('workspaceId'), '/datasets/DS_AnalyticsHub_DYN')]",
 				"[concat(variables('workspaceId'), '/linkedServices/LS_SQL_AnalyticsHub')]",
 				"[concat(variables('workspaceId'), '/pipelines/DBX_EnrichToCurated_Single')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/DataverseConnect')]",
+			"type": "Microsoft.Synapse/workspaces/pipelines",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DynamicsSource"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "upsert",
+								"upsertSettings": {
+									"useTempDB": true,
+									"keys": [
+										"activityid"
+									]
+								},
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DynamicsEntity1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlTable4",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/datasets/DynamicsEntity1')]",
+				"[concat(variables('workspaceId'), '/datasets/AzureSqlTable4')]"
 			]
 		},
 		{
@@ -15173,6 +15256,27 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/AzureSqlTable4')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TestLinkService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "testtable"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TestLinkService')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/AzureSqlVitals')]",
 			"type": "Microsoft.Synapse/workspaces/datasets",
 			"apiVersion": "2019-06-01-preview",
@@ -15966,6 +16070,26 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/linkedServices/LS_ADLS_PRIVATE_DYN')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/DynamicsEntity1')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "DynamicsLinkMontauequityh",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DynamicsEntity",
+				"schema": [],
+				"typeProperties": {
+					"entityName": "appointment"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/DynamicsLinkMontauequityh')]"
 			]
 		},
 		{
@@ -22238,6 +22362,33 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/Dynamics1')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://montagu-qa1.crm11.dynamics.com",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalCredentialType": "ServicePrincipalKey",
+					"servicePrincipalId": "[parameters('Dynamics1_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('Dynamics1_servicePrincipalCredential')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/EnrichedDatabase')]",
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
@@ -22633,6 +22784,25 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/TestLinkService')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('TestLinkService_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/crunchbasehttpsource')]",
@@ -23218,7 +23388,7 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -23241,10 +23411,6 @@
 						"startTime": "2023-01-11T05:00:00Z",
 						"timeZone": "UTC",
 						"schedule": {
-							"minutes": [
-								0,
-								30
-							],
 							"hours": [
 								6,
 								7,
@@ -45956,6 +46122,33 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/DynamicsLinkMontauequityh')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://montaguequity.crm11.dynamics.com",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalCredentialType": "ServicePrincipalKey",
+					"servicePrincipalId": "[parameters('DynamicsLinkMontauequityh_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('DynamicsLinkMontauequityh_servicePrincipalCredential')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
 			]
 		}
 	]
