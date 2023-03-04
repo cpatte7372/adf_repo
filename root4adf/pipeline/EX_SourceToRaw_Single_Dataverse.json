@@ -39,84 +39,11 @@
 				}
 			},
 			{
-				"name": "Copy Table to Lake",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Start Process",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM ',pipeline().parameters.Domain,'.',pipeline().parameters.TableName)",
-							"type": "Expression"
-						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".csv"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_SQL_DYN",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_ADLS_RAW1",
-						"type": "DatasetReference",
-						"parameters": {
-							"Directory": {
-								"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
-								"type": "Expression"
-							},
-							"Entity": {
-								"value": "@pipeline().parameters.TableName",
-								"type": "Expression"
-							}
-						}
-					}
-				]
-			},
-			{
 				"name": "Log Process Throughput",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy Table to Lake",
+						"activity": "Run Cleanse CSV",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -139,7 +66,7 @@
 						},
 						"CountValue": {
 							"value": {
-								"value": "@activity('Copy Table to Lake').output.rowsCopied",
+								"value": "@activity('Run Cleanse CSV').output.rowsCopied",
 								"type": "Expression"
 							},
 							"type": "Int32"
@@ -163,7 +90,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy Table to Lake",
+						"activity": "Run Cleanse CSV",
 						"dependencyConditions": [
 							"Failed"
 						]
@@ -311,6 +238,54 @@
 					"referenceName": "LS_SQL_AnalyticsHub",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Run Cleanse CSV",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Start Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": {
+						"value": "/Hydr8 Framework/Validation/@{pipeline().parameters.ProcessSubType}",
+						"type": "Expression"
+					},
+					"baseParameters": {
+						"processId": {
+							"value": "@string(pipeline().parameters.ProcessID)",
+							"type": "Expression"
+						},
+						"entityStageId": {
+							"value": "@string(pipeline().parameters.EntityStageID)",
+							"type": "Expression"
+						},
+						"stageName": {
+							"value": "@pipeline().parameters.Zone",
+							"type": "Expression"
+						},
+						"entityName": {
+							"value": "@pipeline().parameters.TableName",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LB_DBX_EngineeringSml",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
@@ -355,6 +330,9 @@
 				"type": "string"
 			},
 			"Area": {
+				"type": "string"
+			},
+			"ProcessSubType": {
 				"type": "string"
 			}
 		},
