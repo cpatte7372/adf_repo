@@ -259,10 +259,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": {
-						"value": "/Hydr8 Framework/Validation/@{pipeline().parameters.ProcessSubType}",
-						"type": "Expression"
-					},
+					"notebookPath": "/Hydr8 Framework/Validation/CleanseText - Merge",
 					"baseParameters": {
 						"processId": {
 							"value": "@string(pipeline().parameters.ProcessID)",
