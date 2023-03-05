@@ -259,7 +259,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Hydr8 Framework/Validation/CleanseText - Merge",
+					"notebookPath": "/Hydr8 Framework/Validation/ExtractCRMDataset",
 					"baseParameters": {
 						"processId": {
 							"value": "@string(pipeline().parameters.ProcessID)",
