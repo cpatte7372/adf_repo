@@ -66,7 +66,7 @@
 						},
 						"CountValue": {
 							"value": {
-								"value": "@activity('Run Cleanse CSV').output.rowsCopied",
+								"value": "@activity('Copy Decode Tables To Lake').output.rowsCopied",
 								"type": "Expression"
 							},
 							"type": "Int32"
