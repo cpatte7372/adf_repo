@@ -1,0 +1,17 @@
+{
+	"name": "decoded_crm_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_TestDB",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourcetable": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
