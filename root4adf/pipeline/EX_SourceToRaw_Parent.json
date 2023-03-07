@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": "125"
+								"value": null
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -536,12 +536,10 @@
 				"type": "string"
 			},
 			"Area": {
-				"type": "string",
-				"defaultValue": "dataverse"
+				"type": "string"
 			},
 			"Domain": {
-				"type": "string",
-				"defaultValue": "dbo"
+				"type": "string"
 			}
 		},
 		"folder": {
