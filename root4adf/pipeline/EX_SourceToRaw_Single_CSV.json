@@ -146,7 +146,17 @@
 				"outputs": [
 					{
 						"referenceName": "DS_BLOB_Landing_DYN_BINARY",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Path": {
+								"value": "@concat(pipeline().parameters.Path,'/Archive')",
+								"type": "Expression"
+							},
+							"Container": {
+								"value": "@pipeline().parameters.PathRoute",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
