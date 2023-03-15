@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": ""
+								"value": null
 							},
 							"ParentProcessID": {
 								"type": "Int32",
