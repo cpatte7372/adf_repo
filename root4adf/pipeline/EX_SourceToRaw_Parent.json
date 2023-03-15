@@ -28,7 +28,7 @@
 							},
 							"EntityStageID": {
 								"type": "Int32",
-								"value": null
+								"value": ""
 							},
 							"ParentProcessID": {
 								"type": "Int32",
@@ -360,6 +360,83 @@
 														},
 														"ProcessSubType": {
 															"value": "@item().ProcessSubType",
+															"type": "Expression"
+														}
+													}
+												}
+											}
+										]
+									},
+									{
+										"value": "CDC",
+										"activities": [
+											{
+												"name": "Run Copy Pipeline Table_CDC",
+												"description": "This has been moved to invoke the Zip PipeLine because it keeps on kicking of Databricaks. Otherwise, all is working well invoking EX_SourceToRaw_Single_Table - which is the pipeline it would kick of under normal circumstances",
+												"type": "ExecutePipeline",
+												"dependsOn": [],
+												"userProperties": [],
+												"typeProperties": {
+													"pipeline": {
+														"referenceName": "EX_SourceToRaw_Single_Table_CDC",
+														"type": "PipelineReference"
+													},
+													"waitOnCompletion": true,
+													"parameters": {
+														"TableName": {
+															"value": "@item().EntityName",
+															"type": "Expression"
+														},
+														"Zone": {
+															"value": "@item().StageName",
+															"type": "Expression"
+														},
+														"Year": {
+															"value": "@item().Year",
+															"type": "Expression"
+														},
+														"Month": {
+															"value": "@item().Month",
+															"type": "Expression"
+														},
+														"Day": {
+															"value": "@item().Day",
+															"type": "Expression"
+														},
+														"Domain": {
+															"value": "@item().Domain",
+															"type": "Expression"
+														},
+														"Classification": {
+															"value": "@item().Classification",
+															"type": "Expression"
+														},
+														"EntityStageID": {
+															"value": "@item().EntityStageID",
+															"type": "Expression"
+														},
+														"ProcessID": {
+															"value": "@item().ProcessID",
+															"type": "Expression"
+														},
+														"Version": {
+															"value": "@item().Version",
+															"type": "Expression"
+														},
+														"SlicePath": {
+															"value": "@item().SlicePath",
+															"type": "Expression"
+														},
+														"Time": {
+															"value": "@item().Time",
+															"type": "Expression"
+														},
+														"FileFormat": {
+															"value": "@item().FileFormat",
+															"type": "Expression"
+														},
+														"Area": {
+															"value": "@item().Area",
 															"type": "Expression"
 														}
 													}
