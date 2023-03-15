@@ -328,6 +328,12 @@
 			},
 			"ProcessSubType": {
 				"type": "string"
+			},
+			"Config": {
+				"type": "object"
+			},
+			"PathRoute": {
+				"type": "string"
 			}
 		},
 		"folder": {
