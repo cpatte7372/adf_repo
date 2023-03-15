@@ -61,14 +61,11 @@
 					"storedProcedureName": "[Process].[LogThroughput]",
 					"storedProcedureParameters": {
 						"CountName": {
-							"value": "rowsCopied",
+							"value": null,
 							"type": "String"
 						},
 						"CountValue": {
-							"value": {
-								"value": "@activity('ExtractTable').output.rowsCopied",
-								"type": "Expression"
-							},
+							"value": null,
 							"type": "Int32"
 						},
 						"ProcessID": {
