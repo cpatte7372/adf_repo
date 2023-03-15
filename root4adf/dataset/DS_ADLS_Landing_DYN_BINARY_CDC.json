@@ -2,7 +2,7 @@
 	"name": "DS_ADLS_Landing_DYN_BINARY_CDC",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_PRIVATE_DYN",
+			"referenceName": "LinkService4CDC",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
