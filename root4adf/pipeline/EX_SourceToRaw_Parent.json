@@ -431,10 +431,7 @@
 															"value": "@item().Time",
 															"type": "Expression"
 														},
-														"FileFormat": {
-															"value": "@item().FileFormat",
-															"type": "Expression"
-														},
+														"FileFormat": "parquet",
 														"Area": {
 															"value": "@item().Area",
 															"type": "Expression"
