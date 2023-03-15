@@ -241,7 +241,13 @@
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "Start Process",
+						"activity": "Set vSetFileMask",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "SetRecursiveFlag",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -279,6 +285,46 @@
 				"linkedServiceName": {
 					"referenceName": "LB_DBX_EngineeringSml",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Set vSetFileMask",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Start Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "FilenameMask",
+					"value": {
+						"value": "@if(greater(indexof(string(pipeline().parameters.Config),'FilenameMask'),0),pipeline().parameters.Config.FilenameMask,'')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SetRecursiveFlag",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Start Process",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "RecursiveFlag",
+					"value": {
+						"value": "@if(greater(indexof(string(pipeline().parameters.Config),'RecursiveFlag'),0),pipeline().parameters.Config.RecursiveFlag,'')",
+						"type": "Expression"
+					}
 				}
 			}
 		],
@@ -334,6 +380,14 @@
 			},
 			"PathRoute": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"FilenameMask": {
+				"type": "String"
+			},
+			"RecursiveFlag": {
+				"type": "String"
 			}
 		},
 		"folder": {
