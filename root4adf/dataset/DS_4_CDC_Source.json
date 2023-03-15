@@ -1,0 +1,16 @@
+{
+	"name": "DS_4_CDC_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_4_CDC_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			}
+		}
+	}
+}
