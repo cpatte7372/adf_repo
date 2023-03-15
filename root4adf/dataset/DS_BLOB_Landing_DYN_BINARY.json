@@ -5,14 +5,28 @@
 			"referenceName": "LS_BLOB_PRIVATE_DYN",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Path": {
+				"type": "string"
+			},
+			"Container": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "prequin.csv",
-				"folderPath": "source/import/prequin",
-				"container": "orgination"
+				"folderPath": {
+					"value": "@dataset().Path",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().Container",
+					"type": "Expression"
+				}
 			}
 		}
 	},
