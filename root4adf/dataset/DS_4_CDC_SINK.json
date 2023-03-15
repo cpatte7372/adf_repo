@@ -1,0 +1,26 @@
+{
+	"name": "DS_4_CDC_SINK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_4_CDC_SINK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Directory": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "/@{dataset().Directory}",
+					"type": "Expression"
+				},
+				"fileSystem": "root"
+			}
+		}
+	}
+}
