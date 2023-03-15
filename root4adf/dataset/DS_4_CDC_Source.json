@@ -5,11 +5,23 @@
 			"referenceName": "LS_4_CDC_Source",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Path": {
+				"type": "string"
+			},
+			"Container": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileSystem": {
+					"value": "@dataset().Container",
+					"type": "Expression"
+				}
 			}
 		}
 	}
