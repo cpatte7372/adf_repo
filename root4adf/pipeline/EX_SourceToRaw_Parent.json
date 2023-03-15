@@ -446,6 +446,10 @@
 														"PathRoute": {
 															"value": "@item().PathRoute",
 															"type": "Expression"
+														},
+														"Path": {
+															"value": "@item().Path",
+															"type": "Expression"
 														}
 													}
 												}
