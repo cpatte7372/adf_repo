@@ -1,0 +1,26 @@
+{
+	"name": "DS_ADLS_Landing_DYN_BINARY_CDC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_PRIVATE_DYN",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Path": {
+				"type": "string"
+			},
+			"Container": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "prequin.csv"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
