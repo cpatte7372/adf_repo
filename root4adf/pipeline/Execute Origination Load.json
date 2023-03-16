@@ -98,7 +98,7 @@
 			},
 			"Area": {
 				"type": "string",
-				"defaultValue": "dataverse"
+				"defaultValue": "cdcArea"
 			},
 			"Domain": {
 				"type": "string",
