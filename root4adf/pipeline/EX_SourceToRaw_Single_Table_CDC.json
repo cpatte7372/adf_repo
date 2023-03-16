@@ -61,11 +61,14 @@
 					"storedProcedureName": "[Process].[LogThroughput]",
 					"storedProcedureParameters": {
 						"CountName": {
-							"value": null,
+							"value": "rowsCopied",
 							"type": "String"
 						},
 						"CountValue": {
-							"value": null,
+							"value": {
+								"value": "@activity('Copy data1').output.filesRead",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						},
 						"ProcessID": {
@@ -89,7 +92,7 @@
 					{
 						"activity": "Copy data1",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
@@ -351,14 +354,7 @@
 						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": {
-								"value": "@if(equals(variables('RecursiveFlag'),'1'), 1, 0)",
-								"type": "Expression"
-							},
-							"wildcardFileName": {
-								"value": "@if(empty(variables('FilenameMask')), concat('*.',pipeline().parameters.FileFormat), concat(variables('FilenameMask'),toLower(pipeline().parameters.FileFormat)))",
-								"type": "Expression"
-							},
+							"recursive": true,
 							"deleteFilesAfterCompletion": false
 						},
 						"formatSettings": {
