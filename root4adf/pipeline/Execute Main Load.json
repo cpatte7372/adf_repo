@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Initiate Pret Load",
+				"name": "Initiate Main Load",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -58,7 +58,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Initiate Pret Load",
+						"activity": "Initiate Main Load",
 						"dependencyConditions": [
 							"Succeeded"
 						]
