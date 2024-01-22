@@ -4,20 +4,7 @@
 		"description": "Pause Every Day at 20:30",
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "PauseSQL",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"ResourceGroup": "MontaguData",
-					"SubscriptionID": "5c1bc415-b561-4700-9cbe-71f1079bb536",
-					"WorkspaceName": "prod-synapse-uks-001",
-					"PauseorResume": "Pause"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
