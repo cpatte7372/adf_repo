@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Start Process",
+				"description": "today4table",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
