@@ -97,12 +97,10 @@
 				"type": "string"
 			},
 			"Area": {
-				"type": "string",
-				"defaultValue": "F1Area"
+				"type": "string"
 			},
 			"Domain": {
-				"type": "string",
-				"defaultValue": "F1Domain"
+				"type": "string"
 			},
 			"Region": {
 				"type": "string",
