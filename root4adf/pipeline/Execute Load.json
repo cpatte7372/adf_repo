@@ -1,5 +1,5 @@
 {
-	"name": "Execute Main Load",
+	"name": "Execute Load",
 	"properties": {
 		"activities": [
 			{
