@@ -4,7 +4,7 @@
 		"activities": [
 			{
 				"name": "Initiate Main Load",
-				"description": "dsdasd",
+				"description": "testoday",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -100,7 +100,8 @@
 		],
 		"parameters": {
 			"SliceDate": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "testtoday"
 			},
 			"Area": {
 				"type": "string"
