@@ -1,0 +1,148 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "devtestv4"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Execute Main Load')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Initiate Main Load",
+						"description": "testoday",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "new",
+								"value": "user"
+							}
+						],
+						"typeProperties": {
+							"storedProcedureName": "remover",
+							"storedProcedureParameters": {
+								"Area": {
+									"value": {
+										"value": "@pipeline().parameters.Area",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"Domain": {
+									"value": {
+										"value": "@pipeline().parameters.Domain",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"Months": {
+									"value": null,
+									"type": "Int32"
+								},
+								"SliceDate": {
+									"value": {
+										"value": "@formatDateTime(utcnow(),'yyyy/MM/dd')",
+										"type": "Expression"
+									},
+									"type": "Datetime"
+								},
+								"Stage": {
+									"value": "Raw",
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Trigger Master Control",
+						"description": "today",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Initiate Main Load",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [
+							{
+								"name": "test",
+								"value": "once"
+							}
+						],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Master Control",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": false,
+							"parameters": {
+								"SliceDate": {
+									"value": "@pipeline().parameters.SliceDate",
+									"type": "Expression"
+								},
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								},
+								"Region": {
+									"value": "@pipeline().parameters.Region",
+									"type": "Expression"
+								}
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"SliceDate": {
+						"type": "string",
+						"defaultValue": "testtoday"
+					},
+					"Area": {
+						"type": "string"
+					},
+					"Domain": {
+						"type": "string"
+					},
+					"Region": {
+						"type": "string",
+						"defaultValue": "-2"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-12-13T18:10:44Z"
+			},
+			"dependsOn": []
+		}
+	]
+}
