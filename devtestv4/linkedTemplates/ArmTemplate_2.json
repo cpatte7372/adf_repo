@@ -20,6 +20,7 @@
 				"activities": [
 					{
 						"name": "Start Process",
+						"description": "today4table",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -394,6 +395,7 @@
 				"activities": [
 					{
 						"name": "Start Process",
+						"description": "today2024",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -1894,6 +1896,7 @@
 				"activities": [
 					{
 						"name": "Initiate Parent Process",
+						"description": "today2024",
 						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {

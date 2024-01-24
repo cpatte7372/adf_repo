@@ -77,6 +77,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureDatabricks",
 				"typeProperties": {
@@ -95,6 +96,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -112,6 +114,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today20244",
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -129,6 +132,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -146,6 +150,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
@@ -185,6 +190,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
@@ -211,6 +217,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
@@ -224,6 +231,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
@@ -2492,11 +2500,16 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "remove",
 						"folderPath": {
 							"value": "/@{dataset().Directory}",
 							"type": "Expression"
 						},
 						"fileSystem": "root"
+					},
+					"compression": {
+						"type": "bzip2",
+						"level": "Fastest"
 					}
 				}
 			},

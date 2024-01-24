@@ -2209,6 +2209,7 @@
 				"activities": [
 					{
 						"name": "Initiate Parent Process",
+						"description": "today2024",
 						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {
@@ -2861,6 +2862,7 @@
 				"activities": [
 					{
 						"name": "Start Process",
+						"description": "today2024",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -3389,6 +3391,7 @@
 				"activities": [
 					{
 						"name": "Start Process",
+						"description": "today2024",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -4056,6 +4059,7 @@
 				"activities": [
 					{
 						"name": "Start Process",
+						"description": "today4table",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -4434,6 +4438,7 @@
 				"activities": [
 					{
 						"name": "Start Process",
+						"description": "today2024",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -7105,11 +7110,16 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "remove",
 						"folderPath": {
 							"value": "/@{dataset().Directory}",
 							"type": "Expression"
 						},
 						"fileSystem": "root"
+					},
+					"compression": {
+						"type": "bzip2",
+						"level": "Fastest"
 					}
 				}
 			},
@@ -7139,6 +7149,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "test",
 						"folderPath": {
 							"value": "@dataset().Path",
 							"type": "Expression"
@@ -7147,6 +7158,10 @@
 							"value": "@dataset().Container",
 							"type": "Expression"
 						}
+					},
+					"compression": {
+						"type": "bzip2",
+						"level": "Fastest"
 					}
 				}
 			},
@@ -7176,6 +7191,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "remove",
 						"folderPath": {
 							"value": "/@{dataset().Directory}",
 							"type": "Expression"
@@ -7217,6 +7233,10 @@
 							"type": "Expression"
 						},
 						"fileSystem": "root"
+					},
+					"compression": {
+						"type": "bzip2",
+						"level": "Fastest"
 					}
 				}
 			},
@@ -7238,7 +7258,7 @@
 				"schema": [],
 				"typeProperties": {
 					"schema": "Process",
-					"table": "ProcessStatus"
+					"table": "ProcessStatusRemove"
 				}
 			},
 			"dependsOn": [
@@ -7267,7 +7287,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "prequin.csv",
+						"fileName": "remove",
 						"folderPath": {
 							"value": "@dataset().Path",
 							"type": "Expression"
@@ -7376,7 +7396,10 @@
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"schema": [],
-				"typeProperties": {}
+				"typeProperties": {
+					"schema": "remove",
+					"table": "remove"
+				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_TestDB')]"
@@ -7572,7 +7595,7 @@
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {
-					"schema": "guest",
+					"schema": "guest2",
 					"table": {
 						"value": "@dataset().sourcetable",
 						"type": "Expression"
@@ -7588,6 +7611,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureDatabricks",
 				"typeProperties": {
@@ -7606,6 +7630,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -7623,6 +7648,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today20244",
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -7640,6 +7666,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -7657,6 +7684,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
@@ -7696,6 +7724,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
@@ -7722,6 +7751,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
@@ -7735,6 +7765,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "today2024",
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
