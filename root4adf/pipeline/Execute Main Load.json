@@ -21,7 +21,7 @@
 					}
 				],
 				"typeProperties": {
-					"storedProcedureName": "rearad",
+					"storedProcedureName": "adfad",
 					"storedProcedureParameters": {
 						"Area": {
 							"value": {
@@ -55,7 +55,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSynapseAnalytics1",
+					"referenceName": "LS_SQL_AnalyticsHub",
 					"type": "LinkedServiceReference"
 				}
 			},
