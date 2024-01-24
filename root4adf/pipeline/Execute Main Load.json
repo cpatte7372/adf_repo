@@ -21,7 +21,6 @@
 					}
 				],
 				"typeProperties": {
-					"storedProcedureName": "remover",
 					"storedProcedureParameters": {
 						"Area": {
 							"value": {
@@ -55,7 +54,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "LS_SQL_AnalyticsHub",
+					"referenceName": "AzureSynapseAnalytics1",
 					"type": "LinkedServiceReference"
 				}
 			},
