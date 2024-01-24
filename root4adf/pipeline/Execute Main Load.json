@@ -16,7 +16,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[Process].[InitiateLoad]",
 					"storedProcedureParameters": {
 						"Area": {
 							"value": {
