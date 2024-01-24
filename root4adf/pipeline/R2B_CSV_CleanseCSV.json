@@ -39,6 +39,7 @@
 			},
 			{
 				"name": "Run Cleanse CSV",
+				"description": "today2024",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
