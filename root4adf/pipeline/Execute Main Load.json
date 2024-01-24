@@ -14,7 +14,12 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "new",
+						"value": "user"
+					}
+				],
 				"typeProperties": {
 					"storedProcedureName": "remover",
 					"storedProcedureParameters": {
@@ -56,6 +61,7 @@
 			},
 			{
 				"name": "Trigger Master Control",
+				"description": "today",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -76,7 +82,7 @@
 						"referenceName": "Master Control",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true,
+					"waitOnCompletion": false,
 					"parameters": {
 						"SliceDate": {
 							"value": "@pipeline().parameters.SliceDate",
