@@ -26,6 +26,10 @@
 					"value": "@dataset().Container",
 					"type": "Expression"
 				}
+			},
+			"compression": {
+				"type": "bzip2",
+				"level": "Fastest"
 			}
 		}
 	}
