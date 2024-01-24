@@ -7,55 +7,21 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "devtestv4"
 		},
-		"AzureDataLakeStorage1_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
-		},
-		"AzureDataLakeStorage2_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
-		},
-		"AzureSQLEnrichedServerless_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSQLEnrichedServerless'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
-		},
-		"AzureSynapseAnalytics1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSynapseAnalytics1'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synapseworksparcev4.sql.azuresynapse.net;Initial Catalog=testsadpool"
-		},
-		"ChoiceDB DataverseEnriched_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ChoiceDB DataverseEnriched'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
-		},
-		"DedicatedPoolInsight_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'DedicatedPoolInsight'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=Insights"
-		},
-		"EnrichedDatabase_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'EnrichedDatabase'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=DataverseEnriched"
-		},
-		"InsightsAzureSynapseAnalytics_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'InsightsAzureSynapseAnalytics'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=DedicatedSQLPool"
-		},
 		"LB_DBX_EngineeringSml_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'LB_DBX_EngineeringSml'"
 		},
+		"LS_4_CDC_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_4_CDC_SINK'"
+		},
+		"LS_4_CDC_Source_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_4_CDC_Source'"
+		},
 		"LS_ADLS_PRIVATE_DYN_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PRIVATE_DYN'"
-		},
-		"LS_BLOB_PRIVATE_DYN_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_BLOB_PRIVATE_DYN'"
 		},
 		"LS_FIVERR_SQL_AnalyticsHub_connectionString": {
 			"type": "secureString",
@@ -71,288 +37,35 @@
 		},
 		"LS_SQL_PretBIReference_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_SQL_PretBIReference'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=test-ws-synapse-uks-01-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_testb_unqd627dc8d885044ee87837a5345b30"
+			"metadata": "Secure string for 'connectionString' of 'LS_SQL_PretBIReference'"
 		},
-		"MyOrigination_connectionString": {
+		"LS_TestDB_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'MyOrigination'"
+			"metadata": "Secure string for 'connectionString' of 'LS_TestDB'"
 		},
-		"ReportsAnalytics_connectionString": {
+		"testdb_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ReportsAnalytics'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=DedicatedSQLPool"
-		},
-		"ReportsSLLinkedSVC_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ReportsSLLinkedSVC'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=ReportsSL"
-		},
-		"ReportsSql_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ReportsSql'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=ReportsDW"
-		},
-		"ServerLessSQL2_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ServerLessSQL2'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_montagu_org5a2bcccf"
-		},
-		"mssfttestworkspace-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'mssfttestworkspace-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:mssfttestworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"prod-synapse-uks-001-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'prod-synapse-uks-001-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:prod-synapse-uks-001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"synapseworksparcev4-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'synapseworksparcev4-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapseworksparcev4.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'test-ws-synapse-uks-01-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test-ws-synapse-uks-01.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"ADLSLinkedService_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net"
-		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://testdatalakeuks01.dfs.core.windows.net"
-		},
-		"AzureDataLakeStorage2_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net"
-		},
-		"AzureKeyVaultClientsecretSynapse_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://MontaguKeyVault.vault.azure.net/"
-		},
-		"DueDil_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://duedil.io/v4/company"
+			"metadata": "Secure string for 'connectionString' of 'testdb'"
 		},
 		"LB_DBX_EngineeringSml_properties_typeProperties_existingClusterId": {
 			"type": "string",
-			"defaultValue": "0530-194702-1mjaol87"
+			"defaultValue": "0304-213156-rwxwxsxw"
+		},
+		"LS_4_CDC_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlspretbiukadlsdev.dfs.core.windows.net/"
+		},
+		"LS_4_CDC_Source_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlspretbiukadlsdev.dfs.core.windows.net/"
 		},
 		"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net/"
+			"defaultValue": "https://adlspretbiukadlsdev.dfs.core.windows.net/"
 		},
-		"LinkedServiceCDM_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net"
-		},
-		"SynapseDataAzureKeyVault_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://MontaguKeyVault.vault.azure.net/"
-		},
-		"mssfttestworkspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://testdatalakeuks01.dfs.core.windows.net"
-		},
-		"prod-synapse-uks-001-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net"
-		},
-		"synapseworksparcev4-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://synapsworkspacev2.dfs.core.windows.net"
-		},
-		"test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://testdatalakeuks01.dfs.core.windows.net"
-		},
-		"ADLSProdEndpoint_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Storage/storageAccounts/prodlakeaccuks02"
-		},
-		"ADLSProdEndpoint_properties_groupId": {
-			"type": "string",
-			"defaultValue": "dfs"
-		},
-		"ADLSProdEndpoint_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"prodlakeaccuks02.dfs.core.windows.net"
-			]
-		},
-		"AzureDataLakeStorageMEP4_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Storage/storageAccounts/prodlakeaccuks01"
-		},
-		"AzureDataLakeStorageMEP4_properties_groupId": {
-			"type": "string",
-			"defaultValue": "dfs"
-		},
-		"AzureDataLakeStorageMEP4_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"prodlakeaccuks01.dfs.core.windows.net"
-			]
-		},
-		"AzureSqlDatabaseMEP2_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/test-mrg-synapse-uks-01/providers/Microsoft.Sql/servers/test-ws-synapse-uks-01"
-		},
-		"AzureSqlDatabaseMEP2_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sqlServer"
-		},
-		"AzureSynapseAnalytics802MEP_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Synapse/workspaces/prod-synapse-uks-001"
-		},
-		"AzureSynapseAnalytics802MEP_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sqlOnDemand"
-		},
-		"Purviewendpointstest_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/Montagu/providers/Microsoft.Purview/accounts/MontaguPurview"
-		},
-		"Purviewendpointstest_properties_groupId": {
-			"type": "string",
-			"defaultValue": "account"
-		},
-		"Purviewendpointstest_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"montagupurview.purview.azure.com"
-			]
-		},
-		"Purviewendpointstest_blob_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/managed-rg-MontaguPurview/providers/Microsoft.Storage/storageAccounts/scanuksouthrpqzvxo"
-		},
-		"Purviewendpointstest_blob_properties_groupId": {
-			"type": "string",
-			"defaultValue": "blob"
-		},
-		"Purviewendpointstest_blob_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"scanuksouthrpqzvxo.blob.core.windows.net"
-			]
-		},
-		"Purviewendpointstest_namespace_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/managed-rg-MontaguPurview/providers/Microsoft.EventHub/namespaces/Atlas-d26807bb-c695-4d5e-a987-2852e4651aee"
-		},
-		"Purviewendpointstest_namespace_properties_groupId": {
-			"type": "string",
-			"defaultValue": "namespace"
-		},
-		"Purviewendpointstest_namespace_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"Atlas-d26807bb-c695-4d5e-a987-2852e4651aee.servicebus.windows.net"
-			]
-		},
-		"Purviewendpointstest_queue_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/managed-rg-MontaguPurview/providers/Microsoft.Storage/storageAccounts/scanuksouthrpqzvxo"
-		},
-		"Purviewendpointstest_queue_properties_groupId": {
-			"type": "string",
-			"defaultValue": "queue"
-		},
-		"Purviewendpointstest_queue_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"scanuksouthrpqzvxo.queue.core.windows.net"
-			]
-		},
-		"synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Storage/storageAccounts/prodlakeaccuks01"
-		},
-		"synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_groupId": {
-			"type": "string",
-			"defaultValue": "dfs"
-		},
-		"synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"prodlakeaccuks01.dfs.core.windows.net"
-			]
-		},
-		"synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/test-rg-synapse-uks-01/providers/Microsoft.Storage/storageAccounts/testdatalakeuks01"
-		},
-		"synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_groupId": {
-			"type": "string",
-			"defaultValue": "dfs"
-		},
-		"synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"testdatalakeuks01.dfs.core.windows.net"
-			]
-		},
-		"synapse-ws-sql--prod-synapse-uks-001_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Synapse/workspaces/prod-synapse-uks-001"
-		},
-		"synapse-ws-sql--prod-synapse-uks-001_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sql"
-		},
-		"synapse-ws-sql--prod-synapse-uks-001_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"prod-synapse-uks-001.e52c8ab6-b121-4230-90fb-786ac6c216cb.sql.azuresynapse.net"
-			]
-		},
-		"synapse-ws-sql--test-ws-synapse-uks-01_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/test-rg-synapse-uks-01/providers/Microsoft.Synapse/workspaces/test-ws-synapse-uks-01"
-		},
-		"synapse-ws-sql--test-ws-synapse-uks-01_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sql"
-		},
-		"synapse-ws-sql--test-ws-synapse-uks-01_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"test-ws-synapse-uks-01.ac774afe-0375-4efe-86ec-bb2fc2a14fbc.sql.azuresynapse.net"
-			]
-		},
-		"synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Synapse/workspaces/prod-synapse-uks-001"
-		},
-		"synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sqlOnDemand"
-		},
-		"synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"prod-synapse-uks-001-ondemand.e52c8ab6-b121-4230-90fb-786ac6c216cb.sql.azuresynapse.net"
-			]
-		},
-		"synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/test-rg-synapse-uks-01/providers/Microsoft.Synapse/workspaces/test-ws-synapse-uks-01"
-		},
-		"synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sqlOnDemand"
-		},
-		"synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"test-ws-synapse-uks-01-ondemand.ac774afe-0375-4efe-86ec-bb2fc2a14fbc.sql.azuresynapse.net"
-			]
+		"LS_BLOB_PRIVATE_DYN_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'LS_BLOB_PRIVATE_DYN'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -381,14 +94,17 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureSynapseAnalytics1_connectionString": {
-						"value": "[parameters('AzureSynapseAnalytics1_connectionString')]"
+					"LB_DBX_EngineeringSml_accessToken": {
+						"value": "[parameters('LB_DBX_EngineeringSml_accessToken')]"
+					},
+					"LS_4_CDC_SINK_accountKey": {
+						"value": "[parameters('LS_4_CDC_SINK_accountKey')]"
+					},
+					"LS_4_CDC_Source_accountKey": {
+						"value": "[parameters('LS_4_CDC_Source_accountKey')]"
 					},
 					"LS_ADLS_PRIVATE_DYN_accountKey": {
 						"value": "[parameters('LS_ADLS_PRIVATE_DYN_accountKey')]"
-					},
-					"LS_BLOB_PRIVATE_DYN_connectionString": {
-						"value": "[parameters('LS_BLOB_PRIVATE_DYN_connectionString')]"
 					},
 					"LS_FIVERR_SQL_AnalyticsHub_connectionString": {
 						"value": "[parameters('LS_FIVERR_SQL_AnalyticsHub_connectionString')]"
@@ -402,14 +118,26 @@
 					"LS_SQL_PretBIReference_connectionString": {
 						"value": "[parameters('LS_SQL_PretBIReference_connectionString')]"
 					},
-					"AzureKeyVaultClientsecretSynapse_properties_typeProperties_baseUrl": {
-						"value": "[parameters('AzureKeyVaultClientsecretSynapse_properties_typeProperties_baseUrl')]"
+					"LS_TestDB_connectionString": {
+						"value": "[parameters('LS_TestDB_connectionString')]"
+					},
+					"testdb_connectionString": {
+						"value": "[parameters('testdb_connectionString')]"
+					},
+					"LB_DBX_EngineeringSml_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('LB_DBX_EngineeringSml_properties_typeProperties_existingClusterId')]"
+					},
+					"LS_4_CDC_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_4_CDC_SINK_properties_typeProperties_url')]"
+					},
+					"LS_4_CDC_Source_properties_typeProperties_url": {
+						"value": "[parameters('LS_4_CDC_Source_properties_typeProperties_url')]"
 					},
 					"LS_ADLS_PRIVATE_DYN_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLS_PRIVATE_DYN_properties_typeProperties_url')]"
 					},
-					"SynapseDataAzureKeyVault_properties_typeProperties_baseUrl": {
-						"value": "[parameters('SynapseDataAzureKeyVault_properties_typeProperties_baseUrl')]"
+					"LS_BLOB_PRIVATE_DYN_sasUri": {
+						"value": "[parameters('LS_BLOB_PRIVATE_DYN_sasUri')]"
 					}
 				}
 			},
@@ -428,45 +156,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"AzureDataLakeStorage1_accountKey": {
-						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
-					},
-					"AzureDataLakeStorage2_accountKey": {
-						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
-					},
-					"AzureSQLEnrichedServerless_connectionString": {
-						"value": "[parameters('AzureSQLEnrichedServerless_connectionString')]"
-					},
-					"ChoiceDB DataverseEnriched_connectionString": {
-						"value": "[parameters('ChoiceDB DataverseEnriched_connectionString')]"
-					},
-					"DedicatedPoolInsight_connectionString": {
-						"value": "[parameters('DedicatedPoolInsight_connectionString')]"
-					},
-					"EnrichedDatabase_connectionString": {
-						"value": "[parameters('EnrichedDatabase_connectionString')]"
-					},
-					"InsightsAzureSynapseAnalytics_connectionString": {
-						"value": "[parameters('InsightsAzureSynapseAnalytics_connectionString')]"
-					},
-					"LB_DBX_EngineeringSml_accessToken": {
-						"value": "[parameters('LB_DBX_EngineeringSml_accessToken')]"
-					},
-					"ADLSLinkedService_properties_typeProperties_url": {
-						"value": "[parameters('ADLSLinkedService_properties_typeProperties_url')]"
-					},
-					"AzureDataLakeStorage1_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
-					},
-					"AzureDataLakeStorage2_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
-					},
-					"DueDil_properties_typeProperties_url": {
-						"value": "[parameters('DueDil_properties_typeProperties_url')]"
-					},
-					"LB_DBX_EngineeringSml_properties_typeProperties_existingClusterId": {
-						"value": "[parameters('LB_DBX_EngineeringSml_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},
@@ -487,253 +176,11 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"MyOrigination_connectionString": {
-						"value": "[parameters('MyOrigination_connectionString')]"
-					},
-					"ReportsAnalytics_connectionString": {
-						"value": "[parameters('ReportsAnalytics_connectionString')]"
-					},
-					"ReportsSLLinkedSVC_connectionString": {
-						"value": "[parameters('ReportsSLLinkedSVC_connectionString')]"
-					},
-					"ReportsSql_connectionString": {
-						"value": "[parameters('ReportsSql_connectionString')]"
-					},
-					"ServerLessSQL2_connectionString": {
-						"value": "[parameters('ServerLessSQL2_connectionString')]"
-					},
-					"mssfttestworkspace-WorkspaceDefaultSqlServer_connectionString": {
-						"value": "[parameters('mssfttestworkspace-WorkspaceDefaultSqlServer_connectionString')]"
-					},
-					"prod-synapse-uks-001-WorkspaceDefaultSqlServer_connectionString": {
-						"value": "[parameters('prod-synapse-uks-001-WorkspaceDefaultSqlServer_connectionString')]"
-					},
-					"synapseworksparcev4-WorkspaceDefaultSqlServer_connectionString": {
-						"value": "[parameters('synapseworksparcev4-WorkspaceDefaultSqlServer_connectionString')]"
-					},
-					"test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString": {
-						"value": "[parameters('test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString')]"
-					},
-					"LinkedServiceCDM_properties_typeProperties_url": {
-						"value": "[parameters('LinkedServiceCDM_properties_typeProperties_url')]"
-					},
-					"mssfttestworkspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
-						"value": "[parameters('mssfttestworkspace-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-					},
-					"prod-synapse-uks-001-WorkspaceDefaultStorage_properties_typeProperties_url": {
-						"value": "[parameters('prod-synapse-uks-001-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-					},
-					"synapseworksparcev4-WorkspaceDefaultStorage_properties_typeProperties_url": {
-						"value": "[parameters('synapseworksparcev4-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-					},
-					"test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url": {
-						"value": "[parameters('test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-					},
-					"ADLSProdEndpoint_properties_privateLinkResourceId": {
-						"value": "[parameters('ADLSProdEndpoint_properties_privateLinkResourceId')]"
-					},
-					"ADLSProdEndpoint_properties_groupId": {
-						"value": "[parameters('ADLSProdEndpoint_properties_groupId')]"
-					},
-					"ADLSProdEndpoint_properties_fqdns": {
-						"value": "[parameters('ADLSProdEndpoint_properties_fqdns')]"
-					},
-					"AzureDataLakeStorageMEP4_properties_privateLinkResourceId": {
-						"value": "[parameters('AzureDataLakeStorageMEP4_properties_privateLinkResourceId')]"
-					},
-					"AzureDataLakeStorageMEP4_properties_groupId": {
-						"value": "[parameters('AzureDataLakeStorageMEP4_properties_groupId')]"
-					},
-					"AzureDataLakeStorageMEP4_properties_fqdns": {
-						"value": "[parameters('AzureDataLakeStorageMEP4_properties_fqdns')]"
-					},
-					"AzureSqlDatabaseMEP2_properties_privateLinkResourceId": {
-						"value": "[parameters('AzureSqlDatabaseMEP2_properties_privateLinkResourceId')]"
-					},
-					"AzureSqlDatabaseMEP2_properties_groupId": {
-						"value": "[parameters('AzureSqlDatabaseMEP2_properties_groupId')]"
 					}
 				}
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'devtestv4_ArmTemplate_1')]"
-			]
-		},
-		{
-			"name": "devtestv4_ArmTemplate_3",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2018-02-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					},
-					"AzureSynapseAnalytics802MEP_properties_privateLinkResourceId": {
-						"value": "[parameters('AzureSynapseAnalytics802MEP_properties_privateLinkResourceId')]"
-					},
-					"AzureSynapseAnalytics802MEP_properties_groupId": {
-						"value": "[parameters('AzureSynapseAnalytics802MEP_properties_groupId')]"
-					},
-					"Purviewendpointstest_properties_privateLinkResourceId": {
-						"value": "[parameters('Purviewendpointstest_properties_privateLinkResourceId')]"
-					},
-					"Purviewendpointstest_properties_groupId": {
-						"value": "[parameters('Purviewendpointstest_properties_groupId')]"
-					},
-					"Purviewendpointstest_properties_fqdns": {
-						"value": "[parameters('Purviewendpointstest_properties_fqdns')]"
-					},
-					"Purviewendpointstest_blob_properties_privateLinkResourceId": {
-						"value": "[parameters('Purviewendpointstest_blob_properties_privateLinkResourceId')]"
-					},
-					"Purviewendpointstest_blob_properties_groupId": {
-						"value": "[parameters('Purviewendpointstest_blob_properties_groupId')]"
-					},
-					"Purviewendpointstest_blob_properties_fqdns": {
-						"value": "[parameters('Purviewendpointstest_blob_properties_fqdns')]"
-					},
-					"Purviewendpointstest_namespace_properties_privateLinkResourceId": {
-						"value": "[parameters('Purviewendpointstest_namespace_properties_privateLinkResourceId')]"
-					},
-					"Purviewendpointstest_namespace_properties_groupId": {
-						"value": "[parameters('Purviewendpointstest_namespace_properties_groupId')]"
-					},
-					"Purviewendpointstest_namespace_properties_fqdns": {
-						"value": "[parameters('Purviewendpointstest_namespace_properties_fqdns')]"
-					},
-					"Purviewendpointstest_queue_properties_privateLinkResourceId": {
-						"value": "[parameters('Purviewendpointstest_queue_properties_privateLinkResourceId')]"
-					},
-					"Purviewendpointstest_queue_properties_groupId": {
-						"value": "[parameters('Purviewendpointstest_queue_properties_groupId')]"
-					},
-					"Purviewendpointstest_queue_properties_fqdns": {
-						"value": "[parameters('Purviewendpointstest_queue_properties_fqdns')]"
-					},
-					"synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_privateLinkResourceId": {
-						"value": "[parameters('synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_privateLinkResourceId')]"
-					},
-					"synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_groupId": {
-						"value": "[parameters('synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_groupId')]"
-					},
-					"synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_fqdns": {
-						"value": "[parameters('synapse-ws-custstgacct--prod-synapse-uks-001-prodlakeaccuks01_properties_fqdns')]"
-					},
-					"synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_privateLinkResourceId": {
-						"value": "[parameters('synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_privateLinkResourceId')]"
-					},
-					"synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_groupId": {
-						"value": "[parameters('synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_groupId')]"
-					},
-					"synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_fqdns": {
-						"value": "[parameters('synapse-ws-custstgacct--test-ws-synapse-uks-01-testdatalakeuks01_properties_fqdns')]"
-					},
-					"synapse-ws-sql--prod-synapse-uks-001_properties_privateLinkResourceId": {
-						"value": "[parameters('synapse-ws-sql--prod-synapse-uks-001_properties_privateLinkResourceId')]"
-					},
-					"synapse-ws-sql--prod-synapse-uks-001_properties_groupId": {
-						"value": "[parameters('synapse-ws-sql--prod-synapse-uks-001_properties_groupId')]"
-					},
-					"synapse-ws-sql--prod-synapse-uks-001_properties_fqdns": {
-						"value": "[parameters('synapse-ws-sql--prod-synapse-uks-001_properties_fqdns')]"
-					},
-					"synapse-ws-sql--test-ws-synapse-uks-01_properties_privateLinkResourceId": {
-						"value": "[parameters('synapse-ws-sql--test-ws-synapse-uks-01_properties_privateLinkResourceId')]"
-					},
-					"synapse-ws-sql--test-ws-synapse-uks-01_properties_groupId": {
-						"value": "[parameters('synapse-ws-sql--test-ws-synapse-uks-01_properties_groupId')]"
-					},
-					"synapse-ws-sql--test-ws-synapse-uks-01_properties_fqdns": {
-						"value": "[parameters('synapse-ws-sql--test-ws-synapse-uks-01_properties_fqdns')]"
-					},
-					"synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_privateLinkResourceId": {
-						"value": "[parameters('synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_privateLinkResourceId')]"
-					},
-					"synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_groupId": {
-						"value": "[parameters('synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_groupId')]"
-					},
-					"synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_fqdns": {
-						"value": "[parameters('synapse-ws-sqlOnDemand--prod-synapse-uks-001_properties_fqdns')]"
-					},
-					"synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_privateLinkResourceId": {
-						"value": "[parameters('synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_privateLinkResourceId')]"
-					},
-					"synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_groupId": {
-						"value": "[parameters('synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_groupId')]"
-					},
-					"synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_fqdns": {
-						"value": "[parameters('synapse-ws-sqlOnDemand--test-ws-synapse-uks-01_properties_fqdns')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'devtestv4_ArmTemplate_2')]"
-			]
-		},
-		{
-			"name": "devtestv4_ArmTemplate_4",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2018-02-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'devtestv4_ArmTemplate_3')]"
-			]
-		},
-		{
-			"name": "devtestv4_ArmTemplate_5",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2018-02-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_5.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'devtestv4_ArmTemplate_4')]"
-			]
-		},
-		{
-			"name": "devtestv4_ArmTemplate_6",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2018-02-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_6.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'devtestv4_ArmTemplate_5')]"
 			]
 		}
 	]

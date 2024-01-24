@@ -6,106 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "devtestv4"
-		},
-		"MyOrigination_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'MyOrigination'"
-		},
-		"ReportsAnalytics_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ReportsAnalytics'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=DedicatedSQLPool"
-		},
-		"ReportsSLLinkedSVC_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ReportsSLLinkedSVC'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=ReportsSL"
-		},
-		"ReportsSql_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ReportsSql'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001.sql.azuresynapse.net;Initial Catalog=ReportsDW"
-		},
-		"ServerLessSQL2_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ServerLessSQL2'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=prod-synapse-uks-001-ondemand.sql.azuresynapse.net;Initial Catalog=dataverse_montagu_org5a2bcccf"
-		},
-		"mssfttestworkspace-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'mssfttestworkspace-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:mssfttestworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"prod-synapse-uks-001-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'prod-synapse-uks-001-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:prod-synapse-uks-001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"synapseworksparcev4-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'synapseworksparcev4-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapseworksparcev4.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'test-ws-synapse-uks-01-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test-ws-synapse-uks-01.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"LinkedServiceCDM_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net"
-		},
-		"mssfttestworkspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://testdatalakeuks01.dfs.core.windows.net"
-		},
-		"prod-synapse-uks-001-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://prodlakeaccuks01.dfs.core.windows.net"
-		},
-		"synapseworksparcev4-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://synapsworkspacev2.dfs.core.windows.net"
-		},
-		"test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://testdatalakeuks01.dfs.core.windows.net"
-		},
-		"ADLSProdEndpoint_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Storage/storageAccounts/prodlakeaccuks02"
-		},
-		"ADLSProdEndpoint_properties_groupId": {
-			"type": "string",
-			"defaultValue": "dfs"
-		},
-		"ADLSProdEndpoint_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"prodlakeaccuks02.dfs.core.windows.net"
-			]
-		},
-		"AzureDataLakeStorageMEP4_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/MontaguData/providers/Microsoft.Storage/storageAccounts/prodlakeaccuks01"
-		},
-		"AzureDataLakeStorageMEP4_properties_groupId": {
-			"type": "string",
-			"defaultValue": "dfs"
-		},
-		"AzureDataLakeStorageMEP4_properties_fqdns": {
-			"type": "array",
-			"defaultValue": [
-				"prodlakeaccuks01.dfs.core.windows.net"
-			]
-		},
-		"AzureSqlDatabaseMEP2_properties_privateLinkResourceId": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5c1bc415-b561-4700-9cbe-71f1079bb536/resourceGroups/test-mrg-synapse-uks-01/providers/Microsoft.Sql/servers/test-ws-synapse-uks-01"
-		},
-		"AzureSqlDatabaseMEP2_properties_groupId": {
-			"type": "string",
-			"defaultValue": "sqlServer"
 		}
 	},
 	"variables": {
@@ -113,381 +13,2981 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/LinkedServiceCDM')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/EX_SourceToRaw_Single_Table')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('LinkedServiceCDM_properties_typeProperties_url')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/MyOrigination')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('MyOrigination_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ReportsAnalytics')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Dataset Linked Service",
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('ReportsAnalytics_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ReportsSLLinkedSVC')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('ReportsSLLinkedSVC_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ReportsSql')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('ReportsSql_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ServerLessSQL2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('ServerLessSQL2_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/mssfttestworkspace-WorkspaceDefaultSqlServer')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"parameters": {
-					"DBName": {
-						"type": "String"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('mssfttestworkspace-WorkspaceDefaultSqlServer_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/mssfttestworkspace-WorkspaceDefaultStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('mssfttestworkspace-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/prod-synapse-uks-001-WorkspaceDefaultSqlServer')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"parameters": {
-					"DBName": {
-						"type": "String"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('prod-synapse-uks-001-WorkspaceDefaultSqlServer_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/prod-synapse-uks-001-WorkspaceDefaultStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('prod-synapse-uks-001-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/synapseworksparcev4-WorkspaceDefaultSqlServer')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"parameters": {
-					"DBName": {
-						"type": "String"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('synapseworksparcev4-WorkspaceDefaultSqlServer_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/synapseworksparcev4-WorkspaceDefaultStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('synapseworksparcev4-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/test-ws-synapse-uks-01-WorkspaceDefaultSqlServer')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"parameters": {
-					"DBName": {
-						"type": "String"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('test-ws-synapse-uks-01-WorkspaceDefaultSqlServer_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/test-ws-synapse-uks-01-WorkspaceDefaultStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('test-ws-synapse-uks-01-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/IntegrationRuntime1')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "Managed",
-				"typeProperties": {
-					"computeProperties": {
-						"location": "AutoResolve",
-						"dataFlowProperties": {
-							"computeType": "General",
-							"coreCount": 8,
-							"timeToLive": 10,
-							"cleanup": false
+				"activities": [
+					{
+						"name": "Start Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[StartProcess]",
+							"storedProcedureParameters": {
+								"ADFExecution": {
+									"value": {
+										"value": "@pipeline().RunId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Copy Table to Lake",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Start Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": {
+									"value": "@concat('SELECT * FROM ',pipeline().parameters.Domain,'.',pipeline().parameters.TableName)",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_SQL_DYN",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ADLS_RAW1",
+								"type": "DatasetReference",
+								"parameters": {
+									"Directory": {
+										"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
+										"type": "Expression"
+									},
+									"Entity": {
+										"value": "@pipeline().parameters.TableName",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "Log Process Throughput",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy Table to Lake",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[LogThroughput]",
+							"storedProcedureParameters": {
+								"CountName": {
+									"value": "rowsCopied",
+									"type": "String"
+								},
+								"CountValue": {
+									"value": {
+										"value": "@activity('Copy Table to Lake').output.rowsCopied",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy Table to Lake",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Finalise Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Log Process Throughput",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FinaliseProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Process From Log Failure",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Log Process Throughput",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Add Dependencies to Queue",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Finalise Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[InitiateDependency]",
+							"storedProcedureParameters": {
+								"EntityStageID": {
+									"value": {
+										"value": "@pipeline().parameters.EntityStageID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"SlicePath": {
+									"value": {
+										"value": "@concat('Year=',pipeline().parameters.Year,'/Month=',pipeline().parameters.Month,'/Day=',pipeline().parameters.Day,'/Time=',pipeline().parameters.Time)",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"MultiLine": {
+									"value": "0"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
 						}
 					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
 				},
-				"managedVirtualNetwork": {
-					"type": "ManagedVirtualNetworkReference",
-					"referenceName": "default"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/IntegrationRuntime4')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "Managed",
-				"typeProperties": {
-					"computeProperties": {
-						"location": "AutoResolve",
-						"dataFlowProperties": {
-							"computeType": "General",
-							"coreCount": 8,
-							"timeToLive": 10,
-							"cleanup": false
-						},
-						"copyComputeScaleProperties": {
-							"dataIntegrationUnit": 4,
-							"timeToLive": 5
-						},
-						"pipelineExternalComputeScaleProperties": {
-							"timeToLive": 60
-						}
+				"parameters": {
+					"TableName": {
+						"type": "string"
+					},
+					"Zone": {
+						"type": "string",
+						"defaultValue": "RAW"
+					},
+					"Year": {
+						"type": "string"
+					},
+					"Month": {
+						"type": "string"
+					},
+					"Day": {
+						"type": "string"
+					},
+					"Domain": {
+						"type": "string"
+					},
+					"Classification": {
+						"type": "string"
+					},
+					"EntityStageID": {
+						"type": "int"
+					},
+					"ProcessID": {
+						"type": "int"
+					},
+					"Version": {
+						"type": "string"
+					},
+					"SlicePath": {
+						"type": "string"
+					},
+					"Time": {
+						"type": "string"
+					},
+					"FileFormat": {
+						"type": "string"
+					},
+					"Area": {
+						"type": "string"
 					}
 				},
-				"managedVirtualNetwork": {
-					"type": "ManagedVirtualNetworkReference",
-					"referenceName": "default"
-				}
+				"folder": {
+					"name": "0 - Source2Raw/Pret"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-08-20T14:26:03Z"
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/IntegrationRuntime5')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"name": "[concat(parameters('factoryName'), '/EX_SourceToRaw_Single_Table_CDC')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"type": "Managed",
-				"typeProperties": {
-					"computeProperties": {
-						"location": "AutoResolve",
-						"dataFlowProperties": {
-							"computeType": "General",
-							"coreCount": 8,
-							"timeToLive": 10,
-							"cleanup": false
+				"activities": [
+					{
+						"name": "Start Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
 						},
-						"copyComputeScaleProperties": {
-							"dataIntegrationUnit": 4,
-							"timeToLive": 5
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[StartProcess]",
+							"storedProcedureParameters": {
+								"ADFExecution": {
+									"value": {
+										"value": "@pipeline().RunId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
 						},
-						"pipelineExternalComputeScaleProperties": {
-							"timeToLive": 60
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "Log Process Throughput",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[LogThroughput]",
+							"storedProcedureParameters": {
+								"CountName": {
+									"value": "rowsCopied",
+									"type": "String"
+								},
+								"CountValue": {
+									"value": {
+										"value": "@activity('Copy data1').output.filesRead",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Finalise Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Log Process Throughput",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FinaliseProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Process From Log Failure",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Log Process Throughput",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Add Dependencies to Queue",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Finalise Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[InitiateDependency]",
+							"storedProcedureParameters": {
+								"EntityStageID": {
+									"value": {
+										"value": "@pipeline().parameters.EntityStageID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"SlicePath": {
+									"value": {
+										"value": "@concat('Year=',pipeline().parameters.Year,'/Month=',pipeline().parameters.Month,'/Day=',pipeline().parameters.Day,'/Time=',pipeline().parameters.Time)",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"MultiLine": {
+									"value": "0"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "ExtractTable",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Set vSetFileMask",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "SetRecursiveFlag",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Hydr8 Framework/Validation/ExtractTable",
+							"baseParameters": {
+								"processId": {
+									"value": "@string(pipeline().parameters.ProcessID)",
+									"type": "Expression"
+								},
+								"entityStageId": {
+									"value": "@string(pipeline().parameters.EntityStageID)",
+									"type": "Expression"
+								},
+								"stageName": {
+									"value": "@pipeline().parameters.Zone",
+									"type": "Expression"
+								},
+								"entityName": {
+									"value": "@pipeline().parameters.TableName",
+									"type": "Expression"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LB_DBX_EngineeringSml",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Set vSetFileMask",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Start Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "FilenameMask",
+							"value": {
+								"value": "@if(greater(indexof(string(pipeline().parameters.Config),'FilenameMask'),0),pipeline().parameters.Config.FilenameMask,'')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "SetRecursiveFlag",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Start Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "RecursiveFlag",
+							"value": {
+								"value": "@if(greater(indexof(string(pipeline().parameters.Config),'RecursiveFlag'),0),pipeline().parameters.Config.RecursiveFlag,'')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "ExtractTable",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"deleteFilesAfterCompletion": false
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_4_CDC_Source",
+								"type": "DatasetReference",
+								"parameters": {
+									"Path": {
+										"value": "@pipeline().parameters.Path",
+										"type": "Expression"
+									},
+									"Container": {
+										"value": "@pipeline().parameters.PathRoute",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_4_CDC_SINK",
+								"type": "DatasetReference",
+								"parameters": {
+									"Directory": {
+										"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"TableName": {
+						"type": "string"
+					},
+					"Zone": {
+						"type": "string",
+						"defaultValue": "RAW"
+					},
+					"Year": {
+						"type": "string"
+					},
+					"Month": {
+						"type": "string"
+					},
+					"Day": {
+						"type": "string"
+					},
+					"Domain": {
+						"type": "string"
+					},
+					"Classification": {
+						"type": "string"
+					},
+					"EntityStageID": {
+						"type": "int"
+					},
+					"ProcessID": {
+						"type": "int"
+					},
+					"Version": {
+						"type": "string"
+					},
+					"SlicePath": {
+						"type": "string"
+					},
+					"Time": {
+						"type": "string"
+					},
+					"FileFormat": {
+						"type": "string"
+					},
+					"Area": {
+						"type": "string"
+					},
+					"ProcessSubType": {
+						"type": "string"
+					},
+					"Config": {
+						"type": "object"
+					},
+					"PathRoute": {
+						"type": "string"
+					},
+					"Path": {
+						"type": "string"
 					}
 				},
-				"managedVirtualNetwork": {
-					"type": "ManagedVirtualNetworkReference",
-					"referenceName": "default"
-				}
+				"variables": {
+					"FilenameMask": {
+						"type": "String"
+					},
+					"RecursiveFlag": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "0 - Source2Raw/Pret"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-08-20T14:26:03Z"
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/default/ADLSProdEndpoint')]",
-			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"name": "[concat(parameters('factoryName'), '/EX_SourceToRaw_Single_Zip')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"privateLinkResourceId": "[parameters('ADLSProdEndpoint_properties_privateLinkResourceId')]",
-				"groupId": "[parameters('ADLSProdEndpoint_properties_groupId')]",
-				"fqdns": "[parameters('ADLSProdEndpoint_properties_fqdns')]"
+				"activities": [
+					{
+						"name": "Start Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[StartProcess]",
+							"storedProcedureParameters": {
+								"ADFExecution": {
+									"value": {
+										"value": "@pipeline().RunId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "SetFileMask",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Start Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "FilenameMask",
+							"value": {
+								"value": "@if(greater(indexof(string(pipeline().parameters.Config),'FilenameMask'),0),pipeline().parameters.Config.FilenameMask,'')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "SetRecursiveFlag",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Start Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "RecursiveFlag",
+							"value": {
+								"value": "@if(greater(indexof(string(pipeline().parameters.Config),'RecursiveFlag'),0),pipeline().parameters.Config.RecursiveFlag,'')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Copy File to Archive BLOB",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "SetFileMask",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "SetRecursiveFlag",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": {
+										"value": "@if(empty(variables('FilenameMask')),\nconcat('*.',pipeline().parameters.FileFormat),\nconcat(variables('FilenameMask'),toLower(pipeline().parameters.FileFormat)))",
+										"type": "Expression"
+									},
+									"deleteFilesAfterCompletion": false
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_BLOB_Landing_DYN_BINARY",
+								"type": "DatasetReference",
+								"parameters": {
+									"Path": {
+										"value": "@pipeline().parameters.Path",
+										"type": "Expression"
+									},
+									"Container": {
+										"value": "@pipeline().parameters.PathRoute",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_BLOB_Landing_DYN_BINARY",
+								"type": "DatasetReference",
+								"parameters": {
+									"Path": {
+										"value": "@concat(pipeline().parameters.Path,'/Archive')",
+										"type": "Expression"
+									},
+									"Container": {
+										"value": "@pipeline().parameters.PathRoute",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "Copy File to Lake",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy File to Archive BLOB",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": {
+										"value": "@if(empty(variables('FilenameMask')),\nconcat('*.',pipeline().parameters.FileFormat),\nconcat(variables('FilenameMask'),toLower(pipeline().parameters.FileFormat)))",
+										"type": "Expression"
+									},
+									"deleteFilesAfterCompletion": false
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings",
+									"compressionProperties": {
+										"type": "ZipDeflateReadSettings"
+									}
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_BLOB_Landing_DYN_ZIP",
+								"type": "DatasetReference",
+								"parameters": {
+									"Path": {
+										"value": "@pipeline().parameters.Path",
+										"type": "Expression"
+									},
+									"Container": {
+										"value": "@pipeline().parameters.PathRoute",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ALDS_RAW_BINARY",
+								"type": "DatasetReference",
+								"parameters": {
+									"Directory": {
+										"value": "@{pipeline().parameters.Zone}/@{pipeline().parameters.Classification}/@{pipeline().parameters.Area}/@{pipeline().parameters.Domain}/@{pipeline().parameters.TableName}/@{pipeline().parameters.Version}/Year=@{pipeline().parameters.Year}/Month=@{pipeline().parameters.Month}/Day=@{pipeline().parameters.Day}/Time=@{pipeline().parameters.Time}",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "Log Process Throughput",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy File to Lake",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[LogThroughput]",
+							"storedProcedureParameters": {
+								"CountName": {
+									"value": "rowsCopied",
+									"type": "String"
+								},
+								"CountValue": {
+									"value": {
+										"value": "@activity('Copy File to Lake').output.filesRead",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy File to Lake",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Finalise Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Log Process Throughput",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FinaliseProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Process From Log Failure",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Log Process Throughput",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@pipeline().parameters.ProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"TableName": {
+						"type": "string",
+						"defaultValue": "CashSales"
+					},
+					"Zone": {
+						"type": "string",
+						"defaultValue": "RAW"
+					},
+					"Year": {
+						"type": "string",
+						"defaultValue": "2020"
+					},
+					"Month": {
+						"type": "string",
+						"defaultValue": "11"
+					},
+					"Day": {
+						"type": "string",
+						"defaultValue": "02"
+					},
+					"Area": {
+						"type": "string",
+						"defaultValue": "MuleSoft"
+					},
+					"Domain": {
+						"type": "string",
+						"defaultValue": "StarKis"
+					},
+					"Classification": {
+						"type": "string",
+						"defaultValue": "Internal"
+					},
+					"EntityStageID": {
+						"type": "string",
+						"defaultValue": "51"
+					},
+					"ProcessID": {
+						"type": "int",
+						"defaultValue": 999
+					},
+					"Version": {
+						"type": "string",
+						"defaultValue": "1"
+					},
+					"SlicePath": {
+						"type": "string"
+					},
+					"Time": {
+						"type": "string",
+						"defaultValue": "00:00"
+					},
+					"FileFormat": {
+						"type": "string",
+						"defaultValue": "CSV"
+					},
+					"Path": {
+						"type": "string",
+						"defaultValue": "import/starkis/UK"
+					},
+					"PathRoute": {
+						"type": "string"
+					},
+					"Config": {
+						"type": "object"
+					}
+				},
+				"variables": {
+					"FilenameMask": {
+						"type": "String"
+					},
+					"RecursiveFlag": {
+						"type": "String"
+					},
+					"UnzipFlag": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "0 - Source2Raw/Pret"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-12-13T17:30:25Z"
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/default/AzureDataLakeStorageMEP4')]",
-			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"name": "[concat(parameters('factoryName'), '/PE_Parent')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"privateLinkResourceId": "[parameters('AzureDataLakeStorageMEP4_properties_privateLinkResourceId')]",
-				"groupId": "[parameters('AzureDataLakeStorageMEP4_properties_groupId')]",
-				"fqdns": "[parameters('AzureDataLakeStorageMEP4_properties_fqdns')]"
+				"activities": [
+					{
+						"name": "Initiate Parent Process",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[Process].[InitiateParentLoad]",
+								"storedProcedureParameters": {
+									"ADFExecution": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().RunId",
+											"type": "Expression"
+										}
+									},
+									"Area": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().parameters.Area",
+											"type": "Expression"
+										}
+									},
+									"EntityStageID": {
+										"type": "Int32",
+										"value": "-1"
+									}
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_AnalyticsHub_DYN",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Get Jobs to Run",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Initiate Parent Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[Process].[GetChildProcesses]",
+								"storedProcedureParameters": {
+									"ParentProcessID": {
+										"type": "Int32",
+										"value": {
+											"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+											"type": "Expression"
+										}
+									}
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_AnalyticsHub_DYN",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Run Child Processes",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Jobs to Run",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Jobs to Run').output.value",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"activities": [
+								{
+									"name": "Run Post Execution Pipeline",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PE_Single",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"ProcessId": {
+												"value": "@item().ProcessID",
+												"type": "Expression"
+											},
+											"ProcessSubType": {
+												"value": "@item().ProcessSubType",
+												"type": "Expression"
+											},
+											"EntityStageId": {
+												"value": "@item().EntityStageID",
+												"type": "Expression"
+											},
+											"stageName": {
+												"value": "@item().StageName",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Finalise Parent Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Run Child Processes",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FinaliseProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Parent Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Run Child Processes",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"Area": {
+						"type": "string",
+						"defaultValue": "Simphony"
+					}
+				},
+				"folder": {
+					"name": "4 - PostExecution"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-09-14T10:52:00Z"
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/default/AzureSqlDatabaseMEP2')]",
-			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"name": "[concat(parameters('factoryName'), '/R2B_CSV_Parent')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"privateLinkResourceId": "[parameters('AzureSqlDatabaseMEP2_properties_privateLinkResourceId')]",
-				"groupId": "[parameters('AzureSqlDatabaseMEP2_properties_groupId')]"
+				"activities": [
+					{
+						"name": "Initiate Parent Process",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[Process].[InitiateParentLoad]",
+								"storedProcedureParameters": {
+									"ADFExecution": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().RunId",
+											"type": "Expression"
+										}
+									},
+									"Area": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().parameters.Area",
+											"type": "Expression"
+										}
+									},
+									"EntityStageID": {
+										"type": "Int32",
+										"value": null
+									},
+									"ParentProcessID": {
+										"type": "Int32",
+										"value": null
+									},
+									"ProcessFilter": {
+										"type": "String",
+										"value": "%"
+									},
+									"Stage": {
+										"type": "String",
+										"value": "Base"
+									}
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_AnalyticsHub_DYN",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Get Jobs to Run",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Initiate Parent Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[Process].[GetChildProcesses]",
+								"storedProcedureParameters": {
+									"ParentProcessID": {
+										"type": "Int32",
+										"value": {
+											"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+											"type": "Expression"
+										}
+									}
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_AnalyticsHub_DYN",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "Run Child Processes",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Jobs to Run",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Jobs to Run').output.value",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"activities": [
+								{
+									"name": "Run Copy Pipeline",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "R2B_CSV_CleanseCSV",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"TableName": {
+												"value": "@item().EntityName",
+												"type": "Expression"
+											},
+											"Zone": {
+												"value": "@item().StageName",
+												"type": "Expression"
+											},
+											"Year": {
+												"value": "@item().Year",
+												"type": "Expression"
+											},
+											"Month": {
+												"value": "@item().Month",
+												"type": "Expression"
+											},
+											"Day": {
+												"value": "@item().Day",
+												"type": "Expression"
+											},
+											"Area": {
+												"value": "@item().Area",
+												"type": "Expression"
+											},
+											"Domain": {
+												"value": "@item().Domain",
+												"type": "Expression"
+											},
+											"Classification": {
+												"value": "@item().Classification",
+												"type": "Expression"
+											},
+											"EntityStageID": {
+												"value": "@item().EntityStageID",
+												"type": "Expression"
+											},
+											"ProcessID": {
+												"value": "@item().ProcessID",
+												"type": "Expression"
+											},
+											"Version": {
+												"value": "@item().Version",
+												"type": "Expression"
+											},
+											"ProcessSubType": {
+												"value": "@item().ProcessSubType",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Finalise Parent Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Run Child Processes",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FinaliseProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Parent Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Run Child Processes",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"Area": {
+						"type": "string"
+					},
+					"Domain": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "1 - RawToBase"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-12-07T16:15:42Z"
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/EX_SourceToRaw_Parent')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Initiate Parent Process",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[Process].[InitiateParentLoad]",
+								"storedProcedureParameters": {
+									"ADFExecution": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().RunId",
+											"type": "Expression"
+										}
+									},
+									"EntityStageID": {
+										"type": "Int32",
+										"value": null
+									},
+									"ParentProcessID": {
+										"type": "Int32",
+										"value": null
+									},
+									"ProcessFilter": {
+										"type": "String",
+										"value": "%"
+									},
+									"Stage": {
+										"type": "String",
+										"value": "Raw"
+									},
+									"Area": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().parameters.Area",
+											"type": "Expression"
+										}
+									}
+								},
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_AnalyticsHub_DYN",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": true
+						}
+					},
+					{
+						"name": "Get Entities to Copy",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Initiate Parent Process",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[Process].[GetChildProcesses]",
+								"storedProcedureParameters": {
+									"ParentProcessID": {
+										"type": "Int32",
+										"value": {
+											"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+											"type": "Expression"
+										}
+									}
+								},
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_AnalyticsHub_DYN",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "Run Child Processes",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Entities to Copy",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Entities to Copy').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Choose Pipeline Based on Source",
+									"type": "Switch",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"on": {
+											"value": "@item().FileFormat",
+											"type": "Expression"
+										},
+										"cases": [
+											{
+												"value": "SQL",
+												"activities": [
+													{
+														"name": "Run Copy Pipeline Table",
+														"description": "This has been moved to invoke the Zip PipeLine because it keeps on kicking of Databricaks. Otherwise, all is working well invoking EX_SourceToRaw_Single_Table - which is the pipeline it would kick of under normal circumstances",
+														"type": "ExecutePipeline",
+														"dependsOn": [],
+														"userProperties": [],
+														"typeProperties": {
+															"pipeline": {
+																"referenceName": "EX_SourceToRaw_Single_Table",
+																"type": "PipelineReference"
+															},
+															"waitOnCompletion": true,
+															"parameters": {
+																"TableName": {
+																	"value": "@item().EntityName",
+																	"type": "Expression"
+																},
+																"Zone": {
+																	"value": "@item().StageName",
+																	"type": "Expression"
+																},
+																"Year": {
+																	"value": "@item().Year",
+																	"type": "Expression"
+																},
+																"Month": {
+																	"value": "@item().Month",
+																	"type": "Expression"
+																},
+																"Day": {
+																	"value": "@item().Day",
+																	"type": "Expression"
+																},
+																"Domain": {
+																	"value": "@item().Domain",
+																	"type": "Expression"
+																},
+																"Classification": {
+																	"value": "@item().Classification",
+																	"type": "Expression"
+																},
+																"EntityStageID": {
+																	"value": "@item().EntityStageID",
+																	"type": "Expression"
+																},
+																"ProcessID": {
+																	"value": "@item().ProcessID",
+																	"type": "Expression"
+																},
+																"Version": {
+																	"value": "@item().Version",
+																	"type": "Expression"
+																},
+																"SlicePath": {
+																	"value": "@item().SlicePath",
+																	"type": "Expression"
+																},
+																"Time": {
+																	"value": "@item().Time",
+																	"type": "Expression"
+																},
+																"FileFormat": {
+																	"value": "@item().FileFormat",
+																	"type": "Expression"
+																},
+																"Area": {
+																	"value": "@item().Area",
+																	"type": "Expression"
+																}
+															}
+														}
+													}
+												]
+											},
+											{
+												"value": "CSV",
+												"activities": [
+													{
+														"name": "Run Copy Pipeline CSV",
+														"type": "ExecutePipeline",
+														"dependsOn": [],
+														"userProperties": [],
+														"typeProperties": {
+															"pipeline": {
+																"referenceName": "EX_SourceToRaw_Single_CSV",
+																"type": "PipelineReference"
+															},
+															"waitOnCompletion": true,
+															"parameters": {
+																"TableName": {
+																	"value": "@item().EntityName",
+																	"type": "Expression"
+																},
+																"Zone": {
+																	"value": "@item().StageName",
+																	"type": "Expression"
+																},
+																"Year": {
+																	"value": "@item().Year",
+																	"type": "Expression"
+																},
+																"Month": {
+																	"value": "@item().Month",
+																	"type": "Expression"
+																},
+																"Day": {
+																	"value": "@item().Day",
+																	"type": "Expression"
+																},
+																"Area": {
+																	"value": "@item().Area",
+																	"type": "Expression"
+																},
+																"Domain": {
+																	"value": "@item().Domain",
+																	"type": "Expression"
+																},
+																"Classification": {
+																	"value": "@item().Classification",
+																	"type": "Expression"
+																},
+																"EntityStageID": {
+																	"value": "@item().EntityStageID",
+																	"type": "Expression"
+																},
+																"ProcessID": {
+																	"value": "@item().ProcessID",
+																	"type": "Expression"
+																},
+																"Version": {
+																	"value": "@item().Version",
+																	"type": "Expression"
+																},
+																"SlicePath": {
+																	"value": "@item().SlicePath",
+																	"type": "Expression"
+																},
+																"Time": {
+																	"value": "@item().Time",
+																	"type": "Expression"
+																},
+																"FileFormat": {
+																	"value": "@item().FileFormat",
+																	"type": "Expression"
+																},
+																"Path": {
+																	"value": "@item().Path",
+																	"type": "Expression"
+																}
+															}
+														}
+													}
+												]
+											},
+											{
+												"value": "CRM",
+												"activities": [
+													{
+														"name": "Run Copy Pipeline Table_Dataverse",
+														"description": "This has been moved to invoke the Zip PipeLine because it keeps on kicking of Databricaks. Otherwise, all is working well invoking EX_SourceToRaw_Single_Table - which is the pipeline it would kick of under normal circumstances",
+														"type": "ExecutePipeline",
+														"dependsOn": [],
+														"userProperties": [],
+														"typeProperties": {
+															"pipeline": {
+																"referenceName": "EX_SourceToRaw_Single_Dataverse",
+																"type": "PipelineReference"
+															},
+															"waitOnCompletion": true,
+															"parameters": {
+																"TableName": {
+																	"value": "@item().EntityName",
+																	"type": "Expression"
+																},
+																"Zone": {
+																	"value": "@item().StageName",
+																	"type": "Expression"
+																},
+																"Year": {
+																	"value": "@item().Year",
+																	"type": "Expression"
+																},
+																"Month": {
+																	"value": "@item().Month",
+																	"type": "Expression"
+																},
+																"Day": {
+																	"value": "@item().Day",
+																	"type": "Expression"
+																},
+																"Domain": {
+																	"value": "@item().Domain",
+																	"type": "Expression"
+																},
+																"Classification": {
+																	"value": "@item().Classification",
+																	"type": "Expression"
+																},
+																"EntityStageID": {
+																	"value": "@item().EntityStageID",
+																	"type": "Expression"
+																},
+																"ProcessID": {
+																	"value": "@item().ProcessID",
+																	"type": "Expression"
+																},
+																"Version": {
+																	"value": "@item().Version",
+																	"type": "Expression"
+																},
+																"SlicePath": {
+																	"value": "@item().SlicePath",
+																	"type": "Expression"
+																},
+																"Time": {
+																	"value": "@item().Time",
+																	"type": "Expression"
+																},
+																"FileFormat": {
+																	"value": "@item().FileFormat",
+																	"type": "Expression"
+																},
+																"Area": {
+																	"value": "@item().Area",
+																	"type": "Expression"
+																},
+																"ProcessSubType": {
+																	"value": "@item().ProcessSubType",
+																	"type": "Expression"
+																}
+															}
+														}
+													}
+												]
+											},
+											{
+												"value": "CDC",
+												"activities": [
+													{
+														"name": "Run Copy Pipeline Table_CDC",
+														"description": "This has been moved to invoke the Zip PipeLine because it keeps on kicking of Databricaks. Otherwise, all is working well invoking EX_SourceToRaw_Single_Table - which is the pipeline it would kick of under normal circumstances",
+														"type": "ExecutePipeline",
+														"dependsOn": [],
+														"userProperties": [],
+														"typeProperties": {
+															"pipeline": {
+																"referenceName": "EX_SourceToRaw_Single_Table_CDC",
+																"type": "PipelineReference"
+															},
+															"waitOnCompletion": true,
+															"parameters": {
+																"TableName": {
+																	"value": "@item().EntityName",
+																	"type": "Expression"
+																},
+																"Zone": {
+																	"value": "@item().StageName",
+																	"type": "Expression"
+																},
+																"Year": {
+																	"value": "@item().Year",
+																	"type": "Expression"
+																},
+																"Month": {
+																	"value": "@item().Month",
+																	"type": "Expression"
+																},
+																"Day": {
+																	"value": "@item().Day",
+																	"type": "Expression"
+																},
+																"Domain": {
+																	"value": "@item().Domain",
+																	"type": "Expression"
+																},
+																"Classification": {
+																	"value": "@item().Classification",
+																	"type": "Expression"
+																},
+																"EntityStageID": {
+																	"value": "@item().EntityStageID",
+																	"type": "Expression"
+																},
+																"ProcessID": {
+																	"value": "@item().ProcessID",
+																	"type": "Expression"
+																},
+																"Version": {
+																	"value": "@item().Version",
+																	"type": "Expression"
+																},
+																"SlicePath": {
+																	"value": "@item().SlicePath",
+																	"type": "Expression"
+																},
+																"Time": {
+																	"value": "@item().Time",
+																	"type": "Expression"
+																},
+																"FileFormat": "parquet",
+																"Area": {
+																	"value": "@item().Area",
+																	"type": "Expression"
+																},
+																"Config": {
+																	"value": "@json(item().Config)",
+																	"type": "Expression"
+																},
+																"PathRoute": {
+																	"value": "@item().PathRoute",
+																	"type": "Expression"
+																},
+																"Path": {
+																	"value": "@item().Path",
+																	"type": "Expression"
+																}
+															}
+														}
+													}
+												]
+											}
+										],
+										"defaultActivities": [
+											{
+												"name": "Run Copy Pipeline File",
+												"type": "ExecutePipeline",
+												"dependsOn": [],
+												"userProperties": [],
+												"typeProperties": {
+													"pipeline": {
+														"referenceName": "EX_SourceToRaw_Single_CSV",
+														"type": "PipelineReference"
+													},
+													"waitOnCompletion": true,
+													"parameters": {
+														"TableName": {
+															"value": "@item().EntityName",
+															"type": "Expression"
+														},
+														"Zone": {
+															"value": "@item().StageName",
+															"type": "Expression"
+														},
+														"Year": {
+															"value": "@item().Year",
+															"type": "Expression"
+														},
+														"Month": {
+															"value": "@item().Month",
+															"type": "Expression"
+														},
+														"Day": {
+															"value": "@item().Day",
+															"type": "Expression"
+														},
+														"Area": {
+															"value": "@item().Area",
+															"type": "Expression"
+														},
+														"Domain": {
+															"value": "@item().Domain",
+															"type": "Expression"
+														},
+														"Classification": {
+															"value": "@item().Classification",
+															"type": "Expression"
+														},
+														"EntityStageID": {
+															"value": "@item().EntityStageID",
+															"type": "Expression"
+														},
+														"ProcessID": {
+															"value": "@item().ProcessID",
+															"type": "Expression"
+														},
+														"Version": {
+															"value": "@item().Version",
+															"type": "Expression"
+														},
+														"SlicePath": {
+															"value": "@item().SlicePath",
+															"type": "Expression"
+														},
+														"Time": {
+															"value": "@item().Time",
+															"type": "Expression"
+														},
+														"FileFormat": {
+															"value": "@item().FileFormat",
+															"type": "Expression"
+														},
+														"Path": {
+															"value": "@item().Path",
+															"type": "Expression"
+														},
+														"Config": {
+															"value": "@json(item().Config)",
+															"type": "Expression"
+														},
+														"PathRoute": {
+															"value": "@item().PathRoute",
+															"type": "Expression"
+														}
+													}
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Finalise Parent Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Run Child Processes",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FinaliseProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Fail Parent Process",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Run Child Processes",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[FailProcess]",
+							"storedProcedureParameters": {
+								"ProcessID": {
+									"value": {
+										"value": "@activity('Initiate Parent Process').output.firstRow.ParentProcessID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"SliceDate": {
+						"type": "string"
+					},
+					"Area": {
+						"type": "string"
+					},
+					"Domain": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "0 - Source2Raw/Pret"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-12-13T18:04:10Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Single_Table')]",
+				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Single_Table_CDC')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Master Control')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Source to Raw",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "EX_SourceToRaw_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"SliceDate": {
+									"value": "@pipeline().parameters.SliceDate",
+									"type": "Expression"
+								},
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					{
+						"name": "Raw to Base",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Source to Raw",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "R2B_CSV_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					{
+						"name": "Base to Enrich",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Raw to Base",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "B2E_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					{
+						"name": "Enrich To Curate",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Base to Enrich",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "DYN_EnrToCurated_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"Region": {
+									"value": "@pipeline().parameters.Region",
+									"type": "Expression"
+								},
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								}
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"SliceDate": {
+						"type": "string"
+					},
+					"Area": {
+						"type": "string"
+					},
+					"Domain": {
+						"type": "string"
+					},
+					"Region": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"EnrichJobs": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-09-18T19:51:35Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Parent')]",
+				"[concat(variables('factoryId'), '/pipelines/R2B_CSV_Parent')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Master Control_With_Curated')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Source to Raw",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "EX_SourceToRaw_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"SliceDate": {
+									"value": "@pipeline().parameters.SliceDate",
+									"type": "Expression"
+								},
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					{
+						"name": "Raw to Base",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Source to Raw",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "R2B_CSV_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					{
+						"name": "Base to Enrich",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Raw to Base",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "B2E_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					{
+						"name": "Enrich To Curate",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Base to Enrich",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "DYN_EnrToCurated_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"Region": {
+									"value": "@pipeline().parameters.Region",
+									"type": "Expression"
+								},
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					{
+						"name": "Post Processing Maintenance",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Enrich To Curate",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "PE_Parent",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"Area": "Simphony"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"SliceDate": {
+						"type": "string"
+					},
+					"Area": {
+						"type": "string"
+					},
+					"Domain": {
+						"type": "string"
+					},
+					"Region": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"EnrichJobs": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-09-14T10:52:00Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/EX_SourceToRaw_Parent')]",
+				"[concat(variables('factoryId'), '/pipelines/R2B_CSV_Parent')]",
+				"[concat(variables('factoryId'), '/pipelines/PE_Parent')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Execute Origination Load')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Initiate Pret Load",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[Process].[InitiateLoad]",
+							"storedProcedureParameters": {
+								"Area": {
+									"value": {
+										"value": "@pipeline().parameters.Area",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"Domain": {
+									"value": {
+										"value": "@pipeline().parameters.Domain",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"Months": {
+									"value": null,
+									"type": "Int32"
+								},
+								"SliceDate": {
+									"value": {
+										"value": "@formatDateTime(utcnow(),'yyyy/MM/dd')",
+										"type": "Expression"
+									},
+									"type": "Datetime"
+								},
+								"Stage": {
+									"value": "Raw",
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SQL_AnalyticsHub",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Trigger Master Control",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Initiate Pret Load",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Master Control",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"SliceDate": {
+									"value": "@pipeline().parameters.SliceDate",
+									"type": "Expression"
+								},
+								"Area": {
+									"value": "@pipeline().parameters.Area",
+									"type": "Expression"
+								},
+								"Domain": {
+									"value": "@pipeline().parameters.Domain",
+									"type": "Expression"
+								},
+								"Region": {
+									"value": "@pipeline().parameters.Region",
+									"type": "Expression"
+								}
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"SliceDate": {
+						"type": "string"
+					},
+					"Area": {
+						"type": "string",
+						"defaultValue": "cdcArea"
+					},
+					"Domain": {
+						"type": "string",
+						"defaultValue": "dbo"
+					},
+					"Region": {
+						"type": "string",
+						"defaultValue": "-2"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-12-13T18:10:44Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/Master Control')]"
+			]
 		}
 	]
 }
