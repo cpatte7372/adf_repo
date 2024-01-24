@@ -8,6 +8,7 @@
 			"domain": "https://adb-3245129198665852.12.azuredatabricks.net",
 			"existingClusterId": "0304-213156-rwxwxsxw",
 			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDlFRDEwMDUxLUM3OTItNEJDNS05ODVDLTQ3NUU2QjQ5M0U1MF84ZTIyYjI2Zi1lODFlLTQyODUtOTFmNi0yYTQxN2M1NjQ3YWIiDQp9"
-		}
+		},
+		"description": "today2024"
 	}
 }
