@@ -21,6 +21,7 @@
 					}
 				],
 				"typeProperties": {
+					"storedProcedureName": "rearad",
 					"storedProcedureParameters": {
 						"Area": {
 							"value": {
