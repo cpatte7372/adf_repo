@@ -49,6 +49,10 @@
 						]
 					}
 				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "FilenameMask",
@@ -69,6 +73,10 @@
 						]
 					}
 				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "RecursiveFlag",
@@ -470,7 +478,7 @@
 			}
 		},
 		"folder": {
-			"name": "0 - Source2Raw/Pret"
+			"name": "0 - Source2Raw/Initiation"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-12-13T17:30:25Z"
