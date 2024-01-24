@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Initiate Parent Process",
+				"description": "today2024",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
