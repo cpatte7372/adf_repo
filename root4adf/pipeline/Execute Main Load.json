@@ -65,7 +65,12 @@
 						]
 					}
 				],
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "test",
+						"value": "once"
+					}
+				],
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "Master Control",
