@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Start Process",
+				"description": "today2024",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
