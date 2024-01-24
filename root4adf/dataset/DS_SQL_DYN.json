@@ -7,7 +7,11 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": "remove",
+			"table": "remove"
+		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
