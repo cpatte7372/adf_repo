@@ -16,6 +16,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"storedProcedureName": "remover",
 					"storedProcedureParameters": {
 						"Area": {
 							"value": {
