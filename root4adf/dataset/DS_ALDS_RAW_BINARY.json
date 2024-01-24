@@ -20,6 +20,10 @@
 					"type": "Expression"
 				},
 				"fileSystem": "root"
+			},
+			"compression": {
+				"type": "bzip2",
+				"level": "Fastest"
 			}
 		}
 	},
