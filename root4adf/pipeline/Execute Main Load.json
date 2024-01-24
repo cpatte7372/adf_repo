@@ -4,7 +4,7 @@
 		"activities": [
 			{
 				"name": "Initiate Main Load",
-				"description": "testoday",
+				"description": "testoday2",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
