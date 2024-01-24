@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Initiate Main Load",
+				"description": "dsdasd",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
