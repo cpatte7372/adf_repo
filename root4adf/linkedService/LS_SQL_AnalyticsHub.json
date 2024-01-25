@@ -2,12 +2,12 @@
 	"name": "LS_SQL_AnalyticsHub",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"description": "today2024",
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=cp-retbihydr8config.database.windows.net;initial catalog=CP-PretBIHydr8Config;user id=techadmin",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDlFRDEwMDUxLUM3OTItNEJDNS05ODVDLTQ3NUU2QjQ5M0U1MF9hYjllNzBmZi01NWI4LTQ4NmUtOTc5NC1kN2I1MjliNTM5MTkiDQp9"
-		},
-		"description": "today2024"
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=xxxxxxxxxxxxxxxxx.database.windows.net;initial catalog=xxxxxxxxxxxxxxxxxxxxxxxxxxx;user id=techadmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEYzNzk0NkFCLTVFRTItNEFCRi1BOTc5LTlGNEJENENBQTY4Q18yNjQ3ZDBiYi1hZDc3LTRlOGQtYTRhMC1lMzZiOWYyNGI0NmYiDQp9"
+		}
 	}
 }
